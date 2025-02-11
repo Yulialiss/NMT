@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Про нас</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Playfair Display", serif;
+            background-color: #F8F6F2;
+            color: #2C2A29;
+        }
+
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?luxury,classic') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .btn-custom {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #F8F6F2;
+            background: #B89B6A;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-custom:hover {
+            background: #8C6F47;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: justify;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .about-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: #B89B6A;
+        }
+
+        .gallery {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 30%;
+            border-radius: 12px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            filter: brightness(80%);
+        }
+
+        .video-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-container iframe {
+            border-radius: 12px;
+            width: 80%;
+            height: 450px;
+        }
+
+        .footer {
+            background-color: #2C2A29;
+            color: #F8F6F2;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 60px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.container-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.container-right {
+    flex: 1;
+    padding-left: 20px;
+}
+.container-left, .container-right {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container-right img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Досконалість у кожній деталі</h1>
+            <p>Традиції, що створюють майбутнє</p>
+            <a href="#about" class="btn-custom">Дізнатися більше</a>
+        </div>
+    </section>
+
+    <section class="intro">
+        <div class="container-left">
+            <h2>Наше покликання — ваша успішна підготовка</h2>
+            <p>Платформа для підготовки до Національного мультипредметного тесту (НМТ) створена для тих, хто прагне отримати найкращі результати. Ми пропонуємо повний курс, заснований на перевірених методах навчання, з усіма необхідними інструментами для успішного складання тесту.</p>
+        </div>
+        <div class="container-right">
+            <img src="data:image/jpeg;base64,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" alt="Підготовка до НМТ" />
+        </div>
+    </section>
+    <section class="section">
+        <h2>Наша філософія</h2>
+        <div class="gallery">
+            <img src="https://source.unsplash.com/400x500/?luxury,art" alt="Арт">
+            <img src="https://source.unsplash.com/400x500/?fashion,elegance" alt="Елегантність">
+            <img src="https://source.unsplash.com/400x500/?classic,design" alt="Класика">
+        </div>
+    </section>
+</body>
+</html>

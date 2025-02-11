@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>learningpage</title>
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJRAeX0Gv9cE6tRehxFjIuFOsaePT2vsNkllL0C7FpsMkxw7b7KKCg4brS3s" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">EdWay</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Твої результати</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Профіль</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<button id="openCalendar">
+  <svg id="calendar-icon" class="calendar-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="4" width="18" height="17" rx="2" stroke="black" stroke-width="2"/>
+    <line x1="3" y1="10" x2="21" y2="10" stroke="black" stroke-width="2"/>
+    <line x1="7" y1="2" x2="7" y2="6" stroke="black" stroke-width="2"/>
+    <line x1="17" y1="2" x2="17" y2="6" stroke="black" stroke-width="2"/>
+  </svg>
+</button>
+
+    <div class="app-container">
+        <div class="app-main">
+          <div class="main-header-line">
+            <h1>Твої предмети НМТ</h1>
+            </div>
+          </div>
+          <div class="chart-row three">
+            <div class="chart-container-wrapper">
+              <a href="{% url 'test_page' subject='математика' %}">
+
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Формули та рівняння</h2>
+                  <span>Математика</span>
+                </div>
+              </a>
+
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart pink">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">30%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container-wrapper">
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Правопис та граматика</h2>
+                   <span>Українська мова</span>
+                </div>
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart blue">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="60, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">60%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container-wrapper">
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Події та дати</h2>
+                  <span>Історія</span>
+                </div>
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart orange">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">90%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container-wrapper">
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Механіка та електродинаміка</h2>
+                  <span>Фізика</span>
+                </div>
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart green">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="45, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">45%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="chart-container-wrapper">
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Лексика та граматика</h2>
+                  <span>Англійська мова</span>
+                </div>
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart red">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">75%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+              <div class="chart-container-wrapper">
+                <div class="chart-container">
+                  <div class="chart-info-wrapper">
+                    <h2>Будова організмів</h2>
+                    <span>Біологія</span>
+                  </div>
+                  <div class="chart-svg">
+                    <svg viewBox="0 0 36 36" class="circular-chart purple">
+                      <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      <text x="18" y="20.35" class="percentage">85%</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="chart-container-wrapper">
+                <div class="chart-container">
+                  <div class="chart-info-wrapper">
+                    <h2>Літературні течії</h2>
+                    <span>Українська література</span>
+                  </div>
+                  <div class="chart-svg">
+                    <svg viewBox="0 0 36 36" class="circular-chart blue">
+                      <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      <path class="circle" stroke-dasharray="65, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                      <text x="18" y="20.35" class="percentage">65%</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+                <div class="chart-container-wrapper">
+                  <div class="chart-container">
+                    <div class="chart-info-wrapper">
+                      <h2>Фізична та економічна</h2>
+                      <span>Географія</span>
+                    </div>
+                    <div class="chart-svg">
+                      <svg viewBox="0 0 36 36" class="circular-chart teal">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle" stroke-dasharray="55, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <text x="18" y="20.35" class="percentage">55%</text>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+            <div class="chart-container-wrapper">
+              <div class="chart-container">
+                <div class="chart-info-wrapper">
+                  <h2>Органічна та неорганічна</h2>
+                  <span>Хімія</span>
+                </div>
+                <div class="chart-svg">
+                  <svg viewBox="0 0 36 36" class="circular-chart yellow">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <path class="circle" stroke-dasharray="50, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                    <text x="18" y="20.35" class="percentage">50%</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--/////////////////////////////////////////////////////-->
+    <div id="calendarModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Календар подій</h3>
+            <div id="calendar-container">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close close-event">&times;</span>
+            <h3>Додати подію</h3>
+            <div class="form-group">
+                <label for="eventTitle">Назва події:</label>
+                <input type="text" id="eventTitle">
+            </div>
+            <div class="form-group">
+                <label for="eventDescription">Опис:</label>
+                <textarea id="eventDescription"></textarea>
+            </div>
+            <input type="hidden" id="eventDate">
+            <button id="saveEvent">Зберегти</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('calendarModal');
+            var openBtn = document.getElementById('openCalendar');
+            var closeBtns = document.getElementsByClassName("close");
+
+            var eventModal = document.getElementById('eventModal');
+            var saveEventBtn = document.getElementById('saveEvent');
+            var eventTitleInput = document.getElementById('eventTitle');
+            var eventDescriptionInput = document.getElementById('eventDescription');
+            var eventDateInput = document.getElementById('eventDate');
+
+            var calendar;
+
+            openBtn.onclick = function() {
+                modal.style.display = "block";
+
+                if (!calendar) {
+                    var calendarEl = document.getElementById('calendar');
+                    calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: [
+                            {% for event in events %}
+                            {
+                                title: '{{ event.title }}',
+                                start: '{{ event.date|date:"Y-m-d" }}',
+                                description: '{{ event.description }}',
+                            },
+                            {% endfor %}
+                        ],
+                        dateClick: function(info) {
+                            eventDateInput.value = info.dateStr;
+                            eventModal.style.display = "block";
+                        }
+                    });
+                    calendar.render();
+                }
+            };
+
+            for (let btn of closeBtns) {
+                btn.onclick = function() {
+                    modal.style.display = "none";
+                    eventModal.style.display = "none";
+                };
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == eventModal) {
+                    eventModal.style.display = "none";
+                }
+            };
+
+            saveEventBtn.onclick = function() {
+                var title = eventTitleInput.value;
+                var description = eventDescriptionInput.value;
+                var eventDate = eventDateInput.value;
+
+                if (!title) {
+                    alert("Будь ласка, введіть назву події!");
+                    return;
+                }
+
+                calendar.addEvent({
+                    title: title,
+                    start: eventDate,
+                    description: description
+                });
+
+                eventTitleInput.value = "";
+                eventDescriptionInput.value = "";
+
+                eventModal.style.display = "none";
+                alert("Подія додана!");
+            };
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-PoJxOFGmXyVeHVkJhLfJ1ISsDBwdb+AVh4hRI69aTIS4S1Q/4b99i16XPoa2n+wv" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-KyZXEJRAeX0Gv9cE6tRehxFjIuFOsaePT2vsNkllL0C7FpsMkxw7b7KKCg4brS3s" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
