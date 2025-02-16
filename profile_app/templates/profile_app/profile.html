@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -89,16 +88,21 @@
             background-color: #4c4c47;
         }
 
-        .container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.profile-photo-container {
+    flex-shrink: 0;
+}
 
-        .rounded-circle {
-            border: 2px solid #d1c7b8;
-        }
+.profile-photo {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border: 2px solid #d1c7b8;
+}
+
+.profile-info {
+    max-width: 600px;
+}
+
     </style>
 </head>
 <body>
@@ -116,7 +120,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Головна</a>
         </li>
       <li class="nav-item">
-            <a class="nav-link" href="{% url 'learning' %}">Навчання</a>
+            <a class="nav-link" href="{% url 'subject_list' %}">Навчання</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -164,29 +168,41 @@
     </ul>
   </div>
 </div>
+<div class="container mt-4 d-flex align-items-start">
+    <div class="profile-photo-container me-4">
+        {% if user.profile.photo %}
+    <img src="{{ user.profile.photo.url }}" alt="Profile Picture" class="profile-photo">
+{% else %}
+    <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="profile-photo">
+{% endif %}
 
-<div class="container mt-4">
-    <h1 class="text-center">Привіт, {{ user.username }}!</h1>
-    <p class="text-center">Це ваш особистий кабінет.</p>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Особиста інформація</h3>
-            <p><strong>Ім'я:</strong> {{ user.first_name }} {{ user.last_name }}</p>
-            <p><strong>Електронна пошта:</strong> {{ user.email }}</p>
-            <p><strong>Біографія:</strong> {{ profile.bio }}</p>
-            <p><strong>Дата народження:</strong> {{ profile.birth_date }}</p>
-        </div>
-        <div class="col-md-6 text-center">
-            <h3>Фото профілю</h3>
-            {% if profile.photo %}
-                <img src="{{ profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
-            {% else %}
-              <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
-            {% endif %}
-        </div>
     </div>
+    <div class="profile-info">
+    <div class="section-title"><h3>Про себе</h3></div>
+    <p>{{ profile.bio }}</p>  <!-- Оновлене біо -->
+    <div class="section-title"><h3>Контактна інформація</h3></div>
+    <div class="contact-info">
+        <p><strong>Ім'я:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <p><strong>Електронна пошта:</strong> {{ user.email }}</p>
+        <p><strong>Біографія:</strong> {{ profile.bio }}</p>
+        <p><strong>Дата народження:</strong> {{ profile.birth_date }}</p>
+        <p><strong>Номер телефону:</strong>
+        {% if profile.phone_number %}
+            {{ profile.phone_number }}
+        {% else %}
+            Ваш номер телефону
+        {% endif %}
+    </p>
 
+    <p><strong>Місто/Регіон:</strong>
+        {% if profile.location %}
+            {{ profile.location }}
+        {% else %}
+            Місто/Регіон
+        {% endif %}
+    </p>
+    </div>
+</div>
 
 </div>
 

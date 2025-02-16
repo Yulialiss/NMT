@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результати тесту</title>
+</head>
+<body>
+    <h1>Результати тесту: {{ test.title }}</h1>
+
+    <p>Правильних відповідей: {{ result.score }} / {{ result.max_score }}</p>
+
+    <h2>Деталі відповідей:</h2>
+    <ul>
+        {% for question in questions %}
+            <li>
+                <strong>{{ question.text }}</strong>
+                {% if question.id in user_answers %}
+                    ❌ Неправильна відповідь
+                {% else %}
+                    ✅ Правильна відповідь
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'subject_list' %}">Повернутися до предметів</a>
+</body>
+</html>

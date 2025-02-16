@@ -6,86 +6,13 @@
     <title>Редагування профілю</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous">
     <style>
-        body {
-            font-family: "Georgia", serif;
-            color: #333;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2 {
-            font-family: "Georgia", serif;
-            font-weight: bold;
-            color: #1a1a1a;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 20px;
-        }
-
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .card-header {
-            font-weight: bold;
-            font-size: 18px;
-            background-color: #1a1a1a;
-            color: #ffd700;
-            text-transform: uppercase;
-        }
-
-        .card-body {
-            font-size: 16px;
-            color: #555;
-        }
-
-        .btn-primary {
-            background-color: #ffd700;
-            border: none;
-            color: #1a1a1a;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #1a1a1a;
-            color: #ffd700;
-        }
-
-        input, select, textarea {
-            font-family: "Georgia", serif;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: #ffd700;
-            outline: none;
-        }
-
-        .container {
-            max-width: 800px;
-            background: #fff;
-            padding: 30px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        /* Стиль для округлого фото */
+        .profile-photo {
+            width: 100px; /* Ширина фото */
+            height: 100px; /* Висота фото */
+            border-radius: 50%; /* Округлені краї */
+            object-fit: cover; /* Щоб фото добре вписувалося */
+            border: 2px solid #ddd; /* Товщина бордера навколо фото */
         }
     </style>
 </head>
@@ -109,6 +36,16 @@
                 Додаткова інформація
             </div>
             <div class="card-body">
+               {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="Profile Photo" class="profile-photo mb-3" id="profile-photo">
+                {% else %}
+                    <div class="profile-photo mb-3" style="background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                        <span class="text-muted">Без фото</span>
+                    </div>
+                {% endif %}
+                <label for="photo-upload" class="btn btn-secondary">Вибрати фото</label>
+                <input type="file" id="photo-upload" name="photo" class="d-none" accept="image/*" onchange="previewPhoto(event)">
+
                 {{ profile_form.as_p }}
             </div>
         </div>
@@ -118,6 +55,37 @@
         </div>
     </form>
 </div>
+
+<script>
+   function previewPhoto(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const photoElement = document.getElementById('profile-photo');
+
+        if (photoElement) {
+            // Якщо фото вже є, оновлюємо його src
+            photoElement.src = reader.result;
+        } else {
+            // Якщо фото немає, створюємо новий елемент img в існуючому контейнері
+            const newImg = document.createElement('img');
+            newImg.src = reader.result;
+            newImg.classList.add('profile-photo', 'mb-3');
+
+            // Заміщуємо div (якщо фото немає) на нове зображення
+            const photoContainer = document.querySelector('.profile-photo');
+            photoContainer.innerHTML = '';  // Очищаємо контейнер
+            photoContainer.appendChild(newImg); // Додаємо нове фото
+        }
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>

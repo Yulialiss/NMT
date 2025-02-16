@@ -1,5 +1,8 @@
+{% extends "home/base.html" %}
 
-<!DOCTYPE html>
+{% block title %}Головна сторінка{% endblock %}
+
+{% block content %}
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -12,77 +15,90 @@
 </head>
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">EdWay</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about_page' %}">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Courses </a>
-                        </li>
-
-
-                    </ul>
-                 <a class="navbar-brand" href="{% url 'login' %}">
-                    <i class="bi bi-person-lock" style="font-size: 24px; color: #0077b6;"></i>
-                </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>We're Responsible for The Safety of Cosmetics Testing</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="buttons">
-                <button class="btn btn-primary">Our Services</button>
-                <button class="btn btn-light">Discover</button>
-            </div>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Готуйся до НМТ з упевненістю!</h1>
+        <p>Національний мультипредметний тест – це важливий крок до твого майбутнього. Перевір свої знання та будь готовий до успіху!</p>
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Приєднатися</button>
+            <button class="btn btn-light" onclick="window.location.href='{% url 'about_page' %}';">Дізнатися більше</button>
         </div>
-        <div class="hero-image">
-            <img src="https://media.istockphoto.com/id/1064025078/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%89%D0%B0%D1%81%D0%BB%D0%B8%D0%B2%D0%B0-%D0%B2%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BA%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B8%D1%85-%D0%BA%D0%BB%D0%B0%D1%81%D1%96%D0%B2-%D0%B7%D0%B0-%D1%81%D0%B2%D0%BE%D1%97%D0%BC-%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%BC-%D1%83-%D0%BA%D0%BB%D0%B0%D1%81%D1%96.jpg?s=612x612&w=0&k=20&c=tpAkuEorR2dNSW09M0MDpiDqi6gNfSWKhfO5So6MqAo=" alt="Scientist Testing Cosmetics">
-            <div class="floating-box" style="top: 20px; right: 50px;">34 <span>Journal Articles</span></div>
-            <div class="floating-box" style="bottom: 20px; left: 50px;">60+ Different Tests</div>
-        </div>
-    </section>
+    </div>
+    <div class="hero-image">
+        <img src="https://cdn.pixabay.com/photo/2023/09/11/19/57/ai-generated-8247500_640.png" alt="Студент готується до НМТ">
+        <div class="floating-box" style="top: 20px; right: 50px;">100+ <span>Тестових завдань</span></div>
+        <div class="floating-box" style="bottom: 20px; left: 50px;">50+ <span>Корисних порад</span></div>
+    </div>
+</section>
+<section class="nmpt-section" style="padding: 50px 0;">
+  <div class="container text-center" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; padding: 30px; text-align: center;">
+    <h2 class="mb-4" style="font-size: 2rem; font-weight: 600;">Національний мультипредметний тест (НМТ)</h2>
+    <p class="lead mb-4" style="font-size: 1.2rem; color: #333;">НМТ — це комплексний тест для абітурієнтів, який замінив традиційну ЗНО. Тест складається з трьох основних предметів: української мови, математики та історії України.</p>
 
-    <section class="services">
-        <div class="service-box">
-            <h3>Laboratory Services</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4 d-flex">
+        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
+          <div class="card-body" style="flex-grow: 1;">
+            <h5 class="card-title">Математика</h5>
+            <p class="card-text">Тест з математики оцінює знання абітурієнтів з основних математичних понять та вмінь. Це важливий предмет для вступу до багатьох спеціальностей.</p>
+          </div>
+          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
         </div>
-        <div class="service-box">
-            <h3>Professional Area</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 d-flex">
+        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
+          <div class="card-body" style="flex-grow: 1;">
+            <h5 class="card-title">Українська мова</h5>
+            <p class="card-text">Тест з української мови дозволяє оцінити рівень володіння державною мовою, що є обов'язковим для всіх вступників.</p>
+          </div>
+          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
         </div>
-        <div class="service-box">
-            <h3>Opening Hours</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 d-flex">
+        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
+          <div class="card-body" style="flex-grow: 1;">
+            <h5 class="card-title">Історія України</h5>
+            <p class="card-text">Історія України є важливим предметом для розуміння культурної та політичної спадщини країни. Тест оцінює знання з української історії.</p>
+          </div>
+          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
         </div>
-    </section>
-<h2>Залишити відгук</h2>
-<form method="POST" class="comment-form">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container py-5">
+  <div class="row align-items-center">
+    <!-- Ліва колонка: заголовок, текст, кнопка -->
+    <div class="col-md-6 mb-4 mb-md-0">
+      <h2 class="mb-3">Особистий розвиток</h2>
+      <p>
+        Удосконалення навичок, зокрема англійської мови, є важливим у кількох сферах.
+        По-перше, знання англійської дозволяє розширити комунікацію з людьми з різних країн і культур,
+        що відкриває можливості для нових знайомств та співпраці.
+        По-друге, багато професій вимагають знання англійської, тому вдосконалення мовних навичок
+        може відкрити нові перспективи для кар’єрного зростання.
+      </p>
+            <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Пройти тест</button>
+    </div>
+
+    <div class="col-md-6">
+      <div class="image-container">
+                  <img src="https://cdn.pixabay.com/photo/2023/09/11/19/57/ai-generated-8247500_1280.png" class="img-fluid rounded-start" alt="..." style="transition: transform 0.3s ease; max-height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Залиште свій відгук</h2>
+
+  <form method="POST" class="comment-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Надіслати відгук</button>
-</form>
-
-<h2>Всі відгуки</h2>
+    <button type="submit" class="btn-custom">Надіслати відгук</button>
+  </form>
+</div>
 <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         {% for review in reviews %}
@@ -95,9 +111,9 @@
                 <div class="review-box text-center p-3 border rounded shadow-sm">
                     <div class="review-header d-flex justify-content-center align-items-center">
                         {% if review.user.profile.photo %}
-                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
+                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle me-2">
                         {% else %}
-                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
+                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle me-2">
                         {% endif %}
                         <strong>{{ review.user.username }}</strong>
                     </div>
@@ -127,11 +143,9 @@
     </button>
 </div>
 
-
-    <footer class="bg-light py-5">
+<footer class="bg-light py-5" style="margin-top: 100px;">
         <div class="container">
             <div class="row">
-                <!-- Логотип -->
                 <div class="col-md-3 mb-4">
                     <a href="#" class="navbar-brand text-dark">
                         <strong>LABOREX</strong>
@@ -157,26 +171,23 @@
                     </ul>
                 </div>
                 <div class="col-md-3 mb-4">
-    <h5>Subscribe</h5>
+                <h5>Subscribe</h5>
 
-    <!-- Вивід повідомлень -->
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                </form>
             </div>
-        {% endfor %}
-    {% endif %}
-
-    <form method="post" action="{% url 'subscribe' %}">
-        {% csrf_token %}
-        <input type="email" name="email" class="form-control mb-3" placeholder="Enter your email" required>
-        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-    </form>
-</div>
-
-
             </div>
             <hr>
             <div class="text-center text-dark">
@@ -234,5 +245,7 @@ function getCookie(name) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybQbF8zYlC45b2zlvDlFQp4O3z5pFv6cfXqY7OgHmg1Q2skXbP" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+
 </body>
 </html>

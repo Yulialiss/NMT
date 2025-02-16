@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ subject.name }} - Тести</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .test-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #00aaff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .test-circle:hover {
+            background-color: #0088cc;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            background-color: #0088cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тести з {{ subject.name }}</h1>
+    <div class="test-container">
+        {% for test in tests %}
+            <a href="{% url 'test_detail' test.id %}" class="test-circle">
+                {{ test.title }}
+            </a>
+        {% endfor %}
+    </div>
+    <a href="{% url 'subject_list' %}" class="back-link">Назад до предметів</a>
+</body>
+</html>
