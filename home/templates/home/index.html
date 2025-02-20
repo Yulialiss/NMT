@@ -69,7 +69,6 @@
 
 <div class="container py-5">
   <div class="row align-items-center">
-    <!-- Ліва колонка: заголовок, текст, кнопка -->
     <div class="col-md-6 mb-4 mb-md-0">
       <h2 class="mb-3">Особистий розвиток</h2>
       <p>
@@ -93,11 +92,23 @@
 <div class="container py-5">
   <h2 class="text-center mb-4">Залиште свій відгук</h2>
 
-  <form method="POST" class="comment-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn-custom">Надіслати відгук</button>
-  </form>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="review-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Review Image" class="img-fluid">
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="review-form">
+        <form method="POST" class="comment-form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn-custom">Надіслати відгук</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -109,16 +120,18 @@
 
             <div class="col-md-3">
                 <div class="review-box text-center p-3 border rounded shadow-sm">
-                    <div class="review-header d-flex justify-content-center align-items-center">
+                    <div class="review-header d-flex justify-content-start align-items-start">
                         {% if review.user.profile.photo %}
-                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle me-2">
+                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle me-2 small-photo">
                         {% else %}
-                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle me-2">
+                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle me-2 small-photo">
                         {% endif %}
                         <strong>{{ review.user.username }}</strong>
                     </div>
+
                     <p class="mt-3">{{ review.content }}</p>
-                    <div class="text-muted" style="font-size: 14px;">{{ review.created_at }}</div>
+
+                    <div class="review-date text-muted" style="font-size: 14px;">{{ review.created_at }}</div>
                 </div>
             </div>
 
@@ -142,6 +155,7 @@
         <span class="visually-hidden">Наступний</span>
     </button>
 </div>
+
 
 <footer class="bg-light py-5" style="margin-top: 100px;">
         <div class="container">

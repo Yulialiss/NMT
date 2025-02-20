@@ -1,5 +1,8 @@
+{% extends "profile_app/base.html" %}
+
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -9,54 +12,7 @@
     <style>
         body {
             font-family: "Georgia", serif;
-            background-color: #f8f5f0;
             color: #3e3e3e;
-        }
-
-        .navbar {
-            background-color: #e8e4da !important;
-            border-bottom: 2px solid #d1c7b8;
-        }
-
-        .navbar-brand {
-            font-family: "Times New Roman", serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #4c4c47 !important;
-        }
-
-        .navbar-nav .nav-link {
-            color: #4c4c47 !important;
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: #7a735d !important;
-        }
-
-        .offcanvas {
-            background-color: #faf6f0;
-            border-left: 1px solid #d1c7b8;
-        }
-
-        .offcanvas-title {
-            font-family: "Palatino Linotype", serif;
-            color: #3e3e3e;
-        }
-
-        .list-group-item {
-            background-color: #f8f5f0;
-            border: none;
-        }
-
-        .list-group-item a {
-            color: #4c4c47;
-            text-decoration: none;
-        }
-
-        .list-group-item a:hover {
-            color: #7a735d;
-            font-weight: bold;
         }
 
         h1, h3 {
@@ -107,67 +63,6 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Нмт</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Головна</a>
-        </li>
-      <li class="nav-item">
-            <a class="nav-link" href="{% url 'subject_list' %}">Навчання</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Меню
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Дія 1</a></li>
-            <li><a class="dropdown-item" href="#">Дія 2</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Ще щось</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Пошук</button>
-      </form>
-      <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-          {% if user.profile.photo %}
-            <img src="{{ user.profile.photo.url }}" alt="Profile Picture"
-                 class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
-          {% else %}
-            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture"
-                 class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
-          {% endif %}
-        </a>
-    </div>
-  </div>
-</nav>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Твій профіль</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="list-group">
-      <li class="list-group-item"><a href="{% url 'edit_profile' %}">Ваш профіль</a></li>
-      <li class="list-group-item"><a href="#">Редагувати профіль</a></li>
-      <li class="list-group-item"><a href="#">Ваші проекти</a></li>
-      <li class="list-group-item"><a href="#">Твої зірки</a></li>
-      <br>
-      <li class="list-group-item"><a href="#">Налаштування</a></li>
-    </ul>
-  </div>
-</div>
 <div class="container mt-4 d-flex align-items-start">
     <div class="profile-photo-container me-4">
         {% if user.profile.photo %}
@@ -206,8 +101,10 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
 
 </body>
 </html>

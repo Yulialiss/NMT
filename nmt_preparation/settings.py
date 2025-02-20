@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import os
 from dotenv import load_dotenv
 from decouple import config
 
@@ -27,7 +26,6 @@ INSTALLED_APPS = [
     'accounts',
     'home',
     'profile_app',
-    'learning',
     'contact',
     'social_django',
     'testing',
@@ -96,15 +94,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#
 
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -134,3 +132,14 @@ if DEBUG:
     mimetypes.add_type('application/javascript', '.js', True)
     mimetypes.add_type('text/css', '.css', True)
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nmtduplomna',
+        'USER': 'root',
+        'PASSWORD': '400080',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}

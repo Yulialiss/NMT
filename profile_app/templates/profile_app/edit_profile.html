@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% extends "profile_app/base.html" %}
+
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +8,12 @@
     <title>Редагування профілю</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous">
     <style>
-        /* Стиль для округлого фото */
         .profile-photo {
-            width: 100px; /* Ширина фото */
-            height: 100px; /* Висота фото */
-            border-radius: 50%; /* Округлені краї */
-            object-fit: cover; /* Щоб фото добре вписувалося */
-            border: 2px solid #ddd; /* Товщина бордера навколо фото */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
         }
     </style>
 </head>
@@ -65,18 +66,15 @@
         const photoElement = document.getElementById('profile-photo');
 
         if (photoElement) {
-            // Якщо фото вже є, оновлюємо його src
             photoElement.src = reader.result;
         } else {
-            // Якщо фото немає, створюємо новий елемент img в існуючому контейнері
             const newImg = document.createElement('img');
             newImg.src = reader.result;
             newImg.classList.add('profile-photo', 'mb-3');
 
-            // Заміщуємо div (якщо фото немає) на нове зображення
             const photoContainer = document.querySelector('.profile-photo');
-            photoContainer.innerHTML = '';  // Очищаємо контейнер
-            photoContainer.appendChild(newImg); // Додаємо нове фото
+            photoContainer.innerHTML = '';
+            photoContainer.appendChild(newImg);
         }
     };
 
@@ -87,7 +85,9 @@
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+
 </body>
 </html>

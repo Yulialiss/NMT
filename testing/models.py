@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
+from django.contrib.auth import get_user_model
+from datetime import timedelta
 
 CustomUser = get_user_model()
 
@@ -12,6 +15,7 @@ class Subject(models.Model):
 class Test(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='tests')
     title = models.CharField(max_length=200)
+    duration = models.IntegerField(help_text="Тривалість у хвилинах", default=60)
 
     def __str__(self):
         return self.title
@@ -35,12 +39,16 @@ class TestResult(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     score = models.IntegerField()
-    max_score = models.IntegerField(default=0)  # Додано max_score
+    max_score = models.IntegerField(default=0)
     date_taken = models.DateTimeField(auto_now_add=True)
+    time_spent = models.DurationField(default=timedelta())
+
+    def formatted_time_spent(self):
+        minutes, seconds = divmod(self.time_spent.total_seconds(), 60)
+        return f"{int(minutes)} хв {int(seconds)} сек"
 
     def __str__(self):
-        return f"{self.user.username} - {self.test.title} - {self.score}/{self.max_score} балів"
-
+        return f"{self.user.username} - {self.test.title} - {self.score}/{self.max_score} балів - {self.formatted_time_spent()}"
 class IncorrectAnswer(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -49,3 +57,15 @@ class IncorrectAnswer(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.test.title} - Неправильна відповідь на {self.question.text}"
+
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    date = models.DateTimeField()
+    location = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.title
+

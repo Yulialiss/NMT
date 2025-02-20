@@ -1,19 +1,51 @@
-<!DOCTYPE html>
+{% extends "profile_app/base.html" %}
+
+{% block content %}
 <html>
 <head>
     <title>{{ test.title }}</title>
 </head>
 <body>
     <h1>{{ test.title }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {% for question in questions %}
-            <p>{{ question.text }}</p>
-            {% for answer in question.answers.all %}
-                <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.text }}<br>
-            {% endfor %}
+    <div>
+        <h2>Час на проходження: <span id="timer"></span></h2>
+    </div>
+<form method="post">
+    {% csrf_token %}
+    {% for question in questions %}
+        <p>{{ question.text }}</p>
+        {% for answer in question.answers.all %}
+            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.text }}<br>
         {% endfor %}
-        <button type="submit">Завершити тест</button>
-    </form>
+    {% endfor %}
+    <button type="submit">Завершити тест</button>
+</form>
+
+
+
+
+<script>
+    let timeLeft = {{ test.duration }} * 60;  // Час у секундах
+
+    function updateTimer() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        document.getElementById("timer").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Ваш час вийшов!");
+            window.location.href = "{% url 'time_up' test.id %}";
+        } else {
+            timeLeft--;
+        }
+    }
+
+    window.onload = function() {
+        timerInterval = setInterval(updateTimer, 1000);
+    };
+</script>
+
 </body>
 </html>
+{% endblock %}

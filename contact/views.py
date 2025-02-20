@@ -27,7 +27,7 @@ def contact_view(request):
                 f"Повідомлення від {name}",
                 message,
                 email,
-                ['recipient@example.com'],  # Отримувач
+                ['recipient@example.com'],
                 fail_silently=False,
             )
             return HttpResponse('Ваше повідомлення відправлено!')
