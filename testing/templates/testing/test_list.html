@@ -7,47 +7,53 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f0f8ff;
         }
         h1 {
             color: #333;
+            text-align: center;
         }
         .test-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            width: 60%;
+            margin: 0 auto;
         }
-        .test-circle {
+        .test-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .test-title {
+            font-size: 18px;
+        }
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #00aaff;
-            color: white;
-            text-decoration: none;
+            font-size: 12px;
             font-weight: bold;
-            transition: 0.3s;
         }
-        .test-circle:hover {
-            background-color: #0088cc;
+        .progress-green {
+            border-color: green !important;
+            color: green !important;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #00aaff;
-            color: white;
+        .start-button {
+            padding: 8px 12px;
+            border: 1px solid #0088cc;
+            background: none;
+            color: #0088cc;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 4px;
             transition: 0.3s;
         }
-        .back-link:hover {
+        .start-button:hover {
             background-color: #0088cc;
+            color: white;
         }
     </style>
 </head>
@@ -55,13 +61,19 @@
     <h1>Тести з {{ subject.name }}</h1>
     <div class="test-container">
         {% for test in tests %}
-            <a href="{% url 'test_detail' test.id %}" class="test-circle">
-                {{ test.title }}
-            </a>
+        <div class="test-item">
+            <span class="test-title">{{ test.title }} ({{ test.question_count }})</span>
+            <div class="progress-circle {% if test.progress == 100 %}progress-green{% endif %}">
+                {{ test.progress }}%
+            </div>
+
+            <a href="{% url 'test_detail' test.id %}" class="start-button">Почати</a>
+        </div>
         {% endfor %}
     </div>
-    <a href="{% url 'subject_list' %}" class="back-link">Назад до предметів</a>
-{% endblock %}
-
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'subject_list' %}" class="start-button">Назад до предметів</a>
+    </div>
 </body>
 </html>
+{% endblock %}

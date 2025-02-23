@@ -13,6 +13,7 @@ from .forms import TestForm
 from django.utils.timezone import now
 from datetime import timedelta
 from django.utils.timezone import now, timedelta
+from django.http import HttpResponse
 
 @login_required
 def time_up(request, test_id):
@@ -74,19 +75,25 @@ def test_detail(request, test_id):
 def subject_list(request):
     subjects = Subject.objects.all()
     return render(request, 'testing/subject_list.html', {'subjects': subjects})
-
 @login_required
 def test_list(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
     tests = subject.tests.all()
+
+    for test in tests:
+        last_result = TestResult.objects.filter(user=request.user, test=test).order_by('-date_taken').first()
+        if last_result:
+            test.progress = round((last_result.score / last_result.max_score) * 100)
+        else:
+            test.progress = 0  # Якщо користувач ще не проходив тест
+
     return render(request, 'testing/test_list.html', {'subject': subject, 'tests': tests})
 
 @login_required
 def test_result(request, result_id):
     result = get_object_or_404(TestResult, id=result_id)
-    test = result.test  # Отримуємо тест
+    test = result.test
     questions = test.questions.all()
-
     user_answers = IncorrectAnswer.objects.filter(user=result.user, test=test).values_list('question', flat=True)
 
     return render(request, 'testing/test_result.html', {
@@ -95,4 +102,30 @@ def test_result(request, result_id):
         'questions': questions,
         'user_answers': user_answers,
     })
+
+@login_required
+def download_test_result(request, result_id):
+    result = get_object_or_404(TestResult, id=result_id)
+    test = result.test
+    questions = test.questions.all()
+    user_answers = IncorrectAnswer.objects.filter(user=result.user, test=test).values_list('question', flat=True)
+
+    # Формуємо текст для файлу
+    file_content = f"Результати тесту: {test.title}\n"
+    file_content += f"Кількість правильних відповідей: {result.score} з {result.max_score}\n"
+    file_content += f"Час проходження: {result.formatted_time_spent}\n\n"
+    file_content += "Деталі відповідей:\n"
+
+    for question in questions:
+        if question.id in user_answers:
+            status = "❌ Неправильна відповідь"
+        else:
+            status = "✅ Правильна відповідь"
+        file_content += f"- {question.text} {status}\n"
+
+    # Створюємо відповідь з файлом
+    response = HttpResponse(file_content, content_type="text/plain")
+    response['Content-Disposition'] = f'attachment; filename="test_result_{result.id}.txt"'
+    return response
+
 

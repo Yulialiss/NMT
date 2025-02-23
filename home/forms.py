@@ -1,5 +1,12 @@
 from .models import Review
 from django import forms
+from django import forms
+from .models import Post
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'description', 'photo']
 
 class SubscribeForm(forms.Form):
     email = forms.EmailField(label="Ваш Email", widget=forms.EmailInput(attrs={"class": "form-control"}))

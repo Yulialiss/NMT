@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, logout
 from .forms import RegisterForm, LoginForm
 
 def register_view(request):
@@ -7,7 +7,10 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
+            if user.role == 'teacher':
+                return redirect('teacher_profile')
             return redirect('profile')
     else:
         form = RegisterForm()
@@ -19,6 +22,8 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            if user.role == 'teacher':
+                return redirect('teacher_profile')
             return redirect('profile')
     else:
         form = LoginForm()

@@ -1,19 +1,20 @@
 {% extends "profile_app/base.html" %}
 
-{% block content %}<html>
+{% block content %}
+<html>
 <head>
     <title>Результати тесту</title>
 </head>
 <body>
     <h1>Результати тесту: {{ test.title }}</h1>
-<p>Кількість правильних відповідей: {{ result.score }} з {{ result.max_score }}</p>
-<p>Час проходження: {{ result.formatted_time_spent }}</p>
+    <p>Кількість правильних відповідей: {{ result.score }} з {{ result.max_score }}</p>
+    <p>Час проходження: {{ result.formatted_time_spent }}</p>
 
-  {% if time_up %}
-    <div class="alert alert-warning">
-      Час для проходження тесту вийшов!
-    </div>
-  {% endif %}
+    {% if time_up %}
+        <div class="alert alert-warning">
+            Час для проходження тесту вийшов!
+        </div>
+    {% endif %}
 
     <h2>Деталі відповідей:</h2>
     <ul>
@@ -30,7 +31,11 @@
     </ul>
 
     <a href="{% url 'subject_list' %}">Повернутися до предметів</a>
-{% endblock %}
 
+    <!-- Кнопка для завантаження результатів у текстовому файлі -->
+    <form action="{% url 'download_test_result' result.id %}" method="get">
+        <button type="submit">📥 Завантажити результати</button>
+    </form>
 </body>
 </html>
+{% endblock %}
