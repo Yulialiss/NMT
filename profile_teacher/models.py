@@ -22,5 +22,4 @@ class TeacherProfile(models.Model):
         return f"Профіль вчителя: {self.user.username}"
 
     def get_subjects_list(self):
-        """Повертає список предметів у вигляді масиву"""
         return [subject.strip() for subject in self.subjects.split(",") if subject.strip()]

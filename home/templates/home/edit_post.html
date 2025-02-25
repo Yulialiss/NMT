@@ -1,0 +1,15 @@
+{% extends "home/base.html" %}
+
+{% block title %}Редагувати пост{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Редагувати пост</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Зберегти зміни</button>
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">Скасувати</a>
+    </form>
+</div>
+{% endblock %}

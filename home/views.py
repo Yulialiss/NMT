@@ -6,13 +6,14 @@ from django.core.mail import send_mail
 
 from django.contrib import messages
 from .forms import PostForm
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
-from django.contrib.auth.decorators import login_required
 
 def post_list_view(request):
     posts = Post.objects.all()
-    is_teacher = request.user.role == 'teacher'
+    is_teacher = request.user.is_authenticated and getattr(request.user, 'role', '') == 'teacher'
 
     return render(request, 'home/post_list.html', {'posts': posts, 'is_teacher': is_teacher})
 
@@ -20,12 +21,33 @@ def post_list_view(request):
 @login_required
 def delete_post_view(request, post_id):
     post = get_object_or_404(Post, id=post_id)
+
     if post.author == request.user:
+        messages.warning(request, "Ви дійсно хочете видалити цей пост? Якщо так, повторіть дію.")
         post.delete()
+        messages.success(request, "Пост успішно видалено.")
     else:
-        return redirect('post_list')
+        messages.error(request, "Ви не можете видалити цей пост.")
 
     return redirect('post_list')
+
+@login_required
+def edit_post_view(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if post.author != request.user:
+        messages.error(request, "Ви не можете редагувати цей пост.")
+        return redirect('post_list')
+
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Пост успішно оновлено.")
+            return redirect('post_list')
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'home/edit_post.html', {'form': form, 'post': post})
 
 @login_required
 def add_post_view(request):

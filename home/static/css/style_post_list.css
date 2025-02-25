@@ -1,0 +1,63 @@
+
+    .animated-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px;
+        position: relative;
+    }
+    .animated-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .profile-img {
+        width: 180px;
+        height: 180px;
+        transition: transform 0.3s ease;
+    }
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    .animated-btn {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+    }
+    .animated-btn:hover {
+        transform: scale(1.05);
+        filter: brightness(1.2);
+    }
+    .delete-icon {
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    .delete-icon:hover {
+        color: darkred;
+    }
+    .price-box {
+        background-color: #e3f2fd;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    .pastel-blue-btn {
+        background-color: #b3e5fc;
+        border: none;
+        color: #004d80;
+    }
+    .pastel-blue-btn:hover {
+        background-color: #81d4fa;
+    }
+    .created-date {
+        font-size: 0.9rem;
+    }
+    .animated-btn {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.animated-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+

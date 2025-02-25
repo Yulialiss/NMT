@@ -24,9 +24,7 @@ def teacher_profile_edit(request):
 
 @login_required
 def teacher_profile_view(request):
-    # Переконаємося, що доступ має лише користувач з роллю вчителя
     if request.user.role != 'teacher':
         return redirect('profile')
-    # Отримуємо профіль вчителя або повертаємо None
     profile = getattr(request.user, 'teacher_profile', None)
     return render(request, 'profile_teacher/teacher_profile.html', {'profile': profile})

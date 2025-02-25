@@ -16,3 +16,17 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'email', 'role', 'password1', 'password2']
+        help_texts = {
+            'username': None,
+            'email': None,
+            'password1': None,
+            'password2': None,
+        }
+        error_messages = {
+            'password1': {
+                'too_common': 'Пароль не може бути занадто простим.',
+                'too_similar': 'Пароль не може бути схожим на ваше інше особисте інформацію.',
+                'too_short': 'Пароль повинен містити не менше 8 символів.',
+                'numeric': 'Пароль не може бути повністю числовим.',
+            },
+        }
