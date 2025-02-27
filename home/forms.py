@@ -3,6 +3,13 @@ from .models import Review
 from django import forms
 from .models import Post
 
+from django import forms
+from .models import Rating
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['score']
 
 class PostForm(forms.ModelForm):
     class Meta:

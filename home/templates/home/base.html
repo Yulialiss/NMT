@@ -39,8 +39,62 @@
         </div>
       </div>
     </nav>
+
         {% block content %}
         {% endblock %}
+    <footer class="bg-light py-5" style="margin-top: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="navbar-brand text-dark">
+                        <strong>Привіт!</strong>
+                    </a>
+                    <p>Ти на платформі EdWay – місці, де навчання стає захоплюючою подорожжю. Долучайся, відкривай нові знання та розвивай свої можливості!</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Швидкий доступ</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark">EdWay</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Contact</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">About</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Teacher</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Стеж за нами на нашим розвитком</h5>
+                    <ul class="list-unstyled d-flex">
+                        <li class="me-3"><a href="#" class="text-dark"><i class="bi bi-facebook" style="font-size: 24px;"></i></a></li>
+                        <li class="me-3"><a href="#" class="text-dark"><i class="bi bi-twitter" style="font-size: 24px;"></i></a></li>
+                        <li class="me-3"><a href="#" class="text-dark"><i class="bi bi-instagram" style="font-size: 24px;"></i></a></li>
+                        <li class="me-3"><a href="#" class="text-dark"><i class="bi bi-linkedin" style="font-size: 24px;"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                <h5>Підписка</h5>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                </form>
+            </div>
+            </div>
+            <hr>
+            <div class="text-center text-dark">
+                <p>&copy; 2025 Laborex. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybQbF8zYlC45b2zlvDlFQp4O3z5pFv6cfXqY7OgHmg1Q2skXbP" crossorigin="anonymous"></script>

@@ -8,18 +8,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 <body>
+
 <section class="hero d-flex align-items-center" style="background: #f0f4ff; height: 100vh;">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="text-content w-50">
-            <h1 class="display-4 text-uppercase">Interface Dashboard 2</h1>
-            <p class="lead">A modern and minimal style for your next Dashboard Project</p>
-            <p>Join the newsletter and get 2 months free with full access.</p>
+            <h1 class="display-4 text-uppercase">Платформа для підготовки до НМТ</h1>
+            <p class="lead">Інтерактивний та ефективний спосіб підготуватися до Національного Мультипредметного Тесту</p>
+            <p>Приєднуйтесь до нашої платформи та отримайте доступ до адаптивного навчання, прогресу та реальних тестів.</p>
         </div>
+
         <div class="image-content w-50">
-             <img src="{% static 'images/my_image.jpg' %}" alt="Description of image">
+            <img src="https://optim.tildacdn.com/tild3963-3665-4264-b364-623430663663/-/resize/500x/-/format/webp/ill_icons-03.png"
+                 alt="Опис зображення НМТ"
+                 width="500"
+                 height="500"
+                 class="animated-image">
         </div>
     </div>
 </section>
+
 
 <section class="intro">
     <div class="container-left">
@@ -27,9 +34,101 @@
         <p>Платформа для підготовки до Національного мультипредметного тесту (НМТ) створена для тих, хто прагне отримати найкращі результати. Ми пропонуємо повний курс, заснований на перевірених методах навчання, з усіма необхідними інструментами для успішного складання тесту.</p>
     </div>
     <div class="container-right">
-       <img src="{% static 'images/my_image.jpg' %}" alt="Description of image">
+        <img src="{% static 'images/my_image.jpg' %}" alt="Description of image">
     </div>
 </section>
+
+
+ <div class="nmt-container">
+    <div class="nmt-card left">
+      <div class="nmt-icon">ℹ️</div>
+      <h3 class="nmt-title">Що таке НМТ?</h3>
+      <p class="nmt-text">
+        НМТ (Національне мультипредметне тестування) — це єдиний тест, який складають абітурієнти для вступу до вищих навчальних закладів України. Він включає кілька предметів і дозволяє оцінити рівень знань вступників з різних дисциплін.
+      </p>
+    </div>
+
+    <div class="nmt-card right">
+      <div class="nmt-icon">📚</div>
+      <h3 class="nmt-title">Структура НМТ</h3>
+      <p class="nmt-text">
+        Тестування складається з 3 основних блоків: української мови, математики та історії України. Це дозволяє оцінити загальні знання абітурієнтів, їх логічне мислення, а також рівень підготовки з ключових предметів.
+      </p>
+    </div>
+
+    <div class="nmt-card left">
+      <div class="nmt-icon">🖥️</div>
+      <h3 class="nmt-title">Як проходить тестування</h3>
+      <p class="nmt-text">
+        НМТ проводиться в онлайн-форматі. Абітурієнти здають тест у визначених пунктах на спеціально підготовлених комп’ютерах з використанням платформи, яка забезпечує захист від шахрайства.
+      </p>
+    </div>
+
+    <div class="nmt-card right">
+      <div class="nmt-icon">📖</div>
+      <h3 class="nmt-title">Підготовка до НМТ</h3>
+      <p class="nmt-text">
+        Для успішного проходження НМТ абітурієнти можуть скористатися різноманітними підготовчими курсами, тестами та онлайн-ресурсами. Рекомендується ретельно повторити матеріал з кожного предмета та тренуватися на пробних тестах.
+      </p>
+    </div>
+
+    <div class="nmt-card left">
+      <div class="nmt-icon">📊</div>
+      <h3 class="nmt-title">Оцінювання результатів</h3>
+      <p class="nmt-text">
+        Результати НМТ оцінюються на основі кількості правильних відповідей. Кожен блок має свою вагу, а загальний бал впливає на рейтинг абітурієнта при вступі до університету.
+      </p>
+    </div>
+
+    <div class="nmt-card right">
+      <div class="nmt-icon">⚠️</div>
+      <h3 class="nmt-title">Важлива інформація</h3>
+      <p class="nmt-text">
+        Важливо знати, що НМТ є обов'язковим для всіх абітурієнтів, які планують вступ до вищих навчальних закладів. Процедура тестування регулюється Міністерством освіти та науки України.
+      </p>
+    </div>
+  </div>
+
+
+
+  <script>
+    const nmtCards = document.querySelectorAll('.nmt-card');
+
+    const checkNmtCards = () => {
+      const triggerBottom = window.innerHeight / 5 * 4;
+      nmtCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) {
+          card.classList.add('show');
+        } else {
+          card.classList.remove('show');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', checkNmtCards);
+    checkNmtCards();
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const containers = document.querySelectorAll('.container-left, .container-right');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      containers.forEach(container => {
+        observer.observe(container);
+      });
+    });
+
+  </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

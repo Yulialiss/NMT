@@ -10,7 +10,39 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from .models import Post, Rating
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from .models import Post, Rating
+
+@csrf_exempt
+@login_required
+def rate_post(request, post_id):
+    if request.method == "POST":
+        post = Post.objects.get(id=post_id)
+        score = int(request.POST.get("score"))
+
+        rating, created = Rating.objects.update_or_create(
+            user=request.user, post=post,
+            defaults={"score": score}
+        )
+
+        post.update_rating()
+
+        new_rating = round(post.rating, 1) if post.rating else 0.0
+
+        return JsonResponse({
+            "success": True,
+            "new_rating": new_rating,
+            "rating_count": post.rating_count
+        })
+
+    return JsonResponse({"success": False})
 def post_list_view(request):
     posts = Post.objects.all()
     is_teacher = request.user.is_authenticated and getattr(request.user, 'role', '') == 'teacher'

@@ -1,6 +1,7 @@
-
 from django.db import models
 from django.conf import settings
+from django.db.models import Avg
+
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts')
@@ -16,8 +17,28 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     subjects = models.CharField(max_length=255, verbose_name="Предмети", default="")
 
+    rating = models.FloatField(default=0.0, verbose_name="Середній рейтинг")
+    rating_count = models.IntegerField(default=0, verbose_name="Кількість оцінок")
+
+    def update_rating(self):
+        avg_rating = self.ratings.aggregate(Avg('score'))['score__avg']
+        self.rating = avg_rating if avg_rating else 0
+        self.rating_count = self.ratings.count()
+        self.save()
+
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.preparation_levels}"
+
+class Rating(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="ratings")
+    score = models.IntegerField(verbose_name="Оцінка")
+
+    class Meta:
+        unique_together = ('user', 'post')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.score}"
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

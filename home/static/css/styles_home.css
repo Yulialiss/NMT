@@ -136,3 +136,95 @@
     margin-right: 10px;
     margin-top: -10px;
 }
+
+.workflow-header {
+      color: #563d7c;
+    }
+    .workflow-step-number {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #a683e3;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .workflow-step-text h2 {
+      color: #6a4fb0;
+    }
+    .workflow-step-text p {
+      color: #555;
+      font-size: 14px;
+    }
+    .workflow-image img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+.pricing-card {
+            background: #d0efff;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(100, 150, 255, 0.3);
+            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .middle-card {
+            transform: scale(1.15);
+            background: #b0d3ff;
+        }
+        .recommended {
+            background: #005bb5;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 18px;
+            font-size: 16px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .pricing-card:nth-child(1) {
+            animation: fadeInUp 1.2s ease-out forwards 0.3s;
+        }
+        .pricing-card:nth-child(2) {
+            animation: fadeInUp 1.2s ease-out forwards 0.6s;
+        }
+        .pricing-card:nth-child(3) {
+            animation: fadeInUp 1.2s ease-out forwards 0.9s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+.card-img {
+    width: 80px;
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+.card-img.privatbank:active {
+    border: 2px solid #00bfff;
+}
+
+.card-img.monobank:active {
+    border: 2px solid #ff69b4;
+}
+
