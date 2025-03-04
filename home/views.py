@@ -1,20 +1,15 @@
 
 from .models import Review
 from .forms import ReviewForm
-
 from django.core.mail import send_mail
-
 from django.contrib import messages
 from .forms import PostForm
-from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import Post, Rating
-
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -43,12 +38,41 @@ def rate_post(request, post_id):
         })
 
     return JsonResponse({"success": False})
+
 def post_list_view(request):
     posts = Post.objects.all()
+
+    subject_filter = request.GET.get('subject', '')
+    price_min = request.GET.get('price_min', '')
+    price_max = request.GET.get('price_max', '')
+    preparation_level_filter = request.GET.get('preparation_level', '')
+    calendar_filter = request.GET.get('calendar', '')
+
+    if subject_filter:
+        posts = posts.filter(subjects__icontains=subject_filter)
+
+    if price_min:
+        posts = posts.filter(price_per_hour__gte=price_min)
+    if price_max:
+        posts = posts.filter(price_per_hour__lte=price_max)
+
+    if preparation_level_filter:
+        posts = posts.filter(preparation_levels__icontains=preparation_level_filter)
+
+    if calendar_filter:
+        posts = posts.filter(calendar__icontains=calendar_filter)
+
     is_teacher = request.user.is_authenticated and getattr(request.user, 'role', '') == 'teacher'
 
-    return render(request, 'home/post_list.html', {'posts': posts, 'is_teacher': is_teacher})
-
+    return render(request, 'home/post_list.html', {
+        'posts': posts,
+        'is_teacher': is_teacher,
+        'subject_filter': subject_filter,
+        'price_min': price_min,
+        'price_max': price_max,
+        'preparation_level_filter': preparation_level_filter,
+        'calendar_filter': calendar_filter
+    })
 
 @login_required
 def delete_post_view(request, post_id):
@@ -153,3 +177,14 @@ def reviews_view(request):
 
 def about_page(request):
     return render(request, 'home/about.html')
+
+
+def pay(request):
+    return render(request, 'home/pay.html')
+
+
+def payment_view(request):
+    return render(request, 'home/payment.html')
+
+def register(request):
+    return render(request, "home/registration.html")

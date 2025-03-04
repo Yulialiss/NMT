@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center mb-4">Додати пост</h1>
+<h1 class="text-center beautiful-header">Додати пост</h1>
     <div class="card shadow-sm p-4">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -59,7 +59,9 @@
                 {{ form.calendar }}
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Опублікувати</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-publish">Опублікувати</button>
+            </div>
         </form>
     </div>
 </div>

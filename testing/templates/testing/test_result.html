@@ -6,9 +6,12 @@
     <title>Результати тесту</title>
 </head>
 <body>
-    <h1>Результати тесту: {{ test.title }}</h1>
-    <p>Кількість правильних відповідей: {{ result.score }} з {{ result.max_score }}</p>
-    <p>Час проходження: {{ result.formatted_time_spent }}</p>
+    <!-- test_result.html -->
+        <h2>Результати тесту: {{ result.test.title }}</h2>
+        <p>Кількість правильних відповідей: {{ result.score }} з {{ result.max_score }}</p>
+        <p>Час проходження: {{ result.formatted_time_spent }}</p>
+
+        <a href="{% url 'test_detail' test_id=result.test.id %}" class="btn btn-primary">Пройти тест знову</a>
 
     {% if time_up %}
         <div class="alert alert-warning">

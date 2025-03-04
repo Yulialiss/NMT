@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'social_django',
     'testing',
     'profile_teacher',
+     'calendar_app',
 
 ]
 
