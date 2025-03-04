@@ -3,13 +3,80 @@
 {% block title %}Список викладачів{% endblock %}
 
 {% block content %}
- {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style_post_list.css' %}">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_post_list.css' %}">
 <div class="container py-5">
-    <h1 class="text-center mb-5 fw-bold text-primary">Викладачі</h1>
+   <h1 class="text-center mb-5 fw-bold title-style">Викладачі</h1>
+    <form method="GET" class="mb-4 row g-3 justify-content-center">
+        <div class="col-md-auto col-12">
+            <select name="subject" class="form-select">
+                <option value="" {% if not subject_filter %}selected{% endif %}>Усі предмети</option>
+                <option value="Математика" {% if subject_filter == 'Математика' %}selected{% endif %}>Математика</option>
+                <option value="Фізика" {% if subject_filter == 'Фізика' %}selected{% endif %}>Фізика</option>
+                <option value="Хімія" {% if subject_filter == 'Хімія' %}selected{% endif %}>Хімія</option>
+                <option value="Біологія" {% if subject_filter == 'Біологія' %}selected{% endif %}>Біологія</option>
+                <option value="Географія" {% if subject_filter == 'Географія' %}selected{% endif %}>Географія</option>
+                <option value="Історія України" {% if subject_filter == 'Історія України' %}selected{% endif %}>Історія України</option>
+                <option value="Всесвітня історія" {% if subject_filter == 'Всесвітня історія' %}selected{% endif %}>Всесвітня історія</option>
+                <option value="Українська мова" {% if subject_filter == 'Українська мова' %}selected{% endif %}>Українська мова</option>
+                <option value="Українська література" {% if subject_filter == 'Українська література' %}selected{% endif %}>Українська література</option>
+                <option value="Англійська мова" {% if subject_filter == 'Англійська мова' %}selected{% endif %}>Англійська мова</option>
+                <option value="Німецька мова" {% if subject_filter == 'Німецька мова' %}selected{% endif %}>Німецька мова</option>
+                <option value="Французька мова" {% if subject_filter == 'Французька мова' %}selected{% endif %}>Французька мова</option>
+                <option value="Інформатика" {% if subject_filter == 'Інформатика' %}selected{% endif %}>Інформатика</option>
+                <option value="Програмування" {% if subject_filter == 'Програмування' %}selected{% endif %}>Програмування</option>
+                <option value="Економіка" {% if subject_filter == 'Економіка' %}selected{% endif %}>Економіка</option>
+                <option value="Правознавство" {% if subject_filter == 'Правознавство' %}selected{% endif %}>Правознавство</option>
+                <option value="Філософія" {% if subject_filter == 'Філософія' %}selected{% endif %}>Філософія</option>
+                <option value="Логіка" {% if subject_filter == 'Логіка' %}selected{% endif %}>Логіка</option>
+                <option value="Мистецтво" {% if subject_filter == 'Мистецтво' %}selected{% endif %}>Мистецтво</option>
+                <option value="Фізична культура" {% if subject_filter == 'Фізична культура' %}selected{% endif %}>Фізична культура</option>
+                <option value="Астрономія" {% if subject_filter == 'Астрономія' %}selected{% endif %}>Астрономія</option>
+                <option value="Психологія" {% if subject_filter == 'Психологія' %}selected{% endif %}>Психологія</option>
+            </select>
+        </div>
+
+        <div class="col-md-auto col-12">
+            <select name="preparation_level" class="form-select">
+                <option value="" {% if not preparation_level_filter %}selected{% endif %}>Усі рівні</option>
+                <option value="Шкільна програма: 1-11 клас" {% if preparation_level_filter == 'Шкільна програма: 1-11 клас' %}selected{% endif %}>Шкільна програма: 1-11 клас</option>
+                <option value="Підготовка до ЗНО (11 клас)" {% if preparation_level_filter == 'Підготовка до ЗНО (11 клас)' %}selected{% endif %}>Підготовка до ЗНО (11 клас)</option>
+                <option value="Підготовка до ДПА (9 клас)" {% if preparation_level_filter == 'Підготовка до ДПА (9 клас)' %}selected{% endif %}>Підготовка до ДПА (9 клас)</option>
+                <option value="Підготовка до школи" {% if preparation_level_filter == 'Підготовка до школи' %}selected{% endif %}>Підготовка до школи</option>
+                <option value="Програма Росток" {% if preparation_level_filter == 'Програма Росток' %}selected{% endif %}>Програма Росток</option>
+                <option value="Інтелект України" {% if preparation_level_filter == 'Інтелект України' %}selected{% endif %}>Інтелект України</option>
+            </select>
+        </div>
+        <div class="col-md-auto col-12">
+            <select name="calendar" class="form-select">
+                <option value="" {% if not calendar_filter %}selected{% endif %}>Усі години</option>
+                <option value="08:00-10:00" {% if calendar_filter == '08:00-10:00' %}selected{% endif %}>08:00-10:00</option>
+                <option value="10:00-12:00" {% if calendar_filter == '10:00-12:00' %}selected{% endif %}>10:00-12:00</option>
+                <option value="12:00-14:00" {% if calendar_filter == '12:00-14:00' %}selected{% endif %}>12:00-14:00</option>
+                <option value="14:00-16:00" {% if calendar_filter == '14:00-16:00' %}selected{% endif %}>14:00-16:00</option>
+                <option value="16:00-18:00" {% if calendar_filter == '16:00-18:00' %}selected{% endif %}>16:00-18:00</option>
+                <option value="18:00-20:00" {% if calendar_filter == '18:00-20:00' %}selected{% endif %}>18:00-20:00</option>
+                <option value="20:00-22:00" {% if calendar_filter == '20:00-22:00' %}selected{% endif %}>20:00-22:00</option>
+            </select>
+        </div>
+
+        <div class="col-md-auto col-12">
+            <input type="number" name="price_min" class="form-control" placeholder="Від (₴)" value="{{ price_min|default_if_none:'' }}">
+        </div>
+
+        <div class="col-md-auto col-12">
+            <input type="number" name="price_max" class="form-control" placeholder="До (₴)" value="{{ price_max|default_if_none:'' }}">
+        </div>
+
+        <div class="col-md-auto col-12">
+            <button type="submit" class="btn btn-primary w-100 btn-filter">Фільтрувати</button>
+        </div>
+
+    </form>
+
     <div class="row">
         {% for post in posts %}
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-4 post-item-left">
             <div class="card shadow-lg border-0 p-3 animated-card position-relative">
                 {% if request.user == post.author %}
                 <a href="{% url 'delete_post' post.id %}" class="delete-icon position-absolute top-0 end-0 m-2 text-danger">
@@ -54,7 +121,7 @@
                         </p>
 
                         <p class="mb-1 text-muted">
-                            <i class="fas fa-book text-primary"></i> Підготовка:
+                            <i class="fas fa-book text-primary"></i> Підготовка по рівню:
                             <span class="fw-semibold">{{ post.preparation_levels }}</span>
                         </p>
                         <p class="mb-1 text-muted">
@@ -62,7 +129,7 @@
                             <span class="fw-semibold">{{ post.about }}</span>
                         </p>
                         <p class="mb-1 text-muted">
-                            <i class="fas fa-calendar-alt text-danger"></i> Календар:
+                            <i class="fas fa-calendar-alt text-danger"></i> Години занять:
                             <span class="fw-semibold">{{ post.calendar }}</span>
                         </p>
                         <div class="price-box mt-2 p-2 text-center">
@@ -97,7 +164,9 @@
     </div>
 </div>
 {% if user.role == 'teacher' %}
-    <a href="{% url 'add_post' %}" class="btn pastel-blue-btn d-block mx-auto mt-4 animated-btn">Додати пост</a>
+<a href="{% url 'add_post' %}" class="btn btn-primary add-post-btn">
+    <i class="fas fa-plus"></i> Додати пост
+</a>
 {% endif %}
 
 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">

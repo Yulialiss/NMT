@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subject, Test, Question, Answer, Event
+from .models import Subject, Test, Question, Answer
 
 admin.site.register(Subject)
 
@@ -14,15 +14,16 @@ class QuestionInline(admin.TabularInline):
 
 @admin.register(Test)
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subject', 'duration')
+    list_display = ('title', 'subject', 'duration', 'get_test_theme')
     list_editable = ('duration',)
     inlines = [QuestionInline]
 
-@admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date', 'location')
-    list_filter = ('date',)
-    search_fields = ('title', 'description', 'location')
+    # Додаємо метод для нумерації тестів
+    def get_test_theme(self, obj):
+        test_count = Test.objects.filter(subject=obj.subject).count()
+        return f"Тема {test_count}"
+    get_test_theme.short_description = 'Тема'
+
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):

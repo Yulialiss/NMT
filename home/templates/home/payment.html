@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата</title>
+    <link href="{% static 'css/payment.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <div id="paymentForm" class="container" style="display: none;">
+        <h2 class="title">Оплата</h2>
+        <p class="subtitle">Перевірте ваші дані</p>
+
+        <p id="selectedBank" class="detail-row"></p>
+
+        <div class="payment-details">
+            <p id="selectedAmount" class="detail-row"></p>
+            <p id="cardNumber" class="detail-row"></p>
+            <p id="fullName" class="detail-row"></p>
+        </div>
+
+        <div class="upload-section">
+            <label for="receipt">Прикріпити чек:</label>
+            <input type="file" id="receipt" name="receipt" accept="image/*" />
+        </div>
+    </div>
+
+    <div id="paymentSuccessForm" class="container" style="display: none;">
+        <h2 class="title">Платіж прийнято</h2>
+        <p id="paymentStatusMessage" class="subtitle">Чек успішно прикріплено</p>
+        <p class="subtitle">Очікуйте підтвердження оплати і надходження квитків на пошту</p>
+        <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary">Повернутися на головну</a>
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/payment.js' %}"></script>
+</body>
+</html>

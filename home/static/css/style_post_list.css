@@ -1,54 +1,117 @@
+body {
+    background-color: #E8F9FF;
 
-    .animated-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 15px;
-        position: relative;
-    }
-    .animated-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    .profile-img {
-        width: 180px;
-        height: 180px;
-        transition: transform 0.3s ease;
-    }
-    .profile-img:hover {
-        transform: scale(1.1);
-    }
-    .animated-btn {
-        transition: all 0.3s ease;
-        border-radius: 10px;
-    }
-    .animated-btn:hover {
-        transform: scale(1.05);
-        filter: brightness(1.2);
-    }
-    .delete-icon {
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
-    .delete-icon:hover {
-        color: darkred;
-    }
-    .price-box {
-        background-color: #e3f2fd;
-        border-radius: 8px;
-        display: inline-block;
-    }
-    .pastel-blue-btn {
-        background-color: #b3e5fc;
-        border: none;
-        color: #004d80;
-    }
-    .pastel-blue-btn:hover {
-        background-color: #81d4fa;
-    }
-    .created-date {
-        font-size: 0.9rem;
-    }
-    .animated-btn {
+    font-family: 'Playfair Display', serif;
+}
+h1 {
+    font-size: 3rem;
+    color: #2D336B;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 15px 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+h1:hover {
+    color: #77CDFF;
+    transform: translateY(-5px);
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #77CDFF;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+h1:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.animated-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.animated-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    transition: transform 0.3s ease;
+    border: 3px solid #004d80;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+.animated-btn {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.animated-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.delete-icon {
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-icon:hover {
+    color: darkred;
+}
+
+.price-box {
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 8px 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pastel-blue-btn {
+    background-color: #b3e5fc;
+    border: none;
+    color: #004d80;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.pastel-blue-btn:hover {
+    background-color: #81d4fa;
+    filter: brightness(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.created-date {
+    font-size: 0.9rem;
+}
+
+.animated-btn {
     transition: all 0.3s ease;
     border-radius: 10px;
     position: absolute;
@@ -59,4 +122,142 @@
 .animated-btn:hover {
     transform: scale(1.05);
     filter: brightness(1.2);
+}
+
+.rating i {
+    transition: transform 0.3s ease;
+}
+
+.rating i:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.add-post-btn {
+        position: fixed;
+        background-color:#A1E3F9;
+        top: 80px;
+        right: 20px;
+        z-index: 1000;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 50px;
+        color:#2D336B;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+form.mb-4.d-flex {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+form.mb-4 select,
+form.mb-4 input {
+    width: 200px;
+    margin: 5px;
+    height: 40px;
+}
+
+
+.btn-filter {
+    position: relative;
+    white-space: nowrap;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    background-color: #2D336B;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+
+.btn-filter:hover {
+    background-color: #77CDFF;
+    color:#2D336B;
+    transform: scale(1.05);
+}
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.post-item-left {
+    animation: slideInLeft 1s ease-out forwards;
+    opacity: 0;
+}
+
+
+.btn-container {
+    text-align: center;
+}
+
+.btn-publish {
+    position: relative;
+    white-space: nowrap;
+    height: 40px;
+    width: 150px;
+    line-height: 40px;
+    padding: 0 20px;
+    background: linear-gradient(45deg, #A1E3F9, #77CDFF);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-publish:hover {
+    background: linear-gradient(45deg, #77CDFF, #A1E3F9);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-publish:active {
+    transform: scale(0.98);
+}
+
+
+
+.beautiful-header {
+    font-family: 'Playfair Display', serif;
+    color: #2C3E50;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 0;
 }

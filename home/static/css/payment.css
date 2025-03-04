@@ -1,0 +1,146 @@
+body {
+    background-color: #f0f8ff;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(240, 248, 255, 0.9);
+    box-shadow: 0 0 20px rgba(173, 216, 230, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #00bcd4;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #b0e0e6;
+}
+
+.payment-details {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+}
+
+.detail-row {
+    font-size: 20px;
+    margin: 15px 0;
+    color: #00bcd4;
+    font-weight: bold;
+}
+
+.upload-section {
+    margin-top: 30px;
+}
+
+.upload-section label {
+    font-size: 18px;
+    color: #b0e0e6;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.upload-section input[type="file"] {
+    background-color: #e6f7ff;
+    color: #333;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(173, 216, 230, 0.5);
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(173, 216, 230, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    z-index: 1000;
+}
+
+#paymentSuccessForm {
+    background: rgba(173, 216, 230, 0.9);
+    color: #333;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(173, 216, 230, 0.5);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#paymentSuccessForm h2 {
+    color: #00bcd4;
+}
+
+#paymentSuccessForm .subtitle {
+    font-size: 18px;
+    color: #b0e0e6;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #00bcd4;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.receipt-message, .payment-success {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #b0e0e6;
+}
+
+.cat-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+.cat-animation img {
+    width: 150px;
+    height: auto;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

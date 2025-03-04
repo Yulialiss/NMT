@@ -1,5 +1,77 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+body {
+    font-family: 'Georgia', serif;
+    background: #f0f5f9; /* Ніжно-голубий фон */
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 350px; /* Зменшила ширину */
+}
+
+.container li {
+    margin: 18px 0;
+}
+
+.container a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 25px 20px; /* Збільшила висоту */
+    border-radius: 12px;
+    color: #1c2f40;
+    background: #d4e6f1; /* Ніжний голубий */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #a2c0dd;
+    font-family: 'Times New Roman', serif;
+    position: relative;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    min-height: 70px; /* Мінімальна висота для красивої форми */
+}
+
+.container a i {
+    font-size: 24px;
+    color: #3e5f7f; /* Глибший відтінок синього */
+}
+
+.container a:hover {
+    background: #a2c0dd; /* Темніший блакитний при наведенні */
+    border-color: #7fa0c0;
+    transform: translateY(-3px);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container a:hover i {
+    color: #1c2f40;
+}
+
+
+
     #openCalendar {
         background: none;
         border: none;
@@ -63,36 +135,7 @@
 }
 
 
-    #calendar-container {
-        width: 100%;
-    }
 
-    #calendar {
-        max-width: 100%;
-        margin: auto;
-    }
-
-    .form-group {
-        margin: 15px 0;
-    }
-
-    input, textarea {
-        width: 100%;
-        padding: 10px;
-        margin-top: 8px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-    }
-
-    button {
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
 .fc-col-header-cell-cushion {
     color: #201E43;
     text-decoration: none;

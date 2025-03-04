@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата</title>
+    {% load static %}
+    <link href="{% static 'css/pay.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p>Зачекайте...</p>
+    </div>
+
+    <div class="container">
+        <div class="title">Як виконати оплату?</div>
+        <div class="subtitle">Виберіть банк:</div>
+        <div class="bank-container">
+            <div class="bank" onclick="openPaymentForm('MonoBank')">
+                <img src="{% static 'images/моно банк.jpg' %}" alt="MonoBank">
+            </div>
+           <div class="bank" onclick="openPaymentForm('Visa')">
+                <img src="{% static 'images/visa.png' %}" alt="Visa">
+            </div>
+
+            <div class="bank" onclick="openPaymentForm('Privat24')">
+                <img src="{% static 'images/ПриватБанк.png' %}" alt="Privat24">
+            </div>
+            <div class="bank" onclick="openPaymentForm('Ощадбанк)">
+                <img src="{% static 'images/Ощадбанк.png' %}" alt="Ощадбанк">
+            </div>
+           <div class="bank" onclick="openPaymentForm('PUMB')">
+                <img src="{% static 'images/ПУМБ.png' %}" alt="PUMB">
+            </div>
+
+            <div class="bank" onclick="openPaymentForm('Інший банк')">
+                <img src="{% static 'images/other.jpg' %}" alt="Інші банки">
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/pay.js' %}"></script>
+
+</body>
+</html>

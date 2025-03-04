@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-
+<!--Секція 1-->
 <section class="hero">
     <div class="hero-content">
         <h1>Готуйся до НМТ з упевненістю!</h1>
@@ -30,6 +30,9 @@
         <div class="floating-box" style="bottom: 20px; left: 50px;">50+ <span>Корисних порад</span></div>
     </div>
 </section>
+<!--Секція 1-->
+
+<!--Секція 2-->
 <section class="nmpt-section" style="padding: 50px 0;">
   <div class="container text-center" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; padding: 30px; text-align: center;">
     <h2 class="mb-4" style="font-size: 2rem; font-weight: 600;">Національний мультипредметний тест (НМТ)</h2>
@@ -66,52 +69,10 @@
     </div>
   </div>
 </section>
- <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="pricing-card p-5">
-                    <h3 class="text-primary">Free</h3>
-                    <p class="price fs-2 fw-bold">$0/mo</p>
-                    <p>Up to $5K referral ARR</p>
-                    <ul class="list-unstyled">
-                        <li>Unlimited referrals</li>
-                        <li>All integrations</li>
-                        <li>Core platform features</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary btn-lg">Get Started</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="pricing-card middle-card p-5 position-relative">
-                    <h3 class="text-dark">Grow</h3>
-                    <p class="price fs-2 fw-bold">$350/mo</p>
-                    <p>Up to $50K referral ARR</p>
-                    <p><strong>Everything in Free, Plus:</strong></p>
-                    <ul class="list-unstyled">
-                        <li>In-brand customization</li>
-                        <li>Branded email design widget</li>
-                        <li>Menu integration</li>
-                    </ul>
-                    <a href="#" class="btn btn-dark btn-lg">Get Started</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="pricing-card p-5">
-                    <h3 class="text-info">Scale</h3>
-                    <p class="price fs-2 fw-bold">$750/mo</p>
-                    <p>Up to $100K referral ARR</p>
-                    <p><strong>Everything in Grow, Plus:</strong></p>
-                    <ul class="list-unstyled">
-                        <li>Premium SLAs</li>
-                    </ul>
-                    <div class="d-flex justify-content-end">
-                            <a href="#" class="btn pastel-blue-btn mt-2 animated-btn" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                                Забронювати урок
-                            </a>
-                        </div>                </div>
-            </div>
-        </div>
-    </div>
+<!--Секція 2-->
+
+
+<!--Секція 4-->
 <div class="container py-5">
   <div class="row align-items-center">
     <div class="col-md-6 mb-4 mb-md-0">
@@ -133,7 +94,6 @@
     </div>
   </div>
 </div>
-
   <div class="container" id="workflowContainer">
     <h1 class="text-center mb-4 workflow-header">Виконуй прості кроки</h1>
     <div class="row" id="workflowRow">
@@ -181,16 +141,84 @@
       </div>
     </div>
   </div>
+<!--Секція 4-->
+<!--Секція 3-->
+ <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="pricing-card p-5">
+                    <h3 class="text-primary">Правильна українська мова</h3>
+                    <p class="price fs-2 fw-bold">$150</p>
+                    <p>Не знаєш як правильно розмовляти нашою мовою тобі до нас ти не тільки вивчиш соловїну мову ай здаш на всі 200.</p>
+                    <ul class="list-unstyled">
+                        <li>Всі правила вживання</li>
+                        <li>Наголоси та вимова</li>
+                        <li>Частини мови</li>
+                        <li>Речення та звертання</li>
+                    </ul>
+                   <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
+                        Купити курс
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card middle-card p-5 position-relative">
+                    <h3 class="text-primary">Проста математика</h3>
+                    <p class="price fs-2 fw-bold">$150</p>
+                    <p>Вважаєш цифри не зрозумілі? Розпочнемо з початку і ти точно зрозумієш що ж таке той дискримінант  </p>
+                    <p><strong>Ми навчимо та пояснемо</strong></p>
+                    <ul class="list-unstyled">
+                        <li>Формули скороченого множення</li>
+                        <li>Розвязок рівнянь</li>
+                        <li>Логарифми тангинси</li>
+                        <li>Логічні задачки</li>
+                        <li>Геометричні фігури,лінії та кути</li>
+                    </ul>
+                    <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
+                        Купити курс
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card p-5">
+                    <h3 class="text-primary">Наша історія</h3>
+                    <p class="price fs-2 fw-bold">$150</p>
+                    <p>Вже час вивчити те що з нашою країною і не тільки для НМТ але й для того щоб знати минули</p>
+                    <p><strong>Курс містить</strong></p>
+                    <ul class="list-unstyled">
+                        <li>всі теми з історії України</li>
+                        <li>Розбір всіх дат</li>
+                        <li>Детальне розяснення війн</li>
+                        <li>Вивчення постатей</li>
+
+                    </ul>
+                    <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
+                        Купити курс
+                    </a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Секція 3-->
+
+<!--Секція 5-->
 <div class="container py-5">
   <h2 class="text-center mb-4">Залиште свій відгук</h2>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="review-image">
-        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Review Image" class="img-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="review-text">
+          <p>Тут може бути ваш відгук або інший текстовий контент.</p>
+        </div>
       </div>
     </div>
-
     <div class="col-md-6">
       <div class="review-form">
         <form method="POST" class="comment-form">
@@ -201,33 +229,42 @@
       </div>
     </div>
   </div>
+<div class="text-center my-4">
+    <h2 class="fw-bold text-primary">Дивіться, що кажуть наші користувачі!</h2>
+    <p class="text-secondary">Наш сервіс уже допоміг сотням людей. Читайте їхні відгуки та діліться своїм досвідом!</p>
 </div>
+<!--Секція 5-->
+
+<!--Секція 6-->
 <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         {% for review in reviews %}
-            {% if forloop.first or forloop.counter0|divisibleby:4 %}
+            {% if forloop.first or forloop.counter0|divisibleby:3 %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <div class="row">
+                    <div class="row justify-content-center">
             {% endif %}
 
-            <div class="col-md-3">
-                <div class="review-box text-center p-3 border rounded shadow-sm">
-                    <div class="review-header d-flex justify-content-start align-items-start">
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card shadow-sm p-3 border-0 rounded-4">
+                    <div class="d-flex align-items-center mb-3">
                         {% if review.user.profile.photo %}
-                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle me-2 small-photo">
+                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 50px; height: 50px;">
                         {% else %}
-                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle me-2 small-photo">
+                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="rounded-circle me-2" style="width: 50px; height: 50px;">
                         {% endif %}
-                        <strong>{{ review.user.username }}</strong>
+                        <div>
+                            <strong class="text-primary">{{ review.user.username }}</strong>
+                            <div class="text-muted" style="font-size: 14px;">{{ review.created_at }}</div>
+                        </div>
                     </div>
-
-                    <p class="mt-3">{{ review.content }}</p>
-
-                    <div class="review-date text-muted" style="font-size: 14px;">{{ review.created_at }}</div>
+                    <p class="text-secondary">"{{ review.content }}"</p>
+                    <div class="text-warning">
+                        ⭐⭐⭐⭐⭐
+                    </div>
                 </div>
             </div>
 
-            {% if forloop.last or forloop.counter|divisibleby:4 %}
+            {% if forloop.last or forloop.counter|divisibleby:3 %}
                     </div>
                 </div>
             {% endif %}
@@ -247,99 +284,16 @@
         <span class="visually-hidden">Наступний</span>
     </button>
 </div>
+<!--Секція 6-->
 
 
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bookingModalLabel">Оплата уроку</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
-            </div>
-           <div class="modal-body">
-                <p>Виберіть банк та натисніть на картку для перегляду номеру:</p>
-                <div id="cardSelection">
-                    <img src="data:image/jpeg;base64,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" class="card-img privatbank" alt="ПриватБанк" data-card="1234 5678 9012 3456" onclick="showCardNumber(this)">
-                    <img src="data:image/jpeg;base64,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" class="card-img monobank" alt="МоноБанк" data-card="9876 5432 1098 7654" onclick="showCardNumber(this)">
 
-                </div>
-                <p id="cardNumber" style="display: none; margin-top: 10px;"></p>
-                <p>Сюди ти маєш скинути гроші та ввести свій номер телефону.</p>
-                <form id="bookingForm">
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Твій номер телефону</label>
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="+380XXXXXXXXX" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">ОК</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-    <script>
-    function showCardNumber(cardElement) {
-        var cardNumber = cardElement.getAttribute('data-card');
-        document.getElementById("cardNumber").style.display = "block";
-        document.getElementById("cardNumber").innerText = "Номер картки: " + cardNumber;
-    }
-
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        alert("Дякуємо! Наш менеджер зв’яжеться з вами найближчим часом.");
-        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-        bookingModal.hide();
-        window.location.href = "/";
-    });
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    let email = document.querySelector("input[type='email']").value;
-
-    fetch("/subscribe/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": getCookie("csrftoken"),
-        },
-        body: JSON.stringify({ email: email })
-    })
-    .then(response => response.json())
-    .then(data => alert(data.message || data.error))
-    .catch(error => console.error("Error:", error));
-});
-
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        let cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].trim();
-            if (cookie.startsWith(name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-      document.getElementById("toggleReviews").addEventListener("click", function() {
-        var reviewsContainer = document.getElementById("reviewsContainer");
-        var icon = document.getElementById("toggleReviews");
-
-        if (reviewsContainer.style.display === "none") {
-          reviewsContainer.style.display = "block";
-          icon.classList.add("open");
-        } else {
-          reviewsContainer.style.display = "none";
-          icon.classList.remove("open");
-        }
-      });
-
-</script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybQbF8zYlC45b2zlvDlFQp4O3z5pFv6cfXqY7OgHmg1Q2skXbP" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
 {% endblock %}
 

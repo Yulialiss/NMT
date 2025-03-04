@@ -62,7 +62,7 @@
     <div class="test-container">
         {% for test in tests %}
         <div class="test-item">
-            <span class="test-title">{{ test.title }} ({{ test.question_count }})</span>
+            <span class="test-title">Тема {{ forloop.counter }}: {{ test.title }} ({{ test.question_count }})</span>
             <div class="progress-circle {% if test.progress == 100 %}progress-green{% endif %}">
                 {{ test.progress }}%
             </div>

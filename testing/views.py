@@ -25,14 +25,16 @@ def time_up(request, test_id):
 def test_detail(request, test_id):
     test = get_object_or_404(Test, id=test_id)
     questions = test.questions.all()
+
+    # Зберігаємо час початку тесту в сесії
+    request.session['test_start_time'] = now().isoformat()
+
+    # Перевіряємо чи є вже результат цього тесту у користувача
     last_result = TestResult.objects.filter(user=request.user, test=test).order_by('-date_taken').first()
 
+    # Якщо результат є, відразу перенаправляємо на сторінку результатів
     if last_result:
-        last_taken_date = last_result.date_taken.date()
-        today_date = now().date()
-        if last_taken_date == today_date:
-            return redirect('test_result', result_id=last_result.id)
-    request.session['test_start_time'] = now().isoformat()
+        return redirect('test_result', result_id=last_result.id)
 
     if request.method == 'POST':
         test_end_time = now()
@@ -42,6 +44,7 @@ def test_detail(request, test_id):
         score = 0
         incorrect_answers = []
 
+        # Перевірка відповідей на питання
         for question in questions:
             answer_id = request.POST.get(f'question_{question.id}')
             if answer_id:
@@ -51,6 +54,7 @@ def test_detail(request, test_id):
                 else:
                     incorrect_answers.append(question)
 
+        # Створення результату тесту
         test_result = TestResult.objects.create(
             user=request.user,
             test=test,
@@ -59,9 +63,11 @@ def test_detail(request, test_id):
             time_spent=time_spent
         )
 
+        # Створення неправильних відповідей
         for question in incorrect_answers:
             IncorrectAnswer.objects.create(user=request.user, question=question, test=test)
 
+        # Видаляємо час початку тесту зі сесії
         del request.session['test_start_time']
 
         return redirect('test_result', result_id=test_result.id)
