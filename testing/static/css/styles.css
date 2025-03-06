@@ -1,12 +1,11 @@
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
 
 body {
     font-family: 'Georgia', serif;
-    background: #f0f5f9; /* Ніжно-голубий фон */
+    background: #f0f5f9;
     color: #2c3e50;
     margin: 0;
     padding: 0;
@@ -27,7 +26,7 @@ body {
     padding: 0;
     margin: 0;
     width: 100%;
-    max-width: 350px; /* Зменшила ширину */
+    max-width: 350px;
 }
 
 .container li {
@@ -41,26 +40,26 @@ body {
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
-    padding: 25px 20px; /* Збільшила висоту */
+    padding: 25px 20px;
     border-radius: 12px;
     color: #1c2f40;
-    background: #d4e6f1; /* Ніжний голубий */
+    background: #d4e6f1;
     text-align: center;
     transition: all 0.3s ease-in-out;
     border: 2px solid #a2c0dd;
     font-family: 'Times New Roman', serif;
     position: relative;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-    min-height: 70px; /* Мінімальна висота для красивої форми */
+    min-height: 70px;
 }
 
 .container a i {
     font-size: 24px;
-    color: #3e5f7f; /* Глибший відтінок синього */
+    color: #2D336B;
 }
 
 .container a:hover {
-    background: #a2c0dd; /* Темніший блакитний при наведенні */
+    background: #a2c0dd;
     border-color: #7fa0c0;
     transform: translateY(-3px);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -69,8 +68,6 @@ body {
 .container a:hover i {
     color: #1c2f40;
 }
-
-
 
     #openCalendar {
         background: none;
@@ -146,4 +143,36 @@ body {
     color: #201E43;
     text-decoration: none;
     border: none;
+}
+
+
+
+.theory-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.theory-link {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  background-color: #2D336B;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.theory-link:hover {
+  background-color: #1c244a;
 }

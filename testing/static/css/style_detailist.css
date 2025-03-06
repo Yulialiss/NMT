@@ -1,20 +1,82 @@
+
 body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-      .container {
-            margin-top: 50px;
-        }
-        .question {
-            margin-bottom: 20px;
-        }
-        .timer {
-            font-weight: bold;
-        }
-        button {
-            margin-top: 20px;
-        }
-        .timer-container {
-            display: flex;
-            justify-content: flex-end;
-        }
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #5a9bd5;
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 2.5em;
+    font-weight: bold;
+    animation: fadeIn 1s ease-out;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #74b9d3;
+    margin-top: 20px;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+form p {
+    font-size: 1.2em;
+    color: #4b7cbf;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="radio"]:checked {
+    background-color: #5a9bd5;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #5a9bd5;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4b89c4;
+}
+
+#timer {
+    font-weight: bold;
+    color: #d0e8f2;
+    font-size: 1.5em;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

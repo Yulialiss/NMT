@@ -1,0 +1,328 @@
+ body{
+ background-color:#D9EAFD;
+ }
+
+.test-result-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2D336B;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+
+    .test-result-title:hover {
+        transform: translateY(-5px);
+    }
+  .custom-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+.download-btn {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    background: linear-gradient(185deg, #091057, #77CDFF);
+    color: white;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn:hover {
+    background-color: #77CDFF;
+    transform: scale(1.05);
+}
+
+.download-btn:active {
+    background-color: #2D336B;
+    transform: scale(1);
+}
+
+.time-spent {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2D336B;
+    text-align: center;
+    background-color: #00A9FF;
+    padding: 8px 15px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 20px;
+    top: 150px;
+    transition: transform 0.3s ease;
+}
+
+
+    .time-spent:hover {
+        transform: scale(1.05);
+    }
+
+    .time-spent:hover::after {
+        content: "Це ваш час проходження тесту)";
+        position: absolute;
+        top: -60px;
+        left: -10px;
+        transform: translateX(-50%);
+        background-color: #77CDFF;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+        width: max-content;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .time-spent:hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
+     .circle-icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #091057, #77CDFF);
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .circle-icon:hover {
+        background-color: #77CDFF;
+        transform: scale(1.1);
+    }
+
+    .circle-icon i {
+        pointer-events: none;
+    }
+.resultrevansh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #77CDFF, #091057);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    position: fixed;
+    top: 500px;
+    left: 20px;
+}
+
+.resultrevansh:hover {
+    background-color: #77CDFF;
+    cursor: pointer;
+}
+
+
+.result-info {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2D336B;
+    background-color: #F1F5FE;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+.result-info:hover {
+    background-color: #77CDFF;
+    color: white;
+    transform: scale(1.05);
+}
+
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 40px);
+    gap: 5px;
+    margin-top: 120px;
+    background-color:#E8F9FF;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.answer-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+
+.correct {
+    background-color: #4CAF50;
+}
+
+.incorrect {
+    background-color: #E74C3C;
+}
+
+
+.questions-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.question-item {
+    margin-bottom: 20px;
+}
+
+.answers-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.answer-item {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.correct-selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.incorrect-selected {
+    background-color: #E74C3C;
+    color: white;
+}
+
+.correct-answer {
+    background-color: #4CAF50;
+    color: white;
+    opacity: 0.7;
+}
+.answer-box.correct {
+    background-color: green;
+}
+
+.answer-box.incorrect {
+    background-color: red;
+}
+
+
+.question-details-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    color: #333;
+}
+
+.question-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.question-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 1300px;
+    height: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.question-text {
+    font-size: 18px;
+    color: #555;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.answer-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.answer-item {
+    margin-bottom: 8px;
+    display: list-item;
+}
+
+.correct-answer {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect-answer {
+    color: red;
+    font-weight: bold;
+}
+
+.user-answer {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.user-answer-text {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.no-answer {
+    color: #888;
+    font-style: italic;
+}

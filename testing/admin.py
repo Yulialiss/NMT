@@ -18,7 +18,6 @@ class TestAdmin(admin.ModelAdmin):
     list_editable = ('duration',)
     inlines = [QuestionInline]
 
-    # Додаємо метод для нумерації тестів
     def get_test_theme(self, obj):
         test_count = Test.objects.filter(subject=obj.subject).count()
         return f"Тема {test_count}"

@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'testing',
     'profile_teacher',
      'calendar_app',
-
+    'theory',
+    'ckeditor',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

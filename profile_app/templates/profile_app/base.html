@@ -34,10 +34,7 @@
                 </li>
 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Пошук</button>
-      </form>
+
       <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
           {% if user.profile.photo %}
             <img src="{{ user.profile.photo.url }}" alt="Profile Picture"

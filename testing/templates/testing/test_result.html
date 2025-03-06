@@ -4,14 +4,24 @@
 <html>
 <head>
     <title>Результати тесту</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_result.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- test_result.html -->
-        <h2>Результати тесту: {{ result.test.title }}</h2>
-        <p>Кількість правильних відповідей: {{ result.score }} з {{ result.max_score }}</p>
-        <p>Час проходження: {{ result.formatted_time_spent }}</p>
+    <h2 class="test-result-title">Результати з теми {{ result.test.title }}</h2>
+    <div class="answer-grid">
+        {% for question in questions %}
+            {% if question.id in user_answers %}
+                <div class="answer-box incorrect">{{ forloop.counter }}</div>
+            {% else %}
+                <div class="answer-box correct">{{ forloop.counter }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <p class="result-info">Ваша кількість правильних відповідей {{ result.score }} з {{ result.max_score }}</p>
 
-        <a href="{% url 'test_detail' test_id=result.test.id %}" class="btn btn-primary">Пройти тест знову</a>
+    <p class="time-spent">{{ formatted_time_spent }}</p>
 
     {% if time_up %}
         <div class="alert alert-warning">
@@ -19,26 +29,47 @@
         </div>
     {% endif %}
 
-    <h2>Деталі відповідей:</h2>
-    <ul>
-        {% for question in questions %}
-            <li>
-                <strong>{{ question.text }}</strong>
-                {% if question.id in user_answers %}
-                    ❌ Неправильна відповідь
-                {% else %}
-                    ✅ Правильна відповідь
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+<h2 class="question-details-title">Деталі відповідей:</h2>
+<ul class="question-list">
+    {% for question in questions %}
+        <li class="question-item">
+            <strong class="question-text">{{ forloop.counter }}. {{ question.text }}</strong>
+            <ul class="answer-list">
+                {% for answer in question.answers.all %}
+                    <li class="answer-item">
+                        {% if answer.is_correct %}
+                            <strong class="correct-answer">✅ Правильна: {{ answer.text }}</strong>
+                        {% else %}
+                            <span class="incorrect-answer">❌ Неправильна: {{ answer.text }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if question.id in user_answers %}
+                <p class="user-answer">
+                    Ваша відповідь:
+                    {% for user_answer in user_answers %}
+                        {% if user_answer.question.id == question.id %}
+                            <strong class="user-answer-text">{{ user_answer.answer.text }}</strong>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            {% else %}
+                <p class="no-answer">Ваша відповідь: Немає</p>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
 
-    <a href="{% url 'subject_list' %}">Повернутися до предметів</a>
+    <form action="{% url 'download_test_result' result.id %}" method="get" class="custom-form">
+                    <button type="submit" class="download-btn">📥</button>
+                </form>
+    <a href="{% url 'subject_list' %}" class="circle-icon">
+        <i class="bi bi-reply"></i>
+    </a>
+        <a href="{% url 'test_detail' test_id=result.test.id %}" class="resultrevansh"><i class="bi bi-arrow-clockwise"></i></a>
 
-    <!-- Кнопка для завантаження результатів у текстовому файлі -->
-    <form action="{% url 'download_test_result' result.id %}" method="get">
-        <button type="submit">📥 Завантажити результати</button>
-    </form>
+
 </body>
 </html>
 {% endblock %}

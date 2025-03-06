@@ -1,0 +1,53 @@
+<style>
+    /* Стилі для заголовка */
+    h1 {
+        font-size: 2rem;
+        color: #007bff; /* Блакитний колір для заголовка */
+        font-weight: 700;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-transform: capitalize;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+    }
+
+    /* Стилі для списку тем */
+    ul {
+        list-style-type: none; /* Прибираємо стандартні маркери списку */
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 15px; /* Відступ між елементами списку */
+    }
+
+    /* Стилі для посилань в списку */
+    a {
+        font-size: 1.2rem;
+        color: #007bff; /* Блакитний колір для посилань */
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        background-color: #f8f9fa; /* Світлий фон для кожного елементу */
+        border-radius: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #0056b3; /* Темний фон при наведенні */
+        color: white;
+        text-decoration: none;
+    }
+
+    a:active {
+        transform: scale(0.98); /* Легкий ефект натискання */
+    }
+</style>
+
+<h1>Теми для предмету: {{ subject.name }}</h1>
+<ul>
+    {% for topic in topics %}
+        <li><a href="{% url 'theory:lesson_detail' topic.id %}">{{ topic.name }}</a></li>
+    {% endfor %}
+</ul>
