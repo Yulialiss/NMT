@@ -5,42 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Моя сторінка{% endblock %}</title>
     {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'images/huhu.png' %}">
+
     <link rel="stylesheet" href="{% static 'css/styles_home.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+    <style>
+        .navbar {
+            background: #E8F9FF;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #0077b6;
+            transition: color 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+
+
+        .navbar-brand:hover {
+            color: #005f73;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #0077b6;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #005f73;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #0077b6;
+        }
+
+        .navbar-brand i {
+            font-size: 24px;
+            color: #0077b6;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-brand i:hover {
+            color: #005f73;
+        }
+footer {
+    background-color: #d9eaff;
+    padding: 40px 0;
+    color: #004080;
+}
+footer h5 {
+    font-weight: bold;
+}
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+footer ul li a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+footer ul li a:hover {
+    color: #0077b6;
+}
+
+.my-social-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+form input[type='email'] {
+    border-radius: 20px;
+    border: 1px solid #0077b6;
+    padding: 10px;
+}
+form button {
+    background-color: #0077b6;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+form button:hover {
+    background-color: #0056b3;
+}
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-nav .nav-item {
+                margin-bottom: 1rem;
+            }
+        }
+
+ .offcanvas {
+        background-color: #E8F9FF;
+    }
+
+    .offcanvas-header {
+        background: #0077b6;
+        color: white;
+        border-bottom: 2px solid #005f73;
+    }
+
+    .offcanvas-title {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+
+    .offcanvas .list-group-item {
+        border: none;
+        padding: 14px 18px;
+        font-size: 17px;
+        font-weight: 500;
+        transition: background 0.3s, color 0.3s;
+        border-radius: 10px;
+    }
+
+    .offcanvas .list-group-item a {
+        text-decoration: none;
+        color: #0077b6;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .offcanvas .list-group-item:hover {
+        background: #e3f2fd;
+    }
+
+    .offcanvas .logout-item {
+        color: #d9534f !important;
+        font-weight: bold;
+        text-align: center;
+        padding: 16px;
+        border-radius: 10px;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .offcanvas .logout-item:hover {
+        background: #f8d7da;
+        color: #c9302c !important;
+    }
+
+    .offcanvas .list-group-item i {
+        font-size: 20px;
+        color: #0077b6;
+        transition: color 0.3s;
+    }
+
+    .offcanvas .list-group-item:hover i {
+        color: #005f73;
+    }
+
+    .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    </style>
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">EdWay</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      <a class="navbar-brand ms-3 d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="50" height="50" class="d-inline-block" style="position: relative; top: -8px;">
+                <span class="ms-2" style="position: relative; top: -7px; color: #1a237e;">EdWay</span>
+            </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Головна</a>
-        </li>
+
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'subject_list' %}">Навчання</a>
+                <a class="nav-link" href="{% url 'subject_list' %}">Teaching</a>
             </li>
           <li class="nav-item">
                 <a class="nav-link" href="{% url 'post_list' %}">Teacher</a>
             </li>
-          <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Профіль</a>
-                </li>
-
       </ul>
-
+        <div class="ms-auto">
+            <a class="nav-link" href="{% url 'profile' %}">
+                <i class="bi bi-person-heart" style="font-size: 1.5rem;"></i>
+            </a>
+        </div>
       <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
           {% if user.profile.photo %}
             <img src="{{ user.profile.photo.url }}" alt="Profile Picture"
                  class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
           {% else %}
-            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture"
+            <img src="https://i.pinimg.com/736x/f5/be/33/f5be3307a40868a80821729e9e5ae7cd.jpg" alt="Default Profile Picture"
                  class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
           {% endif %}
         </a>
@@ -53,25 +215,99 @@
     <h5 class="offcanvas-title" id="offcanvasMenuLabel">Твій профіль</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
+
   <div class="offcanvas-body">
     <ul class="list-group">
-      <li class="list-group-item"><a href="{% url 'edit_profile' %}">Редагувати профіль</a></li>
-      <li class="list-group-item"><a href="#">Мої результати</a></li>
-      <li class="list-group-item"><a href="{% url 'calendar_app:calendar' %}">Календар</a></li>
-      <br>
-      <li class="list-group-item"><a href="#">Налаштування</a></li>
-    <br>
-        <li class="list-group-item">
-        <a href="{% url 'logout' %}">Залишити систему</a>
+      <li class="list-group-item mb-3">
+        <a href="{% url 'edit_profile' %}">
+          <i class="bi bi-pencil-square"></i> Редагувати профіль
+        </a>
+      </li>
+      <li class="list-group-item mb-3">
+        <a href="{% url 'user_progress' %}">
+          <i class="bi bi-graph-up"></i> Мої результати
+        </a>
+      </li>
+      <li class="list-group-item mb-3">
+        <a href="{% url 'calendar_app:calendar' %}">
+          <i class="bi bi-calendar-event"></i> Календар
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Вихід окремо внизу -->
+    <ul class="list-group">
+      <li class="list-group-item logout-item mt-4">
+        <a href="{% url 'logout' %}">
+          <i class="bi bi-box-arrow-right"></i> Залишити систему
+        </a>
       </li>
     </ul>
   </div>
 </div>
+
+
         {% block content %}
         {% endblock %}
+    <footer class="bg-light py-5" style="margin-top: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="navbar-brand text-dark">
+                        <strong>Привіт!</strong>
+                    </a>
+                    <p>Ти на платформі EdWay – місці, де навчання стає захоплюючою подорожжю. Долучайся, відкривай нові знання та розвивай свої можливості!</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Швидкий доступ</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark">EdWay</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Contact</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">About</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark">Teacher</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Ти знайдеш нас тут</h5>
+              <ul class="social-icons">
+                  <li class="me-3"><a href="https://t.me/IMY_YZI" class="text-dark my-social-icon" target="_blank"><i class="bi bi-telegram" style="font-size: 24px;"></i> Telegram</a></li>
+                  <li class="me-3"><a href="https://github.com/Yulialiss/NMT.git" class="text-dark my-social-icon" target="_blank"><i class="bi bi-github" style="font-size: 24px;"></i> GitHub</a></li>
+                  <li class="me-3"><a href="https://www.instagram.com/yuliayzi.lis" class="text-dark my-social-icon" target="_blank"><i class="bi bi-instagram" style="font-size: 24px;"></i> Instagram</a></li>
+                </ul>
+
+
+                </div>
+                <div class="col-md-3 mb-4">
+                <h5>Підписка</h5>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" action="{% url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                </form>
+            </div>
+            </div>
+            <hr>
+            <div class="text-center text-dark">
+                <p>&copy; 2025 EdWay. Вітаємо на сайті.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybQbF8zYlC45b2zlvDlFQp4O3z5pFv6cfXqY7OgHmg1Q2skXbP" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

@@ -1,20 +1,28 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Subject, Test, Question, Answer, TestResult, IncorrectAnswer
-from datetime import timedelta
-from django.shortcuts import render, redirect, get_object_or_404
-from django.utils.timezone import now, timedelta
-from .models import Test, Answer, IncorrectAnswer, TestResult
-from .forms import TestForm
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from .models import Test, Answer, TestResult, IncorrectAnswer
-from .forms import TestForm
-from django.utils.timezone import now
-from datetime import timedelta
+
 from django.utils.timezone import now, timedelta
 from django.http import HttpResponse
 from django.utils.dateparse import parse_datetime
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import TestResult, Subject
+
+@login_required
+def user_progress(request):
+    user_results = {}
+    test_results = TestResult.objects.filter(user=request.user).select_related('test__subject')
+
+    for result in test_results:
+        subject = result.test.subject
+        if subject not in user_results:
+            user_results[subject] = []
+        user_results[subject].append(result)
+
+    return render(request, 'testing/user_progress.html', {'user_results': user_results})
 
 @login_required
 def time_up(request, test_id):

@@ -147,3 +147,14 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join([
+            'embed', 'autogrow', 'iframe',
+        ]),
+        'autoGrow_minHeight': 200,
+        'autoGrow_maxHeight': 600,
+        'allowedContent': True,
+    }
+}

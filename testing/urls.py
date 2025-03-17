@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import time_up,test_result, download_test_result
+from .views import time_up,test_result, download_test_result, user_progress
 
 urlpatterns = [
     path('testing/', views.subject_list, name='subject_list'),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('download_test_result/<int:result_id>/', download_test_result, name='download_test_result'),
 
     path('time_up/<int:test_id>/', time_up, name='time_up'),
+    path('progress/', user_progress, name='user_progress'),
 
 ]

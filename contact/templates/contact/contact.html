@@ -52,15 +52,15 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-field">
-                    <label for="{{ form.name.id_for_label }}">Ваше ім'я</label>
+                    <label for="{{ form.name.id_for_label }}"></label>
                     {{ form.name }}
                 </div>
                 <div class="form-field">
-                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    <label for="{{ form.email.id_for_label }}"></label>
                     {{ form.email }}
                 </div>
                 <div class="form-field">
-                    <label for="{{ form.message.id_for_label }}">Повідомлення</label>
+                    <label for="{{ form.message.id_for_label }}"></label>
                     {{ form.message }}
                 </div>
                 <button type="submit">Відправити</button>

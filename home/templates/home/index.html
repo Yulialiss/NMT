@@ -15,220 +15,235 @@
 </head>
 <body>
 <!--Секція 1-->
-<section class="hero">
+<section class="hero-section">
     <div class="hero-content">
-        <h1>Готуйся до НМТ з упевненістю!</h1>
-        <p>Національний мультипредметний тест – це важливий крок до твого майбутнього. Перевір свої знання та будь готовий до успіху!</p>
-        <div class="buttons">
-            <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Приєднатися</button>
-            <button class="btn btn-light" onclick="window.location.href='{% url 'about_page' %}';">Дізнатися більше</button>
+      <h1 class="nmt-hero-teyu">Готуйся до НМТ з упевненістю!</h1>
+      <p class="nmt-hero-description">Національний мультипредметний тест – це важливий крок до твого майбутнього. Перевір свої знання та будь готовий до успіху!</p>
+
+        <div class="hero-buttons">
+            <button class="hero-btn hero-btn-primary" onclick="window.location.href='{% url 'login' %}';">Приєднатися</button>
+            <button class="hero-btn hero-btn-light" onclick="window.location.href='{% url 'about_page' %}';">Дізнатися більше</button>
         </div>
     </div>
-    <div class="hero-image">
-        <img src="https://cdn.pixabay.com/photo/2023/09/11/19/57/ai-generated-8247500_640.png" alt="Студент готується до НМТ">
-        <div class="floating-box" style="top: 20px; right: 50px;">100+ <span>Тестових завдань</span></div>
-        <div class="floating-box" style="bottom: 20px; left: 50px;">50+ <span>Корисних порад</span></div>
+    <div class="hero-image-container">
+        <img class="hero-image" src="https://cdn.pixabay.com/photo/2023/09/11/19/57/ai-generated-8247500_640.png" alt="Студент готується до НМТ">
+        <div class="floating-box floating-box-top-right">100+ <span>Тестових завдань</span></div>
+        <div class="floating-box floating-box-bottom-left">50+ <span>Корисних порад</span></div>
     </div>
 </section>
+
 <!--Секція 1-->
 
 <!--Секція 2-->
-<section class="nmpt-section" style="padding: 50px 0;">
-  <div class="container text-center" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 10px; padding: 30px; text-align: center;">
-    <h2 class="mb-4" style="font-size: 2rem; font-weight: 600;">Національний мультипредметний тест (НМТ)</h2>
-    <p class="lead mb-4" style="font-size: 1.2rem; color: #333;">НМТ — це комплексний тест для абітурієнтів, який замінив традиційну ЗНО. Тест складається з трьох основних предметів: української мови, математики та історії України.</p>
+<section class="nmpt-section">
+  <div class="container text-center nmpt-container">
+    <h2 class="mb-4 nmpt-heading">Національний мультипредметний тест (НМТ)</h2>
+    <p class="lead mb-4 nmpt-description">НМТ — це не просто тест! Це місце, де твої знання та гумор зустрічаються. Чи готовий до виклику? Три предмети, три шанси показати себе!</p>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
-          <div class="card-body" style="flex-grow: 1;">
-            <h5 class="card-title">Математика</h5>
-            <p class="card-text">Тест з математики оцінює знання абітурієнтів з основних математичних понять та вмінь. Це важливий предмет для вступу до багатьох спеціальностей.</p>
+    <div class="row nmpt-row">
+      <div class="col-lg-4 col-md-6 mb-4 d-flex nmpt-card-container">
+        <div class="card nmpt-card">
+          <div class="card-body nmpt-card-body">
+            <h5 class="card-title nmpt-card-title">Математика</h5>
+            <p class="card-text nmpt-card-text">Цей тест допоможе перевірити, чи здатен ти вирішувати складні задачі, навіть якщо твоя головна мета — розібратися в тому, скільки грошей потрібно для нового телефону.</p>
           </div>
-          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
+            <a href="{% url 'login' %}">
+              <button class="test-button nmpt-test-button">Пройти тест</button>
+            </a>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
-          <div class="card-body" style="flex-grow: 1;">
-            <h5 class="card-title">Українська мова</h5>
-            <p class="card-text">Тест з української мови дозволяє оцінити рівень володіння державною мовою, що є обов'язковим для всіх вступників.</p>
+      <div class="col-lg-4 col-md-6 mb-4 d-flex nmpt-card-container">
+        <div class="card nmpt-card">
+          <div class="card-body nmpt-card-body">
+            <h5 class="card-title nmpt-card-title">Українська мова</h5>
+            <p class="card-text nmpt-card-text">Тут перевіряється твоя здатність не тільки писати без помилок, але й влучно відповісти на питання про те, коли вживати "де" і "де ж".</p>
           </div>
-          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
+            <a href="{% url 'login' %}">
+              <button class="test-button nmpt-test-button">Пройти тест</button>
+            </a>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <div class="card" style="border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); min-height: 250px; display: flex; flex-direction: column; position: relative;">
-          <div class="card-body" style="flex-grow: 1;">
-            <h5 class="card-title">Історія України</h5>
-            <p class="card-text">Історія України є важливим предметом для розуміння культурної та політичної спадщини країни. Тест оцінює знання з української історії.</p>
+      <div class="col-lg-4 col-md-6 mb-4 d-flex nmpt-card-container">
+        <div class="card nmpt-card">
+          <div class="card-body nmpt-card-body">
+            <h5 class="card-title nmpt-card-title">Історія України</h5>
+            <p class="card-text nmpt-card-text">Тест, в якому ти зможеш згадати всі ті роки, коли думав, що історія — це не для тебе, але насправді, можливо, це найцікавіша частина.</p>
           </div>
-          <span style="position: absolute; bottom: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 5px 10px; font-size: 1rem;">Макс. бали: 100</span>
+            <a href="{% url 'login' %}">
+              <button class="test-button nmpt-test-button">Пройти тест</button>
+            </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 <!--Секція 2-->
 
 
 <!--Секція 4-->
-<div class="container py-5">
+<div class="personal-development-container py-5">
   <div class="row align-items-center">
     <div class="col-md-6 mb-4 mb-md-0">
-      <h2 class="mb-3">Особистий розвиток</h2>
-      <p>
-        Удосконалення навичок, зокрема англійської мови, є важливим у кількох сферах.
-        По-перше, знання англійської дозволяє розширити комунікацію з людьми з різних країн і культур,
-        що відкриває можливості для нових знайомств та співпраці.
-        По-друге, багато професій вимагають знання англійської, тому вдосконалення мовних навичок
-        може відкрити нові перспективи для кар’єрного зростання.
+      <h2 class="personal-development-wewe mb-3">Ми допоможемо з реєстрацією на НМТ 2025</h2>
+      <p class="personal-development-text">
+         <ul class="personal-development-list">
+          <li><i class="bi bi-brightness-high-fill"></i> Перейдіть на офіційний сайт реєстрації на НМТ 2025.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Створіть обліковий запис або увійдіть, якщо вже маєте акаунт.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Заповніть особисті дані: прізвище, ім'я, дата народження, контактна інформація.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Виберіть предмети для здачі: вказати англійську мову як один з предметів.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Виберіть дату і час для складання тесту.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Завантажте необхідні документи (фото, копія паспорта, інші документи).</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Перевірте всі введені дані і підтверджуйте реєстрацію.</li>
+          <li><i class="bi bi-brightness-high-fill"></i> Отримайте підтвердження реєстрації на вашу електронну пошту або в особистому кабінеті.</li>
+      </ul>
       </p>
-            <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Пройти тест</button>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 position-relative">
       <div class="image-container">
-          <img src="https://cdn.pixabay.com/photo/2023/09/11/19/57/ai-generated-8247500_1280.png" class="img-fluid rounded-start" alt="..." style="transition: transform 0.3s ease; max-height: 100%; object-fit: cover;">
+        <img src="https://24tv.ua/resources/photos/news/202409/2650666.jpg?v=1727427505000" class="img-fluid rounded-start" alt="AI image" />
+<a href="https://testportal.gov.ua/protsedura-reyestratsiyi-2/" class="btn-unique position-absolute top-40 end-0 translate-middle-y me-3">Дізнатися більше</a>
       </div>
     </div>
   </div>
 </div>
-  <div class="container" id="workflowContainer">
+
+<div class="container" id="workflowContainer">
     <h1 class="text-center mb-4 workflow-header">Виконуй прості кроки</h1>
     <div class="row" id="workflowRow">
-      <div class="col-md-6" id="workflowStepsColumn">
-        <div class="workflow-step mb-4 d-flex">
-          <div class="workflow-step-number me-3">01</div>
-          <div class="workflow-step-text">
-            <h2>Реєстрація</h2>
-            <p>Створіть свій акаунт для доступу до платформи НМТ та персоналізованих навчальних матеріалів.</p>
-          </div>
+        <div class="col-md-6" id="workflowStepsColumn">
+            <div class="workflow-step mb-4 d-flex">
+                <div class="workflow-step-number me-3">01</div>
+                <div class="workflow-step-text">
+                    <h2>Реєстрація</h2>
+                    <p>Створіть свій акаунт для доступу до платформи НМТ та персоналізованих навчальних матеріалів.</p>
+                </div>
+            </div>
+            <div class="workflow-step mb-4 d-flex">
+                <div class="workflow-step-number me-3">02</div>
+                <div class="workflow-step-text">
+                    <h2>Ознайомлення</h2>
+                    <p>Вивчіть можливості платформи, її інтерфейс та функції, що допоможуть вам у навчанні.</p>
+                </div>
+            </div>
+            <div class="workflow-step mb-4 d-flex">
+                <div class="workflow-step-number me-3">03</div>
+                <div class="workflow-step-text">
+                    <h2>Доступ до навчальних матеріалів</h2>
+                    <p>Отримайте доступ до курсів, лекцій, відеоуроків та інших ресурсів для ефективного навчання.</p>
+                </div>
+            </div>
+            <div class="workflow-step mb-4 d-flex">
+                <div class="workflow-step-number me-3">04</div>
+                <div class="workflow-step-text">
+                    <h2>Практичні завдання</h2>
+                    <p>Виконуйте інтерактивні завдання та тести для закріплення знань та перевірки свого рівня.</p>
+                </div>
+            </div>
+            <div class="workflow-step mb-4 d-flex">
+                <div class="workflow-step-number me-3">05</div>
+                <div class="workflow-step-text">
+                    <h2>Сертифікація</h2>
+                    <p>Пройдіть фінальне тестування та отримайте сертифікат, що підтверджує ваші досягнення.</p>
+                </div>
+            </div>
         </div>
-        <div class="workflow-step mb-4 d-flex">
-          <div class="workflow-step-number me-3">02</div>
-          <div class="workflow-step-text">
-            <h2>Ознайомлення</h2>
-            <p>Вивчіть можливості платформи, її інтерфейс та функції, що допоможуть вам у навчанні.</p>
-          </div>
+        <div class="col-md-6" id="workflowImageColumn">
+            <div class="workflow-image">
+                <img class="image-1" src="https://bilozerka.info/wp-content/uploads/2024/11/610-900x606-1.jpg" alt="Ілюстрація платформи НМТ">
+                <img class="image-2" src="https://znogrant.com.ua/wp-content/uploads/Express-pidgotovka.jpg" alt="Ілюстрація платформи НМТ">
+                <img class="image-3" src="https://osvita.in/wp-content/uploads/2024/01/uspishna-pidgotovka-do-nmt-2024-poradi-osvitain.jpg" alt="Ілюстрація платформи НМТ">
+            </div>
+
         </div>
-        <div class="workflow-step mb-4 d-flex">
-          <div class="workflow-step-number me-3">03</div>
-          <div class="workflow-step-text">
-            <h2>Доступ до навчальних матеріалів</h2>
-            <p>Отримайте доступ до курсів, лекцій, відеоуроків та інших ресурсів для ефективного навчання.</p>
-          </div>
-        </div>
-        <div class="workflow-step mb-4 d-flex">
-          <div class="workflow-step-number me-3">04</div>
-          <div class="workflow-step-text">
-            <h2>Практичні завдання</h2>
-            <p>Виконуйте інтерактивні завдання та тести для закріплення знань та перевірки свого рівня.</p>
-          </div>
-        </div>
-        <div class="workflow-step mb-4 d-flex">
-          <div class="workflow-step-number me-3">05</div>
-          <div class="workflow-step-text">
-            <h2>Сертифікація</h2>
-            <p>Пройдіть фінальне тестування та отримайте сертифікат, що підтверджує ваші досягнення.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" id="workflowImageColumn">
-        <div class="workflow-image">
-          <img src="https://optim.tildacdn.com/tild6461-6232-4230-b933-376631346365/-/resize/700x/-/format/webp/illustration-05.png" alt="Ілюстрація платформи НМТ">
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
 <!--Секція 4-->
 <!--Секція 3-->
- <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="pricing-card p-5">
-                    <h3 class="text-primary">Правильна українська мова</h3>
-                    <p class="price fs-2 fw-bold">$150</p>
-                    <p>Не знаєш як правильно розмовляти нашою мовою тобі до нас ти не тільки вивчиш соловїну мову ай здаш на всі 200.</p>
-                    <ul class="list-unstyled">
-                        <li>Всі правила вживання</li>
-                        <li>Наголоси та вимова</li>
-                        <li>Частини мови</li>
-                        <li>Речення та звертання</li>
-                    </ul>
-                   <div class="d-flex justify-content-end">
-                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
-                        Купити курс
-                    </a>
-                </div>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="pricing-card p-5">
+                <h3 class="text-primary">Правильна українська мова</h3>
+                <p class="price fs-2 fw-bold">3000</p>
+                <p>Підніми свій рівень володіння українською!</p>
+                <p><strong>Що ти отримаєш:</strong></p>
+                <ul class="list-unstyled">
+                    <li>Розбір найпоширеніших помилок</li>
+                    <li>Засвоєння правил граматики та орфографії</li>
+                    <li>Покращення стилю письма та мовлення</li>
+                </ul>
+                <p>Ідеальний вибір для тих, хто готується до НМТ або хоче впевнено спілкуватися українською!</p>
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">Купити курс</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="pricing-card middle-card p-5 position-relative">
-                    <h3 class="text-primary">Проста математика</h3>
-                    <p class="price fs-2 fw-bold">$150</p>
-                    <p>Вважаєш цифри не зрозумілі? Розпочнемо з початку і ти точно зрозумієш що ж таке той дискримінант  </p>
-                    <p><strong>Ми навчимо та пояснемо</strong></p>
-                    <ul class="list-unstyled">
-                        <li>Формули скороченого множення</li>
-                        <li>Розвязок рівнянь</li>
-                        <li>Логарифми тангинси</li>
-                        <li>Логічні задачки</li>
-                        <li>Геометричні фігури,лінії та кути</li>
-                    </ul>
-                    <div class="d-flex justify-content-end">
-                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
-                        Купити курс
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="pricing-card middle-card p-5 position-relative">
+                <h3 class="text-primary">Проста математика</h3>
+                <p class="price fs-2 fw-bold">3000</p>
+                <p>Математика без стресу! Освоюй формули, рівняння та логічні завдання у легкому та зрозумілому форматі.</p>
+                <p><strong>Що ти навчишся:</strong></p>
+                <ul class="list-unstyled">
+                    <li>Розв'язувати рівняння та нерівності</li>
+                    <li>Розуміти геометричні фігури та їхні властивості</li>
+                    <li>Вирішувати задачі та логічні головоломки</li>
+                </ul>
+                <p>Цей курс допоможе тобі впевнено скласти НМТ та полюбити математику!</p>
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">Купити курс</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="pricing-card p-5">
-                    <h3 class="text-primary">Наша історія</h3>
-                    <p class="price fs-2 fw-bold">$150</p>
-                    <p>Вже час вивчити те що з нашою країною і не тільки для НМТ але й для того щоб знати минули</p>
-                    <p><strong>Курс містить</strong></p>
-                    <ul class="list-unstyled">
-                        <li>всі теми з історії України</li>
-                        <li>Розбір всіх дат</li>
-                        <li>Детальне розяснення війн</li>
-                        <li>Вивчення постатей</li>
-
-                    </ul>
-                    <div class="d-flex justify-content-end">
-                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">
-                        Купити курс
-                    </a>
-                </div>
-
+        </div>
+        <div class="col-md-4">
+            <div class="pricing-card p-5">
+                <h3 class="text-primary">Наша історія</h3>
+                <p class="price fs-2 fw-bold">3000</p>
+                <p>Занурся в історію України та дізнайся про події, що формували нашу націю та світогляд.</p>
+                <p><strong>Що ти відкриєш для себе:</strong></p>
+                <ul class="list-unstyled">
+                    <li>Ключові події боротьби за незалежність</li>
+                    <li>Знакові постаті та їхній внесок в історію</li>
+                    <li>Важливі дати та їхній контекст</li>
+                </ul>
+                <p>Цей курс допоможе не тільки скласти НМТ, а й краще розуміти наше минуле та майбутнє!</p>
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'pay' %}" class="btn pastel-blue-btn mt-2 buy-course-btn">Купити курс</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 <!--Секція 3-->
 
 <!--Секція 5-->
-<div class="container py-5">
-  <h2 class="text-center mb-4">Залиште свій відгук</h2>
+<div class="wedency-container py-5">
+  <h2 class="wedency-title text-center mb-4">Залиште свій відгук</h2>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="review-text">
-          <p>Тут може бути ваш відгук або інший текстовий контент.</p>
-        </div>
-      </div>
-    </div>
+  <div class="row">
     <div class="col-md-6">
-      <div class="review-form">
-        <form method="POST" class="comment-form">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit" class="btn-custom">Надіслати відгук</button>
-        </form>
+      <div class="wedency-review-text">
+        <p>Тут може бути ваш відгук або інший текстовий контент.</p>
       </div>
     </div>
   </div>
+
+  <div class="col-md-6">
+    <div class="wedency-review-form">
+      <form method="POST" class="wedency-comment-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="wedency-btn-custom">Надіслати відгук</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="text-center my-4">
     <h2 class="fw-bold text-primary">Дивіться, що кажуть наші користувачі!</h2>
     <p class="text-secondary">Наш сервіс уже допоміг сотням людей. Читайте їхні відгуки та діліться своїм досвідом!</p>
@@ -259,7 +274,7 @@
                     </div>
                     <p class="text-secondary">"{{ review.content }}"</p>
                     <div class="text-warning">
-                        ⭐⭐⭐⭐⭐
+
                     </div>
                 </div>
             </div>

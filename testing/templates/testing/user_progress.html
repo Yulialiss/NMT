@@ -1,0 +1,52 @@
+{% extends "profile_app/base.html" %}
+
+{% block content %}
+<html>
+<head>
+    <title>Мої результати тестів</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_results.css' %}">
+</head>
+<body>
+    <h2 class="results-title">Мої результати тестів</h2>
+    
+    {% for subject, tests in user_results.items %}
+        {% with tests|length as total_tests %}
+        {% with tests|last as last_test %}
+        <div class="subject-container">
+            <div class="subject-circle" onclick="toggleTests('subject-{{ forloop.counter }}')">
+                <span class="subject-name">{{ subject.name }}</span>
+                <svg width="60" height="60">
+                    <circle cx="30" cy="30" r="25" stroke="gray" stroke-width="5" fill="none" />
+                    <circle cx="30" cy="30" r="25" stroke="green" stroke-width="5" fill="none"
+                            stroke-dasharray="{{ total_tests|floatformat:2 }} 100" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div id="subject-{{ forloop.counter }}" class="test-list" style="display: none;">
+                <div class="test-container">
+                    <h4 class="test-title">Тест: {{ last_test.test.title }}</h4>
+                    <p class="score">Результат: {{ last_test.score }} з {{ last_test.max_score }}</p>
+                    <p class="time-spent">Час: {{ last_test.formatted_time_spent }}</p>
+                    <a href="{% url 'test_detail' test_id=last_test.test.id %}" class="review-btn">Переглянути</a>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+        {% endwith %}
+    {% empty %}
+        <p class="no-results">Ви ще не проходили жодного тесту.</p>
+    {% endfor %}
+
+    <script>
+        function toggleTests(subjectId) {
+            var element = document.getElementById(subjectId);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

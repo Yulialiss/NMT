@@ -1,6 +1,8 @@
 from .views import home, about_page, subscribe
 from django.urls import path
 from . import views
+from .views import generate_payment
+
 
 from .views import rate_post
 
@@ -16,5 +18,6 @@ urlpatterns = [
     path('rate_post/<int:post_id>/', rate_post, name='rate_post'),
     path("pay/", views.pay, name="pay"),
     path("pay/payment.html", views.payment_view, name="payment"),
+    path("generate-payment/", generate_payment, name="generate_payment"),
 
 ]

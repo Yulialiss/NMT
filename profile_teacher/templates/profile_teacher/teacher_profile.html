@@ -3,35 +3,133 @@
 {% block title %}Профіль вчителя{% endblock %}
 
 {% block content %}
-    <h1>Профіль вчителя</h1>
+<style>
+    .profile-container {
+        width: 1000px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .profile-photo {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #007bff;
+        transition: transform 0.3s ease;
+    }
+    .profile-photo:hover {
+        transform: scale(1.1);
+    }
+    .list-group-item {
+        border: none;
+        padding: 12px 18px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease;
+    }
+    .list-group-item:hover {
+        background-color: #e9ecef;
+    }
+    .list-group-item strong {
+        flex: 1;
+        color: #495057;
+    }
+    .list-group-item i {
+        margin-right: 10px;
+        color: #007bff;
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+    .list-group-item i:hover {
+        transform: scale(1.2);
+    }
+    .profile-bio {
+        background: #eef2f7;
+        padding: 18px;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-size: 16px;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #0056b3, #004494);
+        transform: scale(1.05);
+    }
+    .profile-header {
+        text-align: center;
+        color: #007bff;
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+    .profile-info {
+        padding-left: 30px; /* Зміщення інформації вправо */
+    }
+</style>
+<h1 class="profile-header">ВІТАЄМО! МИ РАДІ, ЩО ВИ ПРИЄДНАЛИСЯ ДО НАШОЇ КОМАНДИ!</h1>
 
-    {% if profile.photo %}
-        <img src="{{ profile.photo.url }}" alt="Фото профілю" width="150">
-    {% else %}
-        <p>[Фото відсутнє]</p>
-    {% endif %}
+<div class="container mt-4 profile-container">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-center">
+            {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" alt="Фото профілю" class="profile-photo img-thumbnail mx-auto d-block">
+            {% else %}
+                <p class="text-muted">[Фото відсутнє]</p>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <ul class="list-group list-group-flush profile-info">
+                <li class="list-group-item">
+                    <i class="fas fa-user"></i><strong>Ім'я користувача:</strong> {{ request.user.username }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-birthday-cake"></i><strong>Вік:</strong> {{ profile.age }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-envelope"></i><strong>Email:</strong> {{ profile.email }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-phone"></i><strong>Телефон:</strong> {{ profile.phone_number }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-chalkboard-teacher"></i><strong>Формат навчання:</strong> {{ profile.get_teaching_mode_display }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-map-marker-alt"></i><strong>Локація:</strong> {{ profile.location }}
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <p><strong>Ім'я користувача:</strong> {{ request.user.username }}</p>
-    <p><strong>Вік:</strong> {{ profile.age }}</p>
-    <p><strong>Email:</strong> {{ profile.email }}</p>
-    <p><strong>Телефон:</strong> {{ profile.phone_number }}</p>
-    <p><strong>Формат навчання:</strong> {{ profile.get_teaching_mode_display }}</p>
-    <p><strong>Локація:</strong> {{ profile.location }}</p>
-
-    <p><strong>Предмети викладання:</strong>
+    <div class="mt-4">
+        <strong>Предмети викладання:</strong>
         {% if profile.subjects %}
-            <ul>
+            <ul class="list-group mt-2">
                 {% for subject in profile.get_subjects_list %}
-                    <li>{{ subject }}</li>
+                    <li class="list-group-item">{{ subject }}</li>
                 {% endfor %}
             </ul>
         {% else %}
-            <span>Не вказано</span>
+            <p class="text-muted">Не вказано</p>
         {% endif %}
-    </p>
+    </div>
 
-    <h2>Про себе:</h2>
-    <p>{{ profile.bio|linebreaks }}</p>
+    <h2 class="mt-4">Про себе:</h2>
+    <p class="profile-bio">{{ profile.bio|linebreaks }}</p>
 
-    <a href="{% url 'teacher_profile_edit' %}" class="btn btn-primary">Редагувати профіль</a>
+</div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 {% endblock %}

@@ -1,53 +1,95 @@
+{% extends "profile_app/base.html" %}
+
+{% block content %}
+<html>
+<head>
+    <title>Теорія</title>
+</head>
+<body>
 <style>
-    /* Стилі для заголовка */
-    h1 {
-        font-size: 2rem;
-        color: #007bff; /* Блакитний колір для заголовка */
+    .subject-title {
+        font-size: 2.5rem;
+        color: #007bff;
         font-weight: 700;
         text-align: center;
         margin-top: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         text-transform: capitalize;
-        border-bottom: 2px solid #007bff;
-        padding-bottom: 10px;
+        border-bottom: 3px solid #007bff;
+        padding-bottom: 12px;
+        letter-spacing: 1px;
     }
 
-    /* Стилі для списку тем */
-    ul {
-        list-style-type: none; /* Прибираємо стандартні маркери списку */
+    .topics-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 700px;
+        margin: 0 auto;
         padding: 0;
     }
 
-    li {
-        margin-bottom: 15px; /* Відступ між елементами списку */
+    .topics-list {
+        width: 100%;
+        counter-reset: topic-counter;
+        padding: 0;
+        list-style: none;
     }
 
-    /* Стилі для посилань в списку */
-    a {
-        font-size: 1.2rem;
-        color: #007bff; /* Блакитний колір для посилань */
+    .topics-list li {
+        margin-bottom: 15px;
+    }
+
+    .topic-item {
+        width: 100%;
+        text-align: left;
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #007bff;
         text-decoration: none;
-        padding: 10px;
+        padding: 16px 20px;
         display: block;
-        background-color: #f8f9fa; /* Світлий фон для кожного елементу */
-        border-radius: 8px;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        background: linear-gradient(135deg, #e3f2fd, #ffffff);
+        border-radius: 12px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #d0e2f0;
+        position: relative;
     }
 
-    a:hover {
-        background-color: #0056b3; /* Темний фон при наведенні */
+    .topic-item::before {
+        counter-increment: topic-counter;
+        content: counter(topic-counter) ". ";
+        font-weight: bold;
+        color: #0056b3;
+        margin-right: 10px;
+    }
+
+    .topic-item:hover {
+        background: #0056b3;
         color: white;
-        text-decoration: none;
+        transform: translateY(-3px);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
     }
 
-    a:active {
-        transform: scale(0.98); /* Легкий ефект натискання */
+    .topic-item:active {
+        transform: scale(0.97);
     }
 </style>
 
-<h1>Теми для предмету: {{ subject.name }}</h1>
-<ul>
-    {% for topic in topics %}
-        <li><a href="{% url 'theory:lesson_detail' topic.id %}">{{ topic.name }}</a></li>
-    {% endfor %}
-</ul>
+<h1 class="subject-title">Теми для предмету: {{ subject.name }}</h1>
+<div class="topics-container">
+    <ul class="topics-list">
+        {% for topic in topics %}
+            <li>
+                <a href="{% url 'theory:lesson_detail' topic.id %}" class="topic-item">{{ topic.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+</body>
+</html>
+{% endblock %}

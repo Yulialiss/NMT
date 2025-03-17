@@ -32,7 +32,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Стилі для екрану завантаження */
 .loading-screen {
     display: none;
     position: fixed;

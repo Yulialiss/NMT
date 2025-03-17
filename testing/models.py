@@ -42,7 +42,6 @@ class TestResult(models.Model):
     time_spent = models.DurationField(default=timedelta())
 
     def formatted_time_spent(self):
-        """Форматує час у хвилинах і секундах."""
         minutes, seconds = divmod(int(self.time_spent.total_seconds()), 60)
         return f"{minutes} хв {seconds} сек"
 

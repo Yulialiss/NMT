@@ -9,7 +9,7 @@ from .models import Event
 def calendar_view(request):
     return render(request, 'calendar_app/calendar.html')
 
-@csrf_exempt  # Для тестування (небезпечно в продакшені)
+@csrf_exempt
 @login_required
 def add_event(request):
     if request.method == "POST":

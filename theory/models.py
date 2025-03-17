@@ -17,6 +17,7 @@ class Topic(models.Model):
 class Theory(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     content = RichTextField()
+    video_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"Теорія для {self.topic.name}"

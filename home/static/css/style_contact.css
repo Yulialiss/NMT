@@ -1,15 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-    background-color: #e0f7fa;
-    color: #0277bd;
-    font-family: 'Playfair Display', serif;
+    background-color: #E8F9FF;
 }
 .container {
     display: flex;
@@ -27,7 +19,6 @@ body {
 
 
 .contact-info {
-    background: #b3e5fc;
     border-radius: 15px;
     padding: 30px;
     flex: 1;
@@ -37,7 +28,7 @@ body {
     padding: 30px;
     flex: 1;
     border-radius: 15px;
-    background: #ffffff;
+    background: #D4EBF8;
 }
 
 .contact-info h1 {

@@ -15,6 +15,33 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import Post, Rating
 
+import json
+import base64
+import hashlib
+import uuid
+from django.http import JsonResponse
+from django.shortcuts import render
+
+PUBLIC_KEY = "sandbox_i82300391811"
+PRIVATE_KEY = "sandbox_rvLPqs6QamwweYOPTlhsdJdBk9VlALicqJYNxn6b"
+def generate_payment(request):
+    unique_order_id = f"order_{uuid.uuid4().hex}"
+
+    payment_data = {
+        "version": "3",
+        "public_key": PUBLIC_KEY,
+        "action": "pay",
+        "amount": "3000",
+        "currency": "UAH",
+        "description": "Оплата квитка",
+        "order_id": unique_order_id,
+        "result_url": "http://127.0.0.1:8000/pay/payment.html",
+    }
+
+    data_base64 = base64.b64encode(json.dumps(payment_data).encode()).decode()
+    signature = base64.b64encode(hashlib.sha1(f"{PRIVATE_KEY}{data_base64}{PRIVATE_KEY}".encode()).digest()).decode()
+
+    return JsonResponse({"data": data_base64, "signature": signature})
 @csrf_exempt
 @login_required
 def rate_post(request, post_id):

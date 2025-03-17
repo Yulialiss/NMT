@@ -1,58 +1,54 @@
+{% extends "profile_app/base.html" %}
+
+{% block content %}
+
 <style>
-    /* Стилі для заголовка теорії */
-h1 {
+.topic-title {
     font-size: 2rem;
-    color: #007bff; /* Блакитний колір для заголовка */
-    font-weight: 700;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-transform: capitalize; /* Капіталізація першої літери кожного слова */
-    border-bottom: 2px solid #007bff; /* Лінія під заголовком */
-    padding-bottom: 10px;
-}
-
-/* Стилі для тексту теорії */
-p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #333; /* Темно-сірий колір для тексту */
-    text-align: justify; /* Вирівнювання тексту по ширині */
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f9f9f9; /* Легкий сірий фон для блоку з теорією */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
-}
-
-/* Стилі для безпечного контенту */
-p code {
-    background-color: #f1f1f1;
-    color: #d63384; /* Колір для виділеного коду */
-    padding: 5px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-p em {
-    font-style: italic;
-    color: #6c757d; /* Колір для курсиву */
-}
-
-p strong {
     font-weight: bold;
-    color: #007bff; /* Колір для жирного тексту */
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
 }
 
-/* Стилі для зображень в теорії (якщо є) */
-p img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+.theory-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: justify;
+}
+
+.custom-video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.custom-video-frame {
+    width: 80%;
+    max-width: 720px;
+    height: 405px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 </style>
 
-<h1>Тема: {{ topic.name }}</h1>
-<p>{{ theory.content|safe }}</p>
+<h1 class="topic-title">{{ topic.name }}</h1>
+<p class="theory-content">{{ theory.content|safe }}</p>
+
+{% if theory.video_url %}
+    <div class="custom-video-container">
+        <iframe
+            src="https://www.youtube.com/embed/{{ theory.video_url|slice:'-11:' }}"
+            class="custom-video-frame"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+{% endif %}
+
+
+{% endblock %}

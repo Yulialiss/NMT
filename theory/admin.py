@@ -7,6 +7,7 @@ class TheoryAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget()},
     }
+    list_display = ('topic', 'video_url')
 
 admin.site.register(Subject)
 admin.site.register(Topic)
