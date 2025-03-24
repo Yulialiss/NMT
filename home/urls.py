@@ -4,12 +4,13 @@ from . import views
 from .views import generate_payment
 
 
-from .views import rate_post
+from .views import rate_post, reviews_view
 
 urlpatterns = [
     path('', home, name='home'),
     path('about/', about_page, name='about_page'),
     path("subscribe/", subscribe, name="subscribe"),
+    path('reviews/', reviews_view, name='reviews'),
 
     path('posts/', views.post_list_view, name='post_list'),
     path('add_post/', views.add_post_view, name='add_post'),

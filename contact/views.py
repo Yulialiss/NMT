@@ -1,16 +1,16 @@
-
+from django.contrib import messages  # Додати
 from .forms import ContactForm
 from django.shortcuts import render, redirect
-
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.http import HttpResponse
+from django.conf import settings
 
 def send_test_email(request):
     send_mail(
         'Тестовий лист',
         'Це тестовий лист від Django.',
-        'yuliahuralgit@gmail.com',
-        ['recipient@example.com'],
+        settings.EMAIL_HOST_USER,
+        ['yuliahuralgit@gmail.com'],
         fail_silently=False,
     )
     return HttpResponse('Тестовий лист відправлено!')
@@ -23,16 +23,20 @@ def contact_view(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
 
-            send_mail(
-                f"Повідомлення від {name}",
-                message,
-                email,
-                ['recipient@example.com'],
-                fail_silently=False,
+            email_message = EmailMessage(
+                subject=f"Повідомлення від {name}",
+                body=message,
+                from_email=settings.EMAIL_HOST_USER,
+                to=['recipient@example.com'],
+                reply_to=[email]
             )
-            return HttpResponse('Ваше повідомлення відправлено!')
+            email_message.send(fail_silently=True)
+
+            messages.success(request, 'Ваше повідомлення було успішно відправлено!')
+            return redirect('contact')
+        else:
+            messages.error(request, 'Будь ласка, виправте помилки у формі.')
     else:
         form = ContactForm()
 
     return render(request, 'contact/contact.html', {'form': form})
-

@@ -6,33 +6,116 @@
     <title>Мої результати тестів</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_results.css' %}">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #E8F9FF;
+
+            text-align: center;
+        }
+
+        .results-title {
+            font-size: 28px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .subject-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .subject-container:hover {
+            transform: scale(1.02);
+        }
+
+        .subject-circle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 15px;
+        }
+
+        .subject-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .test-list {
+            display: none;
+            padding-top: 10px;
+        }
+
+        .test-container {
+            background: #eef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .score, .time-spent {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .review-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .review-btn:hover {
+            background: #218838;
+        }
+
+        .no-results {
+            font-size: 18px;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h2 class="results-title">Мої результати тестів</h2>
-    
+
     {% for subject, tests in user_results.items %}
-        {% with tests|length as total_tests %}
-        {% with tests|last as last_test %}
         <div class="subject-container">
             <div class="subject-circle" onclick="toggleTests('subject-{{ forloop.counter }}')">
                 <span class="subject-name">{{ subject.name }}</span>
-                <svg width="60" height="60">
-                    <circle cx="30" cy="30" r="25" stroke="gray" stroke-width="5" fill="none" />
-                    <circle cx="30" cy="30" r="25" stroke="green" stroke-width="5" fill="none"
-                            stroke-dasharray="{{ total_tests|floatformat:2 }} 100" stroke-linecap="round"/>
-                </svg>
             </div>
             <div id="subject-{{ forloop.counter }}" class="test-list" style="display: none;">
+                {% for test in tests %}
                 <div class="test-container">
-                    <h4 class="test-title">Тест: {{ last_test.test.title }}</h4>
-                    <p class="score">Результат: {{ last_test.score }} з {{ last_test.max_score }}</p>
-                    <p class="time-spent">Час: {{ last_test.formatted_time_spent }}</p>
-                    <a href="{% url 'test_detail' test_id=last_test.test.id %}" class="review-btn">Переглянути</a>
+                    <h4 class="test-title">Тест: {{ test.test.title }}</h4>
+                    <p class="score">Результат: {{ test.score }} з {{ test.max_score }}</p>
+                    <p class="time-spent">Час: {{ test.formatted_time_spent }}</p>
+                    <a href="{% url 'test_detail' test_id=test.test.id %}" class="review-btn">Переглянути</a>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endwith %}
-        {% endwith %}
     {% empty %}
         <p class="no-results">Ви ще не проходили жодного тесту.</p>
     {% endfor %}

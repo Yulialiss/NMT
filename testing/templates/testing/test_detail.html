@@ -6,49 +6,49 @@
     <title>{{ test.title }}</title>
      {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_detailist.css' %}">
-
 </head>
 <body>
-    <h1>{{ test.title }}</h1>
-    <div>
-        <h2>Час на проходження: <span id="timer"></span></h2>
+    <h1 class="test-title">{{ test.title }}</h1>
+    <div class="test-timer-container">
+        <h2>Час на проходження: <span id="test-timer"></span></h2>
     </div>
-<form method="post">
-    {% csrf_token %}
-    {% for question in questions %}
-        <p>{{ question.text }}</p>
-        {% for answer in question.answers.all %}
-            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.text }}<br>
+    <form method="post" class="test-form">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div class="question-block">
+                <p class="question-text">{{ question.text }}</p>
+                {% for answer in question.answers.all %}
+                    <div class="answer-option">
+                        <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" id="answer_{{ answer.id }}">
+                        <label for="answer_{{ answer.id }}" class="answer-label">{{ answer.text }}</label>
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
-    {% endfor %}
-    <button type="submit">Завершити тест</button>
-</form>
+        <button type="submit" class="submit-test-button">Завершити тест</button>
+    </form>
 
+    <script>
+        let timeLeft = {{ test.duration }} * 60;
 
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById("test-timer").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-
-<script>
-    let timeLeft = {{ test.duration }} * 60;  // Час у секундах
-
-    function updateTimer() {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-        document.getElementById("timer").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            alert("Ваш час вийшов!");
-            window.location.href = "{% url 'time_up' test.id %}";
-        } else {
-            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("Ваш час вийшов!");
+                window.location.href = "{% url 'time_up' test.id %}";
+            } else {
+                timeLeft--;
+            }
         }
-    }
 
-    window.onload = function() {
-        timerInterval = setInterval(updateTimer, 1000);
-    };
-</script>
-
+        window.onload = function() {
+            timerInterval = setInterval(updateTimer, 1000);
+        };
+    </script>
 </body>
 </html>
 {% endblock %}

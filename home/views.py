@@ -5,14 +5,8 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import PostForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post
-from django.http import JsonResponse
+
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
-from .models import Post, Rating
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
 from .models import Post, Rating
 
 import json
@@ -20,7 +14,36 @@ import base64
 import hashlib
 import uuid
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .models import Review
+from .forms import ReviewForm
+
+
+@login_required
+def reviews_view(request):
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+
+            response_data = {
+                "success": True,
+                "username": review.user.username,
+                "content": review.content,
+                "created_at": review.created_at.strftime("%Y-%m-%d %H:%M"),
+                "photo": review.user.profile.photo.url if hasattr(review.user,
+                                                                  "profile") and review.user.profile.photo else "https://i.pinimg.com/474x/36/52/05/365205dee1a12061c42a64d128ee4eb3.jpg"
+            }
+            return JsonResponse(response_data)
+        else:
+            return JsonResponse({"success": False, "errors": form.errors}, status=400)
+
+    reviews = Review.objects.all().order_by('-created_at')
+    return render(request, 'reviews.html', {'form': form, 'reviews': reviews})
+
 
 PUBLIC_KEY = "sandbox_i82300391811"
 PRIVATE_KEY = "sandbox_rvLPqs6QamwweYOPTlhsdJdBk9VlALicqJYNxn6b"
@@ -157,7 +180,7 @@ def subscribe(request):
             send_mail(
                 "Підписка на платформу EdWay",
                 "Шановний користувачу!\n\n"
-                "Вітаємо! Ви успішно підписалися на оновлення платформи НМТ. Тепер ви будете першими, хто дізнається про новини та оновлення, що стосуються нашої платформи.\n\n"
+                "Вітаємо! Ви успішно підписалися на оновлення платформи EdWAY. Тепер ви будете першими, хто дізнається про новини та оновлення, що стосуються нашої платформи.\n\n"
                 "Наша команда постійно працює над покращенням сервісу, щоб забезпечити вам найкращий досвід. Ми будемо надсилати вам важливу інформацію, а також цікаві матеріали для вашого розвитку.\n\n"
                 "Якщо ви більше не хочете отримувати оновлення, ви завжди можете відписатися, натиснувши на посилання внизу цього листа.\n\n"
                 "Дякуємо, що обрали нас! Ми раді мати вас серед наших користувачів.\n\n"
@@ -186,20 +209,8 @@ def home(request):
 
     return render(request, 'home/index.html', {'form': form, 'reviews': reviews})
 
-@login_required
-def reviews_view(request):
-    if request.method == "POST":
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.save()
-            return redirect('reviews')
-    else:
-        form = ReviewForm()
 
-    reviews = Review.objects.all().order_by('-created_at')
-    return render(request, 'reviews.html', {'form': form, 'reviews': reviews})
+
 
 
 def about_page(request):

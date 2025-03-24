@@ -15,6 +15,7 @@
     <style>
         .navbar {
             background: #E8F9FF;
+            box-shadow: 0px 4px 10px rgba(0, 119, 182, 0.3);
         }
 
         .navbar-brand {
@@ -22,15 +23,24 @@
             color: #0077b6;
             transition: color 0.3s ease-in-out;
             margin-top: 10px;
+                padding: 0 50px;
+
         }
 
 
         .navbar-brand:hover {
             color: #005f73;
         }
+        .navbar-nav-center {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            gap: 150px;
+
+        }
 
         .navbar-nav .nav-item .nav-link {
-            color: #0077b6;
+            color: #1E2A5E;
             font-size: 18px;
             font-weight: 500;
             transition: color 0.3s ease-in-out;
@@ -53,59 +63,59 @@
         .navbar-brand i:hover {
             color: #005f73;
         }
-footer {
-    background-color: #d9eaff;
-    padding: 40px 0;
-    color: #004080;
-}
-footer h5 {
-    font-weight: bold;
-}
-footer ul {
-    padding: 0;
-    list-style: none;
-}
-footer ul li a {
-    color: #0056b3;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-footer ul li a:hover {
-    color: #0077b6;
-}
-
-.my-social-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-}
-
-form input[type='email'] {
-    border-radius: 20px;
-    border: 1px solid #0077b6;
-    padding: 10px;
-}
-form button {
-    background-color: #0077b6;
-    border-radius: 20px;
-    transition: background 0.3s;
-}
-form button:hover {
-    background-color: #0056b3;
-}
-        @media (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
-            }
-            .navbar-nav .nav-item {
-                margin-bottom: 1rem;
-            }
+        footer {
+            background-color: #d9eaff;
+            padding: 40px 0;
+            color: #004080;
+        }
+        footer h5 {
+            font-weight: bold;
+        }
+        footer ul {
+            padding: 0;
+            list-style: none;
+        }
+        footer ul li a {
+            color: #0056b3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer ul li a:hover {
+            color: #0077b6;
         }
 
- .offcanvas {
-        background-color: #E8F9FF;
-    }
+        .my-social-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        form input[type='email'] {
+            border-radius: 20px;
+            border: 1px solid #0077b6;
+            padding: 10px;
+        }
+        form button {
+            background-color: #0077b6;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+                @media (max-width: 768px) {
+                    .navbar-nav {
+                        text-align: center;
+                    }
+                    .navbar-nav .nav-item {
+                        margin-bottom: 1rem;
+                    }
+                }
+
+         .offcanvas {
+                background-color: #E8F9FF;
+            }
 
     .offcanvas-header {
         background: #0077b6;
@@ -183,27 +193,26 @@ form button:hover {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-          <li class="nav-item">
-                <a class="nav-link" href="{% url 'subject_list' %}">Teaching</a>
+      <ul class="navbar-nav navbar-nav-center mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'subject_list' %}">Teaching</a>
             </li>
-          <li class="nav-item">
-                <a class="nav-link" href="{% url 'post_list' %}">Teacher</a>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'post_list' %}">Teacher</a>
             </li>
-      </ul>
+          </ul>
         <div class="ms-auto">
             <a class="nav-link" href="{% url 'profile' %}">
-                <i class="bi bi-person-heart" style="font-size: 1.5rem;"></i>
+                <i class="bi bi-person-heart" style="font-size: 34px;"></i>
             </a>
         </div>
       <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
           {% if user.profile.photo %}
             <img src="{{ user.profile.photo.url }}" alt="Profile Picture"
-                 class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
+                 class="rounded-circle ms-3" style="width: 43px; height: 44px; cursor: pointer;">
           {% else %}
             <img src="https://i.pinimg.com/736x/f5/be/33/f5be3307a40868a80821729e9e5ae7cd.jpg" alt="Default Profile Picture"
-                 class="rounded-circle ms-3" style="width: 40px; height: 40px; cursor: pointer;">
+                 class="rounded-circle ms-3" style="width: 48px; height: 48px; cursor: pointer;">
           {% endif %}
         </a>
     </div>

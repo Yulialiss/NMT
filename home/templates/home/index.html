@@ -18,7 +18,8 @@
 <section class="hero-section">
     <div class="hero-content">
       <h1 class="nmt-hero-teyu">Готуйся до НМТ з упевненістю!</h1>
-      <p class="nmt-hero-description">Національний мультипредметний тест – це важливий крок до твого майбутнього. Перевір свої знання та будь готовий до успіху!</p>
+      <p class="nmt-hero-description">Національний мультипредметний тест – це важливий крок до твого майбутнього.
+          Перевір свої знання та будь готовий до успіху!</p>
 
         <div class="hero-buttons">
             <button class="hero-btn hero-btn-primary" onclick="window.location.href='{% url 'login' %}';">Приєднатися</button>
@@ -37,7 +38,7 @@
 <!--Секція 2-->
 <section class="nmpt-section">
   <div class="container text-center nmpt-container">
-    <h2 class="mb-4 nmpt-heading">Національний мультипредметний тест (НМТ)</h2>
+    <h2 class="mb-4 n mpt-heading">Національний мультипредметний тест (НМТ)</h2>
     <p class="lead mb-4 nmpt-description">НМТ — це не просто тест! Це місце, де твої знання та гумор зустрічаються. Чи готовий до виклику? Три предмети, три шанси показати себе!</p>
 
     <div class="row nmpt-row">
@@ -162,14 +163,13 @@
 </div>
 
 <!--Секція 4-->
-<!--Секція 3-->
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="row g-4">
         <div class="col-md-4">
             <div class="pricing-card p-5">
-                <h3 class="text-primary">Правильна українська мова</h3>
+                <h3 class="text-primary">Українська мова</h3>
                 <p class="price fs-2 fw-bold">3000</p>
-                <p>Підніми свій рівень володіння українською!</p>
+                <p>Підніми свій рівень володіння українською!Вивчай правильно та ефективно!</p>
                 <p><strong>Що ти отримаєш:</strong></p>
                 <ul class="list-unstyled">
                     <li>Розбір найпоширеніших помилок</li>
@@ -219,66 +219,65 @@
     </div>
 </div>
 
-<!--Секція 3-->
-
 <!--Секція 5-->
 <div class="wedency-container py-5">
-  <h2 class="wedency-title text-center mb-4">Залиште свій відгук</h2>
+<h2 class="wedency-title text-center mb-4">Залиште свій відгук &hearts;</h2>
 
-  <div class="row">
+<div class="row justify-content-center">
+  <div class="col-md-6 d-flex justify-content-center">
+    <div class="wedency-review-text text-center">
+         <p>Ми завжди раді почути вашу думку! Напишіть, як вам наш сервіс, що було чудово, а що можна поліпшити. Ваш відгук допомагає нам ставати краще для вас!</p>
+    </div>
+  </div>
+</div>
+  <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="wedency-review-text">
-        <p>Тут може бути ваш відгук або інший текстовий контент.</p>
+      <div class="wedency-review-form">
+       <form id="review-form" method="POST" class="wedency-comment-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="wedency-btn-custom">Надіслати відгук</button>
+        </form>
       </div>
     </div>
   </div>
-
-  <div class="col-md-6">
-    <div class="wedency-review-form">
-      <form method="POST" class="wedency-comment-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="wedency-btn-custom">Надіслати відгук</button>
-      </form>
-    </div>
-  </div>
 </div>
 
-<div class="text-center my-4">
-    <h2 class="fw-bold text-primary">Дивіться, що кажуть наші користувачі!</h2>
-    <p class="text-secondary">Наш сервіс уже допоміг сотням людей. Читайте їхні відгуки та діліться своїм досвідом!</p>
+<div class="user-feedback-container my-4">
+  <h2 class="user-feedback-title">Дивіться, що кажуть наші користувачі!</h2>
+  <p class="user-feedback-description">Наш сервіс уже допоміг сотням людей. Читайте їхні відгуки та діліться своїм досвідом!</p>
 </div>
+
+
+
 <!--Секція 5-->
 
-<!--Секція 6-->
-<div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+<div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="reviewsContainer" class="carousel-inner">
         {% for review in reviews %}
             {% if forloop.first or forloop.counter0|divisibleby:3 %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
                     <div class="row justify-content-center">
             {% endif %}
-
             <div class="col-md-4 d-flex align-items-stretch">
-                <div class="card shadow-sm p-3 border-0 rounded-4">
-                    <div class="d-flex align-items-center mb-3">
-                        {% if review.user.profile.photo %}
-                            <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 50px; height: 50px;">
-                        {% else %}
-                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="rounded-circle me-2" style="width: 50px; height: 50px;">
-                        {% endif %}
-                        <div>
-                            <strong class="text-primary">{{ review.user.username }}</strong>
-                            <div class="text-muted" style="font-size: 14px;">{{ review.created_at }}</div>
+                <div class="fancy-review-box">
+                    <div class="fancy-review-card">
+                        <div class="fancy-reviewer-info">
+                            {% if review.user.profile.photo %}
+                                <img src="{{ review.user.profile.photo.url }}" alt="Profile Picture" class="fancy-avatar">
+                            {% else %}
+                                <img src="https://i.pinimg.com/474x/36/52/05/365205dee1a12061c42a64d128ee4eb3.jpg" alt="Default Profile Picture" class="fancy-avatar">
+                            {% endif %}
+                            <div>
+                                <strong class="fancy-reviewer-name">{{ review.user.username }}</strong>
+                                <div class="fancy-review-date">{{ review.created_at }}</div>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-secondary">"{{ review.content }}"</p>
-                    <div class="text-warning">
-
+                        <p class="fancy-review-content">"{{ review.content }}"</p>
+                        <div class="fancy-stars">⭐⭐⭐⭐⭐</div>
                     </div>
                 </div>
             </div>
-
             {% if forloop.last or forloop.counter|divisibleby:3 %}
                     </div>
                 </div>
@@ -290,17 +289,48 @@
         {% endfor %}
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Попередній</span>
+        <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Наступний</span>
+        <span class="visually-hidden">Next</span>
     </button>
 </div>
+
 <!--Секція 6-->
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("review-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        console.log("Форма відправляється...");
+
+        let formData = new FormData(this);
+
+        fetch("{% url 'reviews' %}", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Отримано відповідь від сервера:", data);
+
+            if (data.success) {
+                window.location.reload();
+            } else {
+                alert("Помилка: " + JSON.stringify(data.errors));
+            }
+        })
+        .catch(error => console.error("Помилка:", error));
+    });
+});
+</script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

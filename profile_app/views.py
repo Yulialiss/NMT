@@ -14,7 +14,6 @@ def profile_view(request):
 @login_required
 def edit_profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(instance=profile, data=request.POST, files=request.FILES)
@@ -40,7 +39,6 @@ def edit_profile(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=profile)
-
     return render(
         request,
         'profile_app/edit_profile.html',

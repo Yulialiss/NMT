@@ -16,9 +16,18 @@ class UserEditForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs['placeholder'] = "Ім'я"
-        self.fields['last_name'].widget.attrs['placeholder'] = 'Прізвище'
-        self.fields['email'].widget.attrs['placeholder'] = 'email@example.com'
+        self.fields['first_name'].widget.attrs.update({
+            'placeholder': "Ім'я",
+            'class': 'form-control rounded-pill'
+        })
+        self.fields['last_name'].widget.attrs.update({
+            'placeholder': 'Прізвище',
+            'class': 'form-control rounded-pill'
+        })
+        self.fields['email'].widget.attrs.update({
+            'placeholder': 'email@example.com',
+            'class': 'form-control rounded-pill'
+        })
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
@@ -30,6 +39,19 @@ class ProfileEditForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['birth_date'].widget.attrs['placeholder'] = 'ДД/MM/РРРР'
-        self.fields['phone_number'].widget.attrs['placeholder'] = 'Ваш номер телефону'
-        self.fields['location'].widget.attrs['placeholder'] = 'Місто/Регіон'
+        self.fields['birth_date'].widget.attrs.update({
+            'placeholder': 'дд.мм.рррр',
+            'class': 'form-control rounded-pill'
+        })
+        self.fields['birth_date'].input_formats = ['%d.%m.%Y']
+
+        self.fields['phone_number'].widget.attrs.update({
+            'placeholder': 'Ваш номер телефону',
+            'class': 'form-control rounded-pill'
+        })
+        self.fields['location'].widget.attrs.update({
+            'placeholder': 'Місто/Регіон',
+            'class': 'form-control rounded-pill'
+        })
+
+        self.fields['photo'].required = False

@@ -1,4 +1,3 @@
-
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
     let email = document.querySelector("input[type='email']").value;
@@ -15,7 +14,6 @@ document.querySelector("form").addEventListener("submit", function(event) {
     .then(data => alert(data.message || data.error))
     .catch(error => console.error("Error:", error));
 });
-
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

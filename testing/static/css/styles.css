@@ -3,14 +3,13 @@
 
 body {
     font-family: 'Georgia', serif;
-    background-color: #FFEB3B;
-    margin: 0;
-    padding: 0;
+    background-color: #E8F9FF;
+
 }
 
 .custom-study-header {
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Georgia', serif;
     font-size: 32px;
     font-weight: 600;
     color: #2D336B;
@@ -93,7 +92,7 @@ body {
 
 .custom-theory-link {
   position: absolute;
-  top: 80px;
+  top: 100px;
   right: 40px;
   background-color: #2D336B;
   color: white;

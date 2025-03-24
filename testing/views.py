@@ -6,7 +6,6 @@ from django.utils.timezone import now, timedelta
 from django.http import HttpResponse
 from django.utils.dateparse import parse_datetime
 
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import TestResult, Subject
@@ -55,12 +54,7 @@ def test_detail(request, test_id):
                 else:
                     incorrect_answers.append(question)
 
-        test_result = TestResult.objects.create(
-            user=request.user,
-            test=test,
-            score=score,
-            max_score=questions.count(),
-            time_spent=time_spent
+        test_result = TestResult.objects.create(user=request.user, test=test,score=score, max_score=questions.count(),time_spent=time_spent
         )
 
         for question in incorrect_answers:
@@ -81,6 +75,7 @@ def test_detail(request, test_id):
 def subject_list(request):
     subjects = Subject.objects.all()
     return render(request, 'testing/subject_list.html', {'subjects': subjects})
+
 @login_required
 def test_list(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
@@ -88,7 +83,7 @@ def test_list(request, subject_id):
 
     for test in tests:
         last_result = TestResult.objects.filter(user=request.user, test=test).order_by('-date_taken').first()
-        if last_result:
+        if last_result and last_result.max_score > 0:
             test.progress = round((last_result.score / last_result.max_score) * 100)
         else:
             test.progress = 0

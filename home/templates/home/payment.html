@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оплата</title>
+    <title>Оплата за курси</title>
     <link href="{% static 'css/payment.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
+    <a href="{% url 'home' %}" class="circle-icon">
+        <i class="bi bi-reply"></i>
+    </a>
+
     <div id="loadingScreen" class="loading-screen">
         <div class="loader"></div>
     </div>
-
     <div id="paymentForm" class="container" style="display: none;">
-        <h2 class="title">Оплата</h2>
-        <p class="subtitle">Перевірте ваші дані</p>
+        <h2 class="title">Оплата за курс</h2>
+        <p class="subtitle">Ваші дані правильні?</p>
 
         <p id="selectedBank" class="detail-row"></p>
 
@@ -23,18 +28,6 @@
             <p id="cardNumber" class="detail-row"></p>
             <p id="fullName" class="detail-row"></p>
         </div>
-
-
-    </div>
-
-    <div id="paymentSuccessForm" class="container" style="display: none;">
-        <h2 class="title">Платіж прийнято</h2>
-        <p id="paymentStatusMessage" class="subtitle">Чек успішно прикріплено</p>
-        <p class="subtitle">Очікуйте підтвердження оплати і надходження квитків на пошту</p>
-        <div class="mt-4">
-            <a href="{% url 'home' %}" class="btn btn-primary">Повернутися на головну</a>
-        </div>
-
     </div>
 
     <script src="{% static 'js/payment.js' %}"></script>

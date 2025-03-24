@@ -49,10 +49,11 @@ h1:hover::after {
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-
 .profile-img {
     width: 170px;
     height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
     transition: transform 0.3s ease;
     border: 3px solid #004d80;
 }
@@ -246,8 +247,6 @@ form.mb-4 input {
 .btn-publish:active {
     transform: scale(0.98);
 }
-
-
 
 .beautiful-header {
     font-family: 'Playfair Display', serif;

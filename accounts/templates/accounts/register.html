@@ -129,32 +129,31 @@
   <div class="container">
     <h2>РEЄСТРАЦІЯ</h2>
     <form method="post">
-      {% csrf_token %}
-      <div class="mb-3">
-        <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control" placeholder="Ім'я користувача">
-      </div>
-      <div class="mb-3">
-        <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" class="form-control" placeholder="Email">
-      </div>
-      <div class="mb-3">
-        <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control" placeholder="Придумайте пароль">
-      </div>
-      <div class="mb-3">
-        <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" class="form-control" placeholder="Повторіть пароль">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Оберіть роль</label>
-        <div class="d-flex justify-content-center gap-3">
-          <input type="radio" name="{{ form.role.name }}" value="student" id="role_student" class="form-check-input">
-          <label for="role_student" class="form-check-label">Учень</label>
-
-          <input type="radio" name="{{ form.role.name }}" value="teacher" id="role_teacher" class="form-check-input">
-          <label for="role_teacher" class="form-check-label">Вчитель</label>
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control" placeholder="Ім'я користувача">
         </div>
-      </div>
+        <div class="mb-3">
+          <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" class="form-control" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control" placeholder="Придумайте пароль">
+        </div>
+        <div class="mb-3">
+          <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" class="form-control" placeholder="Повторіть пароль">
+        </div>
 
-      <button type="submit" class="btn btn-success btn-custom">Зареєструватися</button>
+        <div class="mb-3">
+          <label class="form-label">Оберіть роль</label>
+          <div class="d-flex justify-content-center gap-3">
+            <input type="radio" name="{{ form.role.name }}" value="student" id="role_student" class="form-check-input">
+            <label for="role_student" class="form-check-label">Учень</label>
+
+            <input type="radio" name="{{ form.role.name }}" value="teacher" id="role_teacher" class="form-check-input">
+            <label for="role_teacher" class="form-check-label">Вчитель</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-custom">Зареєструватися</button>
     </form>
 
     <a href="{% url 'login' %}" class="login-link">Вже маєте акаунт? Увійдіть</a>

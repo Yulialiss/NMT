@@ -1,15 +1,31 @@
+/* Глобальні стилі */
 body {
     background: linear-gradient(135deg, #E8F9FF 0%, #D0E8F5 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .intro {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1000px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 30px;
-
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .container-left, .container-right {
@@ -18,37 +34,17 @@ body {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.container-left {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.container-right {
-    flex: 1;
-    padding-left: 20px;
+.container-left.animated, .container-right.animated {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .container-right img {
     width: 100%;
     max-width: 500px;
     height: auto;
-    border-radius: 8px;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.container-left.animated, .container-right.animated {
-    opacity: 1;
-    transform: translateX(0);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .animated-image {
@@ -56,41 +52,48 @@ body {
 }
 
 @keyframes floatImage {
-    0% {
+    0%, 100% {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
+        transform: translateY(-15px);
     }
 }
 
 .nmt-container {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 40px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
 .nmt-card {
-    background-color: #F9F3FF;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #F9F3FF, #EADFF5);
+    border-radius: 15px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: opacity 1s ease-out, transform 1s ease-out;
+    position: relative;
+    overflow: hidden;
 }
 
-.nmt-card.left {
-    transform: translateX(-50px);
+.nmt-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-.nmt-card.right {
-    transform: translateX(50px);
+.nmt-card::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: -20px;
+    right: -20px;
 }
 
 .nmt-card.show {
@@ -99,28 +102,33 @@ body {
 }
 
 .nmt-icon {
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 10px;
+    color: #6F4E92;
 }
 
 .nmt-title {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     color: #6F4E92;
     margin-bottom: 10px;
 }
 
 .nmt-text {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.5;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
 }
 
 .landing-container {
     display: flex;
     align-items: center;
     max-width: 900px;
-    padding: 20px;
-    border-radius: 10px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateX(-50px);
     animation: fadeInSlide 1s ease-out forwards;
@@ -148,6 +156,7 @@ body {
 .illustration-section img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 .text-content {
@@ -159,21 +168,31 @@ body {
 }
 
 .text-content h2 {
-    font-size: 24px;
+    font-size: 26px;
     color: #333;
+    font-weight: bold;
 }
 
 .text-content p {
     color: #666;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 .cta-button {
     display: inline-block;
-    background: #007bff;
+    background: linear-gradient(135deg, #007bff, #00d4ff);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #0056b3, #00aaff);
+    transform: scale(1.05);
 }

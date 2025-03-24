@@ -65,55 +65,55 @@
         .navbar-brand i:hover {
             color: #005f73;
         }
-footer {
-    background-color: #d9eaff;
-    padding: 40px 0;
-    color: #004080;
-}
-footer h5 {
-    font-weight: bold;
-}
-footer ul {
-    padding: 0;
-    list-style: none;
-}
-footer ul li a {
-    color: #0056b3;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-footer ul li a:hover {
-    color: #0077b6;
-}
+    footer {
+        background-color: #d9eaff;
+        padding: 40px 0;
+        color: #004080;
+    }
+    footer h5 {
+        font-weight: bold;
+    }
+    footer ul {
+        padding: 0;
+        list-style: none;
+    }
+    footer ul li a {
+        color: #0056b3;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    footer ul li a:hover {
+        color: #0077b6;
+    }
 
-.my-social-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-}
+    .my-social-icon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+    }
 
-form input[type='email'] {
-    border-radius: 20px;
-    border: 1px solid #0077b6;
-    padding: 10px;
-}
-form button {
-    background-color: #0077b6;
-    border-radius: 20px;
-    transition: background 0.3s;
-}
-form button:hover {
-    background-color: #0056b3;
-}
-        @media (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
+    form input[type='email'] {
+        border-radius: 20px;
+        border: 1px solid #0077b6;
+        padding: 10px;
+    }
+    form button {
+        background-color: #0077b6;
+        border-radius: 20px;
+        transition: background 0.3s;
+    }
+    form button:hover {
+        background-color: #0056b3;
+    }
+            @media (max-width: 768px) {
+                .navbar-nav {
+                    text-align: center;
+                }
+                .navbar-nav .nav-item {
+                    margin-bottom: 1rem;
+                }
             }
-            .navbar-nav .nav-item {
-                margin-bottom: 1rem;
-            }
-        }
 
     </style>
 </head>
@@ -122,11 +122,9 @@ form button:hover {
       <div class="container-fluid">
             <a class="navbar-brand ms-3 d-flex align-items-center" href="{% url 'home' %}">
                 <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="50" height="50" class="d-inline-block" style="position: relative; top: -8px;">
-                <span class="ms-2" style="position: relative; top: -7px; color: #1a237e;">EdWay</span>
-            </a>
+                <span class="ms-2" style="position: relative; top: -7px; color: #1a237e;">EdWay</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <span class="navbar-toggler-icon"></span></button>
        <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -135,22 +133,12 @@ form button:hover {
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about_page' %}">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'post_list' %}">Teacher</a>
-                </li>
-            </ul>
-
-
-             <a class="navbar-brand" href="{% url 'login' %}">
-                    <i class="bi bi-person-lock"></i>
-             </a>
-             <a class="navbar-brand" href="{% url 'logout' %}">
-                 <i class="bi bi-box-arrow-right"></i>
-             </a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'post_list' %}">Teacher</a></li></ul>
+             <a class="navbar-brand" href="{% url 'login' %}"><i class="bi bi-person-lock"></i></a>
+             <a class="navbar-brand" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i></a>
         </div>
              </div>
     </nav>
-
 
         {% block content %}
         {% endblock %}

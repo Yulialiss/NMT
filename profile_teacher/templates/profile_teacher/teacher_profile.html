@@ -1,15 +1,28 @@
 {% extends 'profile_teacher/base_teacher.html' %}
 
 {% block title %}Профіль вчителя{% endblock %}
+{% load static %}
 
 {% block content %}
 <style>
-    .profile-container {
-        width: 1000px;
+    html, body {
+        height: 100%;
+    background: linear-gradient(to right, #D1E9F6, #A8D8E9, #5BC0EB);
+
+    }
+    .wrapper {
+    padding: 40px;
+    margin: 50px auto;
+}
+
+    .content {
+        flex: 1;
+    }
+    .profiless {
         margin: auto;
-        background: #ffffff;
         padding: 25px;
         border-radius: 15px;
+        min-height: calc(100vh - 200px);
     }
     .profile-photo {
         width: 300px;
@@ -23,111 +36,115 @@
         transform: scale(1.1);
     }
     .list-group-item {
-        border: none;
-        padding: 12px 18px;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        background-color: #f9f9f9;
-        transition: background-color 0.3s ease;
-    }
-    .list-group-item:hover {
-        background-color: #e9ecef;
-    }
-    .list-group-item strong {
-        flex: 1;
-        color: #495057;
-    }
-    .list-group-item i {
-        margin-right: 10px;
-        color: #007bff;
-        font-size: 20px;
-        transition: transform 0.3s ease;
-    }
-    .list-group-item i:hover {
-        transform: scale(1.2);
-    }
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item:hover {
+    background-color: #A8D8E9;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+    color: #211C84;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.list-group-item i:hover {
+    transform: scale(1.2);
+}
+
+.list-group-item strong {
+    flex: 1;
+    color: #495057;
+}
     .profile-bio {
-        background: #eef2f7;
         padding: 18px;
         border-radius: 8px;
         font-size: 16px;
     }
-    .btn-primary {
-        background: linear-gradient(135deg, #007bff, #0056b3);
-        border: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        transition: 0.3s;
-        font-size: 16px;
-    }
-    .btn-primary:hover {
-        background: linear-gradient(135deg, #0056b3, #004494);
-        transform: scale(1.05);
-    }
     .profile-header {
         text-align: center;
-        color: #007bff;
-        font-size: 42px;
+        color: #213555;
+        font-size: 52px;
         font-weight: bold;
         margin-bottom: 20px;
         text-transform: uppercase;
         letter-spacing: 3px;
     }
-    .profile-info {
-        padding-left: 30px; /* Зміщення інформації вправо */
-    }
+
+    .name_name {
+    list-style: none;
+    padding-left: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #0C0950;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
 </style>
-<h1 class="profile-header">ВІТАЄМО! МИ РАДІ, ЩО ВИ ПРИЄДНАЛИСЯ ДО НАШОЇ КОМАНДИ!</h1>
 
-<div class="container mt-4 profile-container">
-    <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-center">
-            {% if profile.photo %}
-                <img src="{{ profile.photo.url }}" alt="Фото профілю" class="profile-photo img-thumbnail mx-auto d-block">
-            {% else %}
-                <p class="text-muted">[Фото відсутнє]</p>
-            {% endif %}
+<div class="wrapper">
+    <h1 class="profile-header">ВІТАЄМО! ВИ НА ПЛАТФОРМІ EdWAY!</h1>
+
+    <div class="container mt-4 profiless content">
+        <div class="row align-items-center">
+
+            <div class="col-12 col-md-4 text-center">
+                <li class="name_name">
+                        <strong> </strong> {{ request.user.username }}
+                    </li>
+                {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="Фото профілю" class="profile-photo img-thumbnail mx-auto d-block">
+                {% else %}
+                    <img src="https://i.pinimg.com/474x/81/de/5e/81de5ee8bf8c1559462a7be0a3b1cbdd.jpg" alt="Фото профілю за замовчуванням" class="profile-photo img-thumbnail mx-auto d-block">
+                {% endif %}
+
+            </div>
+            <div class="col-md-8">
+                <ul class="list-group list-group-flush profile-info">
+
+                    <li class="list-group-item">
+                        <i class="fas fa-birthday-cake"></i><strong> Вік:</strong> {{ profile.age|default:"Не вказано" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-envelope"></i><strong> Email:</strong> {{ profile.email|default:"Не вказано" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-phone"></i><strong> Телефон:</strong> {{ profile.phone_number|default:"Не вказано" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-chalkboard-teacher"></i><strong> Формат навчання:</strong> {{ profile.get_teaching_mode_display|default:"Не вказано" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-map-marker-alt"></i><strong> Локація:</strong> {{ profile.location|default:"Не вказано" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-book"></i><strong> Предмети викладання:</strong>
+                        {% if profile.subjects %}
+                            {{ profile.get_subjects_list|join:", " }}
+                        {% else %}
+                            Не вказано
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-8">
-            <ul class="list-group list-group-flush profile-info">
-                <li class="list-group-item">
-                    <i class="fas fa-user"></i><strong>Ім'я користувача:</strong> {{ request.user.username }}
-                </li>
-                <li class="list-group-item">
-                    <i class="fas fa-birthday-cake"></i><strong>Вік:</strong> {{ profile.age }}
-                </li>
-                <li class="list-group-item">
-                    <i class="fas fa-envelope"></i><strong>Email:</strong> {{ profile.email }}
-                </li>
-                <li class="list-group-item">
-                    <i class="fas fa-phone"></i><strong>Телефон:</strong> {{ profile.phone_number }}
-                </li>
-                <li class="list-group-item">
-                    <i class="fas fa-chalkboard-teacher"></i><strong>Формат навчання:</strong> {{ profile.get_teaching_mode_display }}
-                </li>
-                <li class="list-group-item">
-                    <i class="fas fa-map-marker-alt"></i><strong>Локація:</strong> {{ profile.location }}
-                </li>
-            </ul>
-        </div>
+
+
     </div>
 
-    <div class="mt-4">
-        <strong>Предмети викладання:</strong>
-        {% if profile.subjects %}
-            <ul class="list-group mt-2">
-                {% for subject in profile.get_subjects_list %}
-                    <li class="list-group-item">{{ subject }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="text-muted">Не вказано</p>
-        {% endif %}
-    </div>
-
-    <h2 class="mt-4">Про себе:</h2>
-    <p class="profile-bio">{{ profile.bio|linebreaks }}</p>
 
 </div>
 

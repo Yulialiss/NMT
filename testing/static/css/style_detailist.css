@@ -1,82 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    font-family: 'Georgia', serif;
+    background-color: #E8F9FF;
 }
 
-h1, h2 {
+.test-title {
+    color: #2D336B;
     text-align: center;
-    color: #5a9bd5;
-}
-
-h1 {
-    margin-top: 50px;
-    font-size: 2.5em;
-    font-weight: bold;
-    animation: fadeIn 1s ease-out;
-}
-
-h2 {
-    font-size: 1.5em;
-    color: #74b9d3;
     margin-top: 20px;
+    font-size: 56px;
 }
 
-form {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 30px auto;
-    width: 80%;
-    max-width: 600px;
+.test-timer-container h2 {
+    text-align: center;
+    color: #0288d1;
+    font-size: 1.5em;
 }
 
-form p {
+.test-timer-container {
+    text-align: center;
+    margin-bottom: 20px;
     font-size: 1.2em;
-    color: #4b7cbf;
+}
+
+.test-form {
+    padding: 20px;
+    border-radius: 15px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin: 15px 0;
+    font-weight: bold;
+    color: #0277bd;
+}
+
+.question-block {
+    background: #D9EAFD;
+
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0, 137, 255, 0.1);
 }
 
 input[type="radio"] {
     margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #039be5;
 }
 
-input[type="radio"]:checked {
-    background-color: #5a9bd5;
-}
-
-button {
-    display: block;
-    width: 100%;
-    background-color: #5a9bd5;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 1.2em;
-    border-radius: 5px;
+.answer-label {
+    font-size: 1.1em;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s;
 }
 
-button:hover {
-    background-color: #4b89c4;
+.answer-label:hover {
+    color: #01579b;
 }
 
-#timer {
+.submit-test-button {
+    background: #213555;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: block;
+    margin: 20px auto;
+}
+
+.submit-test-button:hover {
+    background: #0277bd;
+    transform: scale(1.05);
+}
+
+#test-timer {
     font-weight: bold;
-    color: #d0e8f2;
-    font-size: 1.5em;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    color: #d32f2f;
+    font-size: 1.3em;
 }

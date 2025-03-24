@@ -29,7 +29,7 @@
         </div>
     {% endif %}
 
-<h2 class="question-details-title">Деталі відповідей:</h2>
+<h2 class="question-details-title">Деталі відповідей</h2>
 <ul class="question-list">
     {% for question in questions %}
         <li class="question-item">
@@ -55,7 +55,6 @@
                     {% endfor %}
                 </p>
             {% else %}
-                <p class="no-answer">Ваша відповідь: Немає</p>
             {% endif %}
         </li>
     {% endfor %}
@@ -64,6 +63,7 @@
     <form action="{% url 'download_test_result' result.id %}" method="get" class="custom-form">
                     <button type="submit" class="download-btn">📥</button>
                 </form>
+
     <a href="{% url 'subject_list' %}" class="circle-icon">
         <i class="bi bi-reply"></i>
     </a>

@@ -52,6 +52,10 @@
         .navbar-brand i:hover {
             color: #005f73;
         }
+        .nav-item {
+    margin: 0 70px;
+}
+
 footer {
     background-color: #d9eaff;
     padding: 40px 0;
@@ -115,22 +119,22 @@ form button:hover {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav mx-auto d-flex justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'teacher_profile_edit' %}">Edit my profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'post_list' %}">Advertisement</a>
+        </li>
+    </ul>
+    <a class="navbar-brand" href="{% url 'teacher_profile' %}">
+        <i class="bi bi-person-heart"></i>
+    </a>
+    <a class="navbar-brand" href="{% url 'logout' %}">
+        <i class="bi bi-box-arrow-right"></i>
+    </a>
+</div>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'teacher_profile_edit' %}">Edit my profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'post_list' %}">Post teacher</a>
-        </li>
-      </ul>
-      <a class="navbar-brand" href="{% url 'teacher_profile' %}">
-          <i class="bi bi-person-heart"></i>
-          </a>
-         <a class="navbar-brand" href="{% url 'logout' %}">
-             <i class="bi bi-box-arrow-right"></i>
-         </a>
-    </div>
   </div>
 </nav>
 

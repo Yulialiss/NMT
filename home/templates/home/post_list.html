@@ -1,12 +1,12 @@
 {% extends "home/base.html" %}
 
-{% block title %}Список викладачів{% endblock %}
+{% block title %}Репетитори{% endblock %}
 
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style_post_list.css' %}">
 <div class="container py-5">
-   <h1 class="text-center mb-5 fw-bold title-style">Викладачі</h1>
+   <h1 class="text-center mb-5 fw-bold title-style">Репетитори</h1>
     <form method="GET" class="mb-4 row g-3 justify-content-center">
         <div class="col-md-auto col-12">
             <select name="subject" class="form-select">
@@ -151,7 +151,7 @@
                 {% endif %}
 
                 {% if request.user == post.author %}
-                    <a href="{% url 'edit_post' post.id %}" class="btn pastel-blue-btn position-relative bottom-0 end-0 m-2 animated-btn">Редагувати пост</a>
+                    <a href="{% url 'edit_post' post.id %}" class="btn pastel-blue-btn position-relative bottom-0 end-0 m-2 animated-btn">Редагувати оголошення</a>
                 {% endif %}
 
                     </div>
@@ -165,7 +165,7 @@
 </div>
 {% if user.role == 'teacher' %}
 <a href="{% url 'add_post' %}" class="btn btn-primary add-post-btn">
-    <i class="fas fa-plus"></i> Додати пост
+    <i class="fas fa-plus"></i> Додати оголошення
 </a>
 {% endif %}
 
@@ -230,7 +230,7 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            highlightStars(score); // Виділяємо зірки відповідно до нової оцінки
+                            highlightStars(score);
 
                             document.getElementById(`rating-value-${postId}`).innerText = data.new_rating.toFixed(1);
                             document.getElementById(`rating-count-${postId}`).innerText = data.rating_count;
