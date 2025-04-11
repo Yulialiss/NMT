@@ -1,0 +1,210 @@
+<style>
+
+
+body {
+    background-color: #E8F9FF;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #0C0950;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+
+form {
+    background: linear-gradient(135deg, #0a0f1a 0%, #101f33 100%);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 30px auto;
+    font-size: 16px;
+    position: relative;
+}
+
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    background: inherit;
+    filter: blur(50px);
+    z-index: -1;
+}
+
+label {
+    font-size: 16px;
+    color: #1e90ff;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.form-control {
+    border: 2px solid #1e90ff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-control:focus {
+    border-color: #00bfff;
+    outline: none;
+    background-color: #fff;
+}
+
+.btn {
+    background-color: #1e90ff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 255, 0.2);
+}
+
+.btn:hover {
+    background-color: #00bfff;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: #00bfff;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #1e90ff;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+}
+
+.format-list {
+    margin-bottom: 20px;
+}
+
+input[name="format_item"] {
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 2px solid #1e90ff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+button[type="button"] {
+    background-color: #00bfff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 191, 255, 0.2);
+}
+
+button[type="button"]:hover {
+    background-color: #1e90ff;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+}
+
+br {
+    margin-bottom: 15px;
+}
+
+small.form-text {
+    font-size: 14px;
+    color: #666;
+}
+.btn-submit {
+    background-color: #AFDDFF;
+    color: #123458;
+
+    display: block;
+    margin-left: auto;
+}
+
+</style>
+<h2>ДОДАВАЙ НОВИЙ КУРС!</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div>
+        <label for="id_title">Назва курсу:</label>
+        <input type="text" name="title" class="form-control" id="id_title" placeholder="Введіть назву курсу" required>
+    </div>
+
+    <div>
+        <label for="id_description">Опис курсу:</label>
+        <textarea name="description" class="form-control" id="id_description" rows="4" placeholder="Опис курсу..." required></textarea>
+    </div>
+
+    <div>
+        <label for="id_price">Ціна курсу:</label>
+        <input type="number" name="price" class="form-control" id="id_price" value="0.0" step="0.01" min="0" required>
+    </div>
+
+    <div>
+        <label for="id_photo">Фото курсу:</label>
+        <input type="file" name="photo" class="form-control" id="id_photo" accept="image/*" onchange="showFileName()">
+        <small id="fileName" class="form-text text-muted">Файл не вибрано</small>
+    </div>
+
+    <div>
+        <label for="id_learn_outcome">Очікувані результати навчання:</label>
+        <textarea name="learn_outcome" class="form-control" id="id_learn_outcome" rows="4" placeholder="Що учні зможуть зробити після курсу?" required></textarea>
+    </div>
+
+    <label for="format-list">Формат курсу (список):</label>
+    <div id="format-list" class="format-list">
+        <input type="text" name="format_item" placeholder="Пункт 1" class="form-control">
+    </div>
+    <button type="button" onclick="addFormatItem()" class="btn btn-secondary">+ Додати пункт</button><br><br>
+
+    {{ form.course_format.as_hidden }}
+
+    <button type="submit" class="btn btn-primary btn-submit">Додати курс</button>
+</form>
+
+<script>
+function addFormatItem() {
+    const container = document.getElementById("format-list");
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = "format_item";
+    input.placeholder = "Новий пункт";
+    input.classList.add("form-control");
+    input.style.marginTop = "10px";
+    container.appendChild(input);
+}
+
+function showFileName() {
+    const fileInput = document.getElementById("id_photo");
+    const fileName = document.getElementById("fileName");
+    if (fileInput.files.length > 0) {
+        fileName.textContent = fileInput.files[0].name;
+    } else {
+        fileName.textContent = "Файл не вибрано";
+    }
+}
+</script>

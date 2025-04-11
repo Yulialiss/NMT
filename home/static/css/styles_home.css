@@ -1105,3 +1105,75 @@ ul.list-unstyled li {
     }
 }
 
+/* Центруємо весь контент */
+.container {
+    margin-top: 30px;
+}
+/* Стилі для колонки з контентом */
+.wedency-content {
+    padding-right: 30px; /* Відступ з правого боку */
+    border-radius: 15px;
+    margin-right: 20px; /* Додаємо відступ між лівим і правим контейнером */
+}
+
+/* Права колонка */
+.wedency-sidebar-right {
+    padding: 20px;
+    border-radius: 15px;
+    margin-left: 50px; /* Додаємо відступ зліва */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); — Видалено тінь */
+}
+
+/* Стилі для зображення */
+.wedency-image-container {
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.wedency-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 250px;
+    transition: transform 0.3s ease;
+}
+
+.wedency-image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Стилі для стратегії та порад */
+.wedency-strategy-section {
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.wedency-strategy-section h5 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #1f6a8f;
+    margin-bottom: 15px;
+}
+
+.wedency-strategy-section p {
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+/* Список порад та новин */
+.wedency-sidebar-right ul li {
+    margin-bottom: 10px;
+}
+
+.wedency-sidebar-right ul li a {
+    color: #1f6a8f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.wedency-sidebar-right ul li a:hover {
+    color: #004d73;
+}
+

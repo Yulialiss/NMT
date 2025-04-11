@@ -1,0 +1,315 @@
+{% extends "home/base.html" %}
+
+{% block title %}Про курс{% endblock %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+{% block content %}
+<style>
+    .wedency-wrapper {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .sunflow-left {
+        width: 35%;
+        background: #AFDDFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 60px;
+    }
+
+    .sunflow-photo {
+        width: 80%;
+        border-radius: 10px;
+    }
+
+    .avliny-right {
+        padding: 40px;
+        width: 65%;
+        background: #fff;
+    }
+
+    .goldport-title {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .goldport-sub {
+        font-weight: normal;
+        font-size: 18px;
+        color: #d6a445;
+        display: block;
+        margin-top: 5px;
+        font-family: 'Courier New', cursive;
+    }
+
+    .blocky-section {
+        margin-top: 30px;
+    }
+
+    .blocky-section .blocky-title {
+        font-size: 20px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 5px;
+    }
+
+    .blocky-text,
+    .blocky-list li {
+        margin: 8px 0;
+        font-size: 16px;
+    }
+
+    .blocky-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .mailylink {
+        color: #000;
+        text-decoration: none;
+    }
+
+    .mailylink:hover {
+        text-decoration: underline;
+    }
+.course-detail-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background: linear-gradient(145deg, #e6f7ff, #ffffff);
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0, 100, 150, 0.15);
+    font-family: 'Poppins', sans-serif;
+    color: #2a2a2a;
+    transition: all 0.4s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.course-detail-container h1 {
+    font-size: 2.6rem;
+    background: linear-gradient(90deg, #58b5e2, #8fd3f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.course-detail-container h1:hover {
+    transform: scale(1.03);
+}
+
+.course-info,
+.course-description,
+.course-price {
+    padding: 20px 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 150, 200, 0.05);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.course-info:hover,
+.course-description:hover,
+.course-price:hover {
+    box-shadow: 0 6px 16px rgba(0, 150, 200, 0.1);
+}
+
+.course-info p,
+.course-description p,
+.course-price p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    color: #444;
+}
+
+.course-info strong,
+.course-description strong {
+    color: #299bbd;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #90e0ef, #48cae4);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(72, 202, 228, 0.3);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #72d1dd, #3fb8cd);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(72, 202, 228, 0.4);
+}
+
+@media (max-width: 600px) {
+    .course-detail-container {
+        padding: 25px;
+    }
+
+    .course-detail-container h1 {
+        font-size: 2rem;
+    }
+
+    .back-button {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+    }
+}
+.course-format {
+    margin-top: 30px;
+}
+
+.course-format h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #6a1b9a;
+    font-weight: 700;
+}
+
+.format-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.format-box {
+    background: linear-gradient(135deg, #AFDDFF, #8F87F1);
+    border: 1px solid #d1c4e9;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
+    color: #4a148c;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    flex: 0 0 400px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.format-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(106, 27, 154, 0.15);
+}
+
+.format-number {
+    color: #003366;
+    font-weight: bold;
+    font-size: 38px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.format-text {
+    font-size: 1rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+
+</style>
+
+<div class="course-detail-container">
+    <h1>{{ course.title }}</h1>
+
+    <div class="course-description">
+        <p>{{ course.description }}</p>
+    </div>
+   {% if user == course.teacher %}
+      <a href="{% url 'edit_course' course.id %}" class="btn btn-warning">Редагувати курс</a>
+    {% endif %}
+
+    <a href="{% url 'courses' %}" class="back-button">Повернутися до списку курсів</a>
+</div>
+
+
+<div class="course-format">
+    <h3>Формат курсу:</h3>
+    <div class="format-items">
+{% for item in course.course_format.splitlines %}
+            <div class="format-box">
+                <span class="format-number">
+                    {{ forloop.counter|stringformat:"02d" }}
+                </span>
+                <span class="format-text">{{ item }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="wedency-wrapper">
+    <div class="sunflow-left">
+        {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="Фото профілю" class="sunflow-photo">
+        {% else %}
+            <img src="https://i.pinimg.com/474x/81/de/5e/81de5ee8bf8c1559462a7be0a3b1cbdd.jpg" alt="Фото профілю за замовчуванням" class="sunflow-photo">
+        {% endif %}
+    </div>
+
+    <div class="avliny-right">
+        <h1 class="goldport-title">
+            Information <span class="goldport-sub">про власника курсу</span>
+        </h1>
+
+        <div class="blocky-section">
+            <h2 class="blocky-title">Profile & Contact</h2>
+            <p class="blocky-text"><strong>{{ request.user.username }}</strong></p>
+            <p class="blocky-text">📍 {{ profile.age|default:"Не вказано" }}</p>
+            <p class="blocky-text">📍 {{ profile.location|default:"Не вказано" }}</p>
+            <p class="blocky-text">📞 {{ profile.phone_number|default:"Не вказано" }}</p>
+            <p class="blocky-text">✉️ {{ profile.email|default:"Не вказано" }}</p>
+        </div>
+
+        <div class="blocky-section">
+            <h2 class="blocky-title">Education</h2>
+            <p class="blocky-text">{{ profile.get_teaching_mode_display|default:"Не вказано" }}</p>
+            <p class="blocky-text">
+                {% if profile.subjects %}
+                    {{ profile.get_subjects_list|join:", " }}
+                {% else %}
+                    Не вказано
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="blocky-section">
+            <h2 class="blocky-title">
+Biography</h2>
+            <ul class="blocky-list">
+                <li><strong>{{ profile.bio|default:"Біографія не вказана" }}</strong>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

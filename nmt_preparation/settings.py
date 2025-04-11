@@ -33,6 +33,8 @@ INSTALLED_APPS = [
      'calendar_app',
     'theory',
     'ckeditor',
+    'courses',
+
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -99,10 +101,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / 'static',
 ]
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

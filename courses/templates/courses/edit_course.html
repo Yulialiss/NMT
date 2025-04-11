@@ -1,0 +1,16 @@
+{% extends "home/base.html" %}
+
+{% block title %}Редагування курсу: {{ course.title }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Редагувати курс: {{ course.title }}</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+    </form>
+    <a href="{% url 'course_detail' course.id %}" class="btn btn-secondary mt-3">Назад до курсу</a>
+  </div>
+{% endblock %}

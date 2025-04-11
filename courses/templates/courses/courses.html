@@ -1,0 +1,332 @@
+{% extends "home/base.html" %}
+
+{% block title %}Сторінка курсів{% endblock %}
+{% load static %}
+
+{% block content %}
+<style>
+
+.wedency-hero {
+  background: linear-gradient(135deg, #0a0f1a 0%, #101f33 100%);
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow:
+    0 0 100px 25px rgba(96, 181, 255, 0.6);
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wedency-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: rgba(96, 181, 255, 0.15);
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.wedency-hero h1,
+.wedency-hero p,
+.wedency-hero a {
+  position: relative;
+  z-index: 1;
+}
+
+.wedency-hero p {
+  font-size: 1.2rem;
+  color: #dbefff;
+}
+
+.wedency-hero .btn {
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+  .course-card {
+  min-height: 350px;
+  max-width: 100%;
+}
+
+.logo-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+}
+
+
+ .neon-btn {
+    background-color: #4aa8f5;
+    color: #111;
+    box-shadow: 0 0 20px #4aa8f5, 0 0 40px #4aa8f5;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    border-radius: 12px;
+  }
+
+  .neon-btn:hover {
+    background-color: #FFF8F8;
+    color: #0C0950;
+    box-shadow: 0 0 20px #FFF8F8, 0 0 40px #FFF8F8;
+    transform: scale(1.05);
+  }
+
+  .neon-icon {
+    margin-right: 6px;
+  }
+
+  .neon-container {
+    text-align: right;
+    margin-bottom: 1.5rem;
+  }
+
+  .centered-title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2rem;
+    color: #213555;
+    font-weight: 700;
+    text-shadow: 0 0 10px #60B5FF, 0 0 20px #60B5FF;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .centered-title:hover {
+    color: #4aa8f5;
+    text-shadow: 0 0 20px #4aa8f5, 0 0 40px #4aa8f5;
+    transform: scale(1.05);
+  }
+
+.course-btn {
+  padding: 6px 16px;
+  margin-right: 8px;
+  margin-left: 36px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+}
+
+  .btn-my-courses {
+    background-color: transparent;
+    color: #60B5FF;
+    border-color: #60B5FF;
+    box-shadow: 0 0 10px rgba(96, 181, 255, 0.5);
+  }
+
+  .btn-my-courses:hover {
+    background-color: #60B5FF;
+    color: #213555;
+    box-shadow: 0 0 15px #60B5FF, 0 0 30px #60B5FF;
+  }
+
+  .btn-all-courses {
+    background-color: transparent;
+    color: #213555;
+    border-color: #213555;
+    box-shadow: 0 0 10px #213555;
+  }
+
+  .btn-all-courses:hover {
+    background-color: #213555;
+    color: #fff;
+    box-shadow: 0 0 15px #213555, 0 0 30px #213555;
+  }
+
+  .course-btn-group {
+    margin-bottom: 1.5rem;
+  }
+  .hero-image {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    opacity: 0.7;
+}
+.top-left {
+    top: 20px;
+    left: 50px;
+    width: 150px;
+    height: 150px;
+
+}
+
+.top-right {
+    top: 20px;
+    right: 200px;
+     width: 120px;
+    height: 120px;
+
+}
+
+.bottom-left {
+    bottom: -50px;
+    left: 250px;
+
+}
+
+.bottom-right {
+    bottom: 20px;
+    right: 20px;
+     width: 130px;
+    height: 130px;
+}
+
+.center-left {
+    top: 55%;
+    left: 660px;
+    transform: translateY(-50%);
+     width: 100px;
+    height: 100px;
+}
+
+.center-right {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+  .circle {
+    background-color: #60B5FF;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 4px 15px rgba(96, 181, 255, 0.5);
+    filter: blur(8px);
+    opacity: 0.4;
+}
+
+.circle-small {
+    width: 80px;
+    height: 80px;
+    top: 150px;
+    left: 200px;
+}
+
+.circle-medium {
+    width: 50px;
+    height: 50px;
+    top: 30px;
+    left: 1000px;
+}
+
+.circle-large {
+    width: 120px;
+    height: 120px;
+    top: 360px;
+    left: 1200px;
+}
+
+</style>
+
+
+<div class="container">
+
+<div class="wedency-hero text-white">
+    {% if user.role == 'teacher' %}
+        <h1 class="display-4 fw-bold">👩‍🏫 Створюй та розвивай курси!</h1>
+        <p class="lead mt-3 mb-4">Додавай нові навчальні матеріали, допомагай учням досягати успіхів та залишайся натхненником знань.</p>
+        <a href="{% url 'add_course' %}" class="btn neon-btn px-4 py-2">
+            <i class="fas fa-plus-circle neon-icon"></i> Додати курс
+        </a>
+    {% else %}
+        <h1 class="display-4 fw-bold">🎓 Розпочни свій шлях до знань!</h1>
+        <p class="lead mt-3 mb-4">Обирай цікавий курс, навчайся у зручному темпі та вдосконалюй свої навички щодня.</p>
+        <a href="#courses" class="btn neon-btn px-4 py-2">
+            <i class="fas fa-graduation-cap neon-icon"></i> Переглянути курси
+        </a>
+    {% endif %}
+
+    <img src="{% static 'images/ziro.png' %}" alt="Image 1" class="hero-image top-left">
+    <img src="{% static 'images/ziro.png' %}" alt="Image 2" class="hero-image top-right">
+    <img src="{% static 'images/ziro.png' %}" alt="Image 3" class="hero-image bottom-left">
+    <img src="{% static 'images/ziro.png' %}" alt="Image 4" class="hero-image bottom-right">
+    <img src="{% static 'images/ziro.png' %}" alt="Image 5" class="hero-image center-left">
+
+        <div class="circle circle-small"></div>
+        <div class="circle circle-medium"></div>
+        <div class="circle circle-large"></div>
+</div>
+
+
+  {% if user.role == 'teacher' %}
+    <div class="course-btn-group">
+      <a href="?my_courses=true" class="btn course-btn btn-my-courses">Мої курси</a>
+      <a href="?my_courses=false" class="btn course-btn btn-all-courses">Всі курси</a>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <aside class="col-md-3 mb-4">
+      <div class="bg-white p-4 rounded shadow-sm">
+        <h5 class="mb-3">Готуйся до НМТ!</h5>
+        <p class="small">Національний мультипредметний тест (НМТ) — це шанс показати свої знання в різних галузях!...</p>
+        <p class="small">Пам'ятайте: тренуйтеся, перевіряйте свої знання і досягайте успіху!</p>
+      </div>
+
+      <div class="bg-white rounded shadow-sm mt-4 text-center">
+        <img class="hero_six-image" src="https://i.pinimg.com/736x/a5/75/7d/a5757df14545175069325d0d80b4825a.jpg" alt="Студент готується до НМТ" style="width: 100%; height: auto; max-width: 100%;">
+      </div>
+
+      <div class="bg-white p-4 rounded shadow-sm mt-4">
+        <h5 class="mb-3">Будь на крок попереду!</h5>
+        <p class="small">Підготовка до НМТ — це не лише про навчання, а й про стратегічний підхід...</p>
+      </div>
+    </aside>
+
+    <main class="col-md-9">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h4 mb-0">Курси</h2>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Сортування
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">За ціною</a></li>
+            <li><a class="dropdown-item" href="#">За назвою</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for course in courses %}
+        <div class="col">
+          <a href="{% url 'course_detail' course.id %}" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm course-card p-4 rounded-4">
+              <div class="d-flex justify-content-between align-items-start">
+                <span class="badge bg-light text-dark border">{{ course.price|default:"Ціна не вказано" }} грн</span>
+              </div>
+              <h5 class="card-title centered-title">{{ course.title }}</h5>
+              <div class="logo-container">
+                <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="40" height="40" class="rounded-circle">
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+const colors = [
+  '#B0D9E8', '#A8D8E8', '#B8E4F3', '#C1E8F7', '#D1F1FF',
+  '#CFE9FF', '#D8F4FF', '#E0F9FF', '#D4F1FF', '#BEEBFF'
+];
+document.querySelectorAll('.course-card').forEach(card => {
+  card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+});
+</script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
