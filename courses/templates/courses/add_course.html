@@ -179,6 +179,17 @@ small.form-text {
     <div id="format-list" class="format-list">
         <input type="text" name="format_item" placeholder="Пункт 1" class="form-control">
     </div>
+
+    <div>
+    <label for="id_start_date">Дата початку курсу:</label>
+    <input type="date" name="start_date" class="form-control" id="id_start_date" required>
+    </div>
+
+    <div>
+        <label for="id_end_date">Дата завершення курсу:</label>
+        <input type="date" name="end_date" class="form-control" id="id_end_date" required>
+    </div>
+
     <button type="button" onclick="addFormatItem()" class="btn btn-secondary">+ Додати пункт</button><br><br>
 
     {{ form.course_format.as_hidden }}

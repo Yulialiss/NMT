@@ -1,0 +1,15 @@
+{% extends 'profile_teacher/base_teacher.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card p-4 shadow-sm rounded">
+    <h1 class="mb-3">Деталі класу: {{ class.class_name }}</h1>
+    <p><strong>Розділ:</strong> {{ class.section }}</p>
+    <p><strong>Предмет:</strong> {{ class.subject }}</p>
+    <p><strong>Аудиторія:</strong> {{ class.audience }}</p>
+    <p><strong>Код курсу:</strong> {{ class.password }}</p>
+
+    <a href="{% url 'my_classes' %}" class="btn btn-secondary mt-3">Повернутись до списку класів</a>
+  </div>
+</div>
+{% endblock %}

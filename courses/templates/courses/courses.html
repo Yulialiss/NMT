@@ -16,6 +16,8 @@
   margin-bottom: 60px;
   position: relative;
   overflow: hidden;
+    margin-top: 40px; /* ← додано відступ зверху */
+
 }
 
 .wedency-hero::before {
@@ -52,14 +54,31 @@
   min-height: 350px;
   max-width: 100%;
 }
-
 .logo-container {
   position: absolute;
   bottom: 0;
   right: 0;
   padding: 1rem;
+  animation: rotateLogo 5s infinite linear;
 }
 
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.course-dates {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-size: 0.9rem;
+  color: #fff;  /* Білий колір */
+  opacity: 0.9;
+}
 
  .neon-btn {
     background-color: #4aa8f5;
@@ -87,21 +106,36 @@
     margin-bottom: 1.5rem;
   }
 
-  .centered-title {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 2rem;
-    color: #213555;
-    font-weight: 700;
-    text-shadow: 0 0 10px #60B5FF, 0 0 20px #60B5FF;
-    transition: all 0.3s ease-in-out;
-  }
+.centered-title {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 2rem;
+  color: #FDFAF6;
+  font-weight: 700;
+  text-shadow: 0 0 10px #b2e0f1, 0 0 20px #b2e0f1, 0 0 30px #b2e0f1;
+  transition: all 0.3s ease-in-out;
+}
 
-  .centered-title:hover {
-    color: #4aa8f5;
-    text-shadow: 0 0 20px #4aa8f5, 0 0 40px #4aa8f5;
-    transform: scale(1.05);
-  }
+.centered-title:hover {
+  color: #7ac6ff;
+  text-shadow: 0 0 20px #7ac6ff, 0 0 40px #7ac6ff, 0 0 60px #7ac6ff;
+  transform: scale(1.05);
+}
+.price-badge {
+  font-weight: bold;
+  font-size: 18px;
+  color: #dc3545;
+  border-radius: 10px;
+  padding: 5px 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
 
 .course-btn {
   padding: 6px 16px;
@@ -272,7 +306,7 @@
       </div>
 
       <div class="bg-white rounded shadow-sm mt-4 text-center">
-        <img class="hero_six-image" src="https://i.pinimg.com/736x/a5/75/7d/a5757df14545175069325d0d80b4825a.jpg" alt="Студент готується до НМТ" style="width: 100%; height: auto; max-width: 100%;">
+        <img class="hero_six-image" src="https://i.pinimg.com/736x/5c/d8/d0/5cd8d00310a1bf1d1f5956d45ca05665.jpg" alt="Студент готується до НМТ" style="width: 100%; height: 450px; max-width: 100%;border-radius: 15px;">
       </div>
 
       <div class="bg-white p-4 rounded shadow-sm mt-4">
@@ -297,19 +331,33 @@
 
       <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for course in courses %}
-        <div class="col">
-          <a href="{% url 'course_detail' course.id %}" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm course-card p-4 rounded-4">
-              <div class="d-flex justify-content-between align-items-start">
-                <span class="badge bg-light text-dark border">{{ course.price|default:"Ціна не вказано" }} грн</span>
-              </div>
-              <h5 class="card-title centered-title">{{ course.title }}</h5>
-              <div class="logo-container">
-                <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="40" height="40" class="rounded-circle">
-              </div>
+       <div class="col">
+              <a href="{% url 'course_detail' course.id %}" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm course-card p-4 rounded-4 position-relative">
+                  <div class="d-flex justify-content-between align-items-start">
+                      <span class="badge bg-light text-dark border price-badge">
+                          {% if course.price %}
+                            {{ course.price }} грн
+                          {% else %}
+                            Безкоштовно
+                          {% endif %}
+                      </span>
+                    </div>
+
+                  <h5 class="card-title centered-title">{{ course.title }}</h5>
+
+                  <div class="course-dates">
+                    Початок: {{ course.start_date|date:"d.m.Y" }}<br>
+                    Кінець: {{ course.end_date|date:"d.m.Y" }}
+                  </div>
+
+                  <div class="logo-container">
+                    <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="40" height="40" class="rounded-circle">
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
+
         {% endfor %}
       </div>
     </main>
@@ -318,9 +366,12 @@
 
 <script>
 const colors = [
-  '#B0D9E8', '#A8D8E8', '#B8E4F3', '#C1E8F7', '#D1F1FF',
-  '#CFE9FF', '#D8F4FF', '#E0F9FF', '#D4F1FF', '#BEEBFF'
+  '#1A2430', '#2A3F56', '#4A5F7B', '#3D5D72', '#2A4B6C',
+  '#3E5F72', '#56748F', '#6A87A4', '#4E6F88', '#3C5673',
+  '#506F8C', '#7A92B0', '#8C9CB6', '#A1B8D1', '#7F91B2',
+  '#6F88A6', '#4A75A2', '#3B67A0', '#2D527F', '#2A3F68'
 ];
+
 document.querySelectorAll('.course-card').forEach(card => {
   card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 });

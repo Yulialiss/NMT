@@ -1,198 +1,144 @@
-/* Глобальні стилі */
 body {
-    background: linear-gradient(135deg, #E8F9FF 0%, #D0E8F5 100%);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9fb;
     color: #333;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.hero {
+    background: linear-gradient(to right, #e3f2fd, #fff);
+    padding: 60px 0;
+}
+
+.text-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #0d6efd;
+    animation: fadeInDown 1s ease;
+}
+
+.text-content p {
+    animation: fadeInUp 1.2s ease;
+}
+
+.image-content img {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: zoomIn 1s ease;
 }
 
 .intro {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 60px 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
 }
 
 .container-left, .container-right {
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    flex: 1;
+    padding: 20px;
+    transition: all 0.5s ease-in-out;
 }
 
-.container-left.animated, .container-right.animated {
-    opacity: 1;
-    transform: translateX(0);
+.container-left h2 {
+    color: #0d6efd;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
 }
 
 .container-right img {
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.animated-image {
-    animation: floatImage 3s infinite ease-in-out;
+.animated {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+    transition: all 1s ease;
 }
 
-@keyframes floatImage {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
+.container-left, .container-right {
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .nmt-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 60px auto;
+    max-width: 1200px;
 }
 
 .nmt-card {
-    background: linear-gradient(135deg, #F9F3FF, #EADFF5);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 45%;
+    min-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
     opacity: 0;
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    position: relative;
-    overflow: hidden;
-}
-
-.nmt-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-.nmt-card::before {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    top: -20px;
-    right: -20px;
+    transform: translateY(30px);
 }
 
 .nmt-card.show {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+}
+
+.nmt-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .nmt-icon {
-    font-size: 40px;
+    font-size: 32px;
     margin-bottom: 10px;
-    color: #6F4E92;
 }
 
 .nmt-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #6F4E92;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    color: #0d6efd;
     margin-bottom: 10px;
 }
 
 .nmt-text {
     font-size: 16px;
-    color: #444;
-    line-height: 1.6;
+    color: #555;
 }
 
-.landing-container {
-    display: flex;
-    align-items: center;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: fadeInSlide 1s ease-out forwards;
-}
-
-@keyframes fadeInSlide {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
+@media (max-width: 768px) {
+    .nmt-container {
+        flex-direction: column;
+        align-items: center;
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+
+    .nmt-card {
+        width: 90%;
+    }
+
+    .text-content, .image-content {
+        width: 100% !important;
+        text-align: center;
     }
 }
 
-.illustration-section {
-    flex: 1;
-    text-align: center;
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: fadeInSlide 1s ease-out forwards 0.3s;
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-.illustration-section img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-.text-content {
-    flex: 1;
-    padding: 20px;
-    opacity: 0;
-    transform: translateX(50px);
-    animation: fadeInSlide 1s ease-out forwards 0.6s;
-}
-
-.text-content h2 {
-    font-size: 26px;
-    color: #333;
-    font-weight: bold;
-}
-
-.text-content p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 16px;
-}
-
-.cta-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #007bff, #00d4ff);
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 15px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.cta-button:hover {
-    background: linear-gradient(135deg, #0056b3, #00aaff);
-    transform: scale(1.05);
+@keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
 }

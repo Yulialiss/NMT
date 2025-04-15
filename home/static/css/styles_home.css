@@ -1,10 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-        background-color: #E8F9FF;
+    background-color: #E8F9FF;
+    overflow-x: hidden;
+
 
 }
+
+
 .hero-btn {
     padding: 12px 25px;
     border: none;
@@ -286,68 +294,6 @@ body {
     margin-top: -10px;
 }
 
-.workflow-header {
-    color: #2D336B;
-}
-
-.workflow-step-number {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #0099cc;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.workflow-step-text h2 {
-    color: #0077b3;
-}
-
-.workflow-step-text p {
-    color: #555;
-    font-size: 14px;
-}
-
-.workflow-image img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-@media (max-width: 767px) {
-    .workflow-header {
-        font-size: 24px;
-    }
-
-    .workflow-step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .workflow-step-text h2 {
-        font-size: 18px;
-    }
-
-    .workflow-step-text p {
-        font-size: 12px;
-    }
-
-    #workflowRow {
-        flex-direction: column;
-    }
-
-    #workflowStepsColumn, #workflowImageColumn {
-        width: 100%;
-    }
-
-    .workflow-image img {
-        width: 100%;
-    }
-}
 .pricing-card {
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     padding: 40px;
@@ -509,209 +455,84 @@ ul.list-unstyled li {
 .workflow-image img:nth-child(1) {
     margin-left: 80px;
     margin-top: 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 255, 0.6);
+box-shadow: 0 4px 15px #1B56FD;
 
 }
 
 .workflow-image img:nth-child(2) {
     margin-left: 80px;
     margin-top: 180px;
-    box-shadow: 0 4px 15px rgba(0, 0, 255, 0.6);
+    box-shadow: 0 4px 15px #60B5FF;
 
 }
 
 .workflow-image img:nth-child(3) {
     margin-left: -580px;
     margin-top: 390px;
-    box-shadow: 0 4px 15px rgba(0, 0, 255, 0.6);
+    box-shadow: 0 4px 15px #9EC6F3;
 }
 
-
-.nmpt-section {
-  padding: 50px 0;
+.workflow-header {
+    color: #2D336B;
 }
 
-.nmpt-container {
-  border-radius: 10px;
-  padding: 30px;
-  text-align: center;
-}
-
-.nmpt-heading {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #2D336B;
-  text-shadow: 0 0 10px rgba(160, 196, 255, 0.8), 0 0 20px rgba(160, 196, 255, 0.8);
-}
-
-.nmpt-description {
-  font-size: 1.2rem;
-  color: #3a3a3a;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-.nmpt-row {
-  margin-top: 30px;
-}
-
-.nmpt-card-container {
-  display: flex;
-  justify-content: center;
-}
-
-.nmpt-card {
-  border: none;
-  box-shadow: 0 4px 20px rgba(160, 196, 255, 0.5);
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background-color: rgba(135, 206, 235, 0.9);
-}
-
-.nmpt-card-body {
-  flex-grow: 1;
-  color: #333;
-}
-
-.nmpt-card-title {
-  font-size: 1.5rem;
-  color: #2D336B;
-}
-
-.nmpt-card-text {
-  font-size: 1rem;
-}
-
-.nmpt-max-score {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba(135, 206, 235, 0.7);
-  color: #fff;
-  padding: 5px 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-
-.nmpt-test-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background: linear-gradient(135deg, #2D336B, #87ceeb);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(160, 196, 255, 0.5);
-  transition: all 0.3s ease;
-}
-
-.nmpt-test-button:hover {
-  background-color: #87ceeb;
-  box-shadow: 0 4px 15px rgba(160, 196, 255, 0.7);
-}
-
-.nmpt-test-button:focus {
-  outline: none;
-}
-
-
-@media (max-width: 768px) {
-  .nmpt-row {
-    flex-direction: column;
+.workflow-step-number {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0099cc;
+    width: 45px;
+    height: 45px;
+    display: flex;
     align-items: center;
-    gap: 30px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .nmpt-card {
-    transform: scale(1.05);
-    margin: 0 10px;
-  }
-
-  .nmpt-card-container {
-    width: 100%;
-    padding: 0 15px;
-  }
-}
-.personal-development-container {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 20px;
+    justify-content: center;
+    border-radius: 50%;
 }
 
-.personal-development-wewe {
-  font-size: 26px;
-  font-weight: 700;
-  color: #1c3d6d;
-  line-height: 1.4;
-  text-align: left;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+.workflow-step-text h2 {
+    color: #0077b3;
 }
 
-.personal-development-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 20px;
+.workflow-step-text p {
+    color: #555;
+    font-size: 14px;
 }
 
-.personal-development-list li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-left: 40px;
-}
-.personal-development-list i {
-  font-size: 24px;
-  margin-right: 10px;
-  color: #77CDFF;
-  text-shadow: 0 0 8px rgba(119, 205, 255, 0.8), 0 0 15px rgba(119, 205, 255, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-.personal-development-list i:hover {
-  text-shadow: 0 0 15px rgba(119, 205, 255, 1), 0 0 30px rgba(119, 205, 255, 1);
-  transform: scale(1.1);
-}
-
-
-.image-container img {
-  width: 100%;
-  max-width: 650px;
-  border-radius: 50%;
-  box-shadow: 0 6px 12px #133E87;
-  object-fit: cover;
-  margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-  .personal-development-container {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  .personal-development-list li {
-    font-size: 12px;
-  }
-
-  .personal-development-list i {
-    font-size: 20px;
-  }
-
-  .image-container img {
+.workflow-image img {
     max-width: 100%;
-    width: 90%;
-  }
+    border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+    .workflow-header {
+        font-size: 24px;
+    }
+
+    .workflow-step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .workflow-step-text h2 {
+        font-size: 18px;
+    }
+
+    .workflow-step-text p {
+        font-size: 12px;
+    }
+
+    #workflowRow {
+        flex-direction: column;
+    }
+
+    #workflowStepsColumn, #workflowImageColumn {
+        width: 100%;
+    }
+
+    .workflow-image img {
+        width: 100%;
+    }
 }
 .btn-unique {
   padding: 12px 25px;
@@ -791,6 +612,9 @@ ul.list-unstyled li {
 
 .user-feedback-description {
   color: #80C4E9;
+  font-size: 20px;
+
+
 }
 
 .wedency-comment-form input,
@@ -1105,26 +929,21 @@ ul.list-unstyled li {
     }
 }
 
-/* Центруємо весь контент */
 .container {
     margin-top: 30px;
 }
-/* Стилі для колонки з контентом */
 .wedency-content {
-    padding-right: 30px; /* Відступ з правого боку */
+    padding-right: 30px;
     border-radius: 15px;
-    margin-right: 20px; /* Додаємо відступ між лівим і правим контейнером */
+    margin-right: 20px;
 }
 
-/* Права колонка */
 .wedency-sidebar-right {
     padding: 20px;
     border-radius: 15px;
-    margin-left: 50px; /* Додаємо відступ зліва */
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); — Видалено тінь */
+    margin-left: 50px;
 }
 
-/* Стилі для зображення */
 .wedency-image-container {
     margin-top: 20px;
     border-radius: 15px;
@@ -1143,7 +962,6 @@ ul.list-unstyled li {
     transform: scale(1.05);
 }
 
-/* Стилі для стратегії та порад */
 .wedency-strategy-section {
     padding: 20px;
     border-radius: 15px;
@@ -1162,7 +980,6 @@ ul.list-unstyled li {
     color: #555555;
 }
 
-/* Список порад та новин */
 .wedency-sidebar-right ul li {
     margin-bottom: 10px;
 }
@@ -1175,5 +992,156 @@ ul.list-unstyled li {
 
 .wedency-sidebar-right ul li a:hover {
     color: #004d73;
+}
+
+
+
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.stats-card:hover {
+  transform: scale(1.03);
+}
+
+.stats-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.stats-text h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stats-text p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+.personal-development-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+}
+
+.personal-development-wewe {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1c3d6d;
+  line-height: 1.4;
+  text-align: left;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.personal-development-list {
+  list-style-type: none;
+  padding-left: 40px;
+  margin-top: 20px;
+}
+
+.personal-development-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 40px;
+}
+.personal-development-list i {
+  font-size: 34px;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.personal-development-list i:hover {
+  text-shadow: 0 0 15px rgba(119, 205, 255, 1), 0 0 30px rgba(119, 205, 255, 1);
+  transform: scale(1.1);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px #133E87;
+transform: translate(200px, 50px);
+
+}
+
+.image-container_susu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 370px;
+  height: 370px;
+  overflow: hidden;
+  border-radius: 15px;
+  z-index: 1;
+  transform: translate(-100px, -20px);
+}
+
+
+.image-container_susu img,
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-unique {
+  position: absolute;
+  top: 40%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .personal-development-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .personal-development-list li {
+    font-size: 12px;
+  }
+
+  .personal-development-list i {
+    font-size: 20px;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    width: 90%;
+  }
 }
 

@@ -11,10 +11,10 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('testing/', include('testing.urls')),
-    path('social-auth/', include('social_django.urls', namespace='social')),
     path('teacher/', include('profile_teacher.urls')),
     path('calendar/', include('calendar_app.urls')),
     path('theory/', include('theory.urls')),
     path('courses/', include('courses.urls')),
+                  path('my_classes/', include('my_classes.urls')),  # Додаємо шлях до my_classes
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,7 @@
-
-
 body {
     background-color: #E8F9FF;
 }
+
 .container {
     display: flex;
     max-width: 1000px;
@@ -157,5 +156,44 @@ body {
     background-color: #f8d7da;
     border-color: #f5c6cb;
     color: #721c24;
+}
+
+.rotating-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: rotateLogo 20s linear infinite;
+}
+
+.rotating-background img {
+    width: 800px;
+    height: 800px;
+
+}
+
+@keyframes rotateLogo {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #123458;
+    color: white;
+    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
 }
 

@@ -1,0 +1,22 @@
+{% extends 'profile_teacher/base_teacher.html' %}
+
+{% block content %}
+    <h2>Приєднатися до класу</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="code">Введіть код курсу</label>
+            <input type="text" name="code" id="code" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Приєднатися</button>
+    </form>
+
+    {% if messages %}
+        <div class="alert alert-info mt-3">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

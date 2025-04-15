@@ -1,7 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from .forms import ProfileEditForm, UserEditForm
 from .models import Profile
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from my_classes.models import Class
+
+@login_required
+def student_dashboard(request):
+    user_classes = Class.objects.filter(students=request.user)
+    return render(request, 'profile_app/student_dashboard.html', {'user_classes': user_classes})
 
 @login_required
 def profile_view(request):

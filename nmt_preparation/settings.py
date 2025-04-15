@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'theory',
     'ckeditor',
     'courses',
+    'my_classes',
 
 ]
 
