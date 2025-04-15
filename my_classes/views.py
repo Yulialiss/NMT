@@ -22,12 +22,10 @@ def join_class(request):
     if request.method == 'POST':
         code = request.POST.get('code')
 
-        # Шукаємо клас за кодом
         try:
             class_obj = Class.objects.get(password=code)
-            # Перевіряємо, чи вже учень є в класі (якщо є, можна повідомити)
-            if request.user not in class_obj.students.all():  # Assuming `students` is a related field
-                class_obj.students.add(request.user)  # Додаємо учня до класу
+            if request.user not in class_obj.students.all(): 
+                class_obj.students.add(request.user)  
                 messages.success(request, f'Ви приєдналися до класу "{class_obj.class_name}".')
             else:
                 messages.info(request, 'Ви вже приєдналися до цього класу.')
@@ -56,7 +54,7 @@ def create_class(request):
                 audience=audience,
                 author=request.user
             )
-            new_class.generate_password()  # Генеруємо пароль
+            new_class.generate_password()  
 
             new_class.save()
             return redirect('my_classes')
@@ -77,6 +75,6 @@ def my_classes(request):
     if request.user.role == 'teacher':
         classes = Class.objects.filter(author=request.user)
     else:
-        classes = []  # Або нічого не показувати, або можеш адаптувати для студентів
+        classes = [] 
     return render(request, 'my_classes/my_classes.html', {'classes': classes})
 
