@@ -11,13 +11,12 @@ class Class(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        null=True  # дозволяє створити міграцію, не вимагаючи значення
+        null=True  
     )
-    password = models.CharField(max_length=8, blank=True, null=True)  # Поле для пароля
-    students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)  # Зв'язок з учнями
+    password = models.CharField(max_length=8, blank=True, null=True) 
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)  
 
     def generate_password(self):
-        """Метод для генерації пароля з випадкових букв та цифр."""
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
         self.password = password
         self.save()
