@@ -117,8 +117,13 @@ def join_class(request):
 
         try:
             class_obj = Class.objects.get(password=code)
+<<<<<<< HEAD
             if request.user not in class_obj.students.all():
                 class_obj.students.add(request.user)
+=======
+            if request.user not in class_obj.students.all(): 
+                class_obj.students.add(request.user)  
+>>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
                 messages.success(request, f'Ви приєдналися до класу "{class_obj.class_name}".')
             else:
                 messages.info(request, 'Ви вже приєдналися до цього класу.')
@@ -147,7 +152,12 @@ def create_class(request):
                 audience=audience,
                 author=request.user
             )
+<<<<<<< HEAD
             new_class.generate_password()
+=======
+            new_class.generate_password()  
+
+>>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
             new_class.save()
             return redirect('class_detail', class_id=new_class.id)
         else:
@@ -159,6 +169,10 @@ def my_classes(request):
     if request.user.role == 'teacher':
         classes = Class.objects.filter(author=request.user)
     else:
+<<<<<<< HEAD
         classes = []
+=======
+        classes = [] 
+>>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
     return render(request, 'my_classes/my_classes.html', {'classes': classes})
 

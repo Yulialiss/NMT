@@ -14,9 +14,19 @@ class Class(models.Model):
     section = models.CharField(max_length=100, default='Default audience')
     subject = models.CharField(max_length=100, default='Default audience')
     audience = models.CharField(max_length=255, default='Default audience')
+<<<<<<< HEAD
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
     password = models.CharField(max_length=8, blank=True, null=True)
     students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)
+=======
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True  
+    )
+    password = models.CharField(max_length=8, blank=True, null=True) 
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)  
+>>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
 
     def generate_password(self):
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
@@ -45,6 +55,7 @@ class StudentClass(models.Model):
 
     def __str__(self):
         return f'{self.student.username} в класі {self.class_obj.class_name}'
+<<<<<<< HEAD
 
 class AssignmentSubmission(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='submissions')
@@ -55,3 +66,5 @@ class AssignmentSubmission(models.Model):
 
     def __str__(self):
         return f'{self.student.username} submitted for {self.assignment.title}'
+=======
+>>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
