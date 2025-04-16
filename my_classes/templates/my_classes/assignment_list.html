@@ -1,0 +1,58 @@
+{% extends 'profile_teacher/base_teacher.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Завдання</h2>
+        <a href="{% url 'add_assignment' class_id=school_class.id %}">Додати завдання</a>
+    </div>
+
+    {% if assignments %}
+        <ul class="list-group">
+            {% for assignment in assignments %}
+                <li class="list-group-item bg-dark text-white mb-2 assignment-item" data-target="submissions-{{ assignment.id }}" style="cursor: pointer;">
+                    <strong>{{ assignment.title }}</strong><br>
+                    {% if assignment.instructions %}
+                        <small>{{ assignment.instructions }}</small>
+                    {% endif %}
+
+                    <div class="collapse bg-light text-dark mt-3 p-3" id="submissions-{{ assignment.id }}">
+                        {% if assignment.submissions.all %}
+                            <ul class="list-group">
+                                {% for submission in assignment.submissions.all %}
+                                    <li class="list-group-item">
+                                        <strong>{{ submission.student.username }}</strong> — {{ submission.submitted_at|date:"d.m.Y H:i" }}<br>
+                                        {% if submission.text_submission %}
+                                            <p><strong>Текст:</strong> {{ submission.text_submission }}</p>
+                                        {% endif %}
+                                        {% if submission.file_submission %}
+                                            📎 <a href="{{ submission.file_submission.url }}" target="_blank">Переглянути файл</a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted">Ще ніхто не здав це завдання.</p>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">Ще немає жодного завдання.</p>
+    {% endif %}
+</div>
+
+<script>
+    document.querySelectorAll('.assignment-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const targetId = this.getAttribute('data-target');
+            const target = document.getElementById(targetId);
+            if (target.classList.contains('show')) {
+                target.classList.remove('show');
+            } else {
+                target.classList.add('show');
+            }
+        });
+    });
+</script>
+{% endblock %}

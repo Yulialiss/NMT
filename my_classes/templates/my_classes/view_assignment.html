@@ -1,0 +1,77 @@
+{% extends 'profile_teacher/base_teacher.html' %}
+
+{% block content %}
+<div class="assignment-container">
+    <h2>{{ assignment.title }}</h2>
+    <p><strong>Інструкції:</strong> {{ assignment.instructions }}</p>
+    <p><strong>Максимальна оцінка:</strong> 100 балів</p>
+
+    {% if assignment.attachment %}
+    <p><strong>Вкладення:</strong>
+        <a href="{{ assignment.attachment.url }}" download>{{ attachment_name }}</a>
+    </p>
+    {% endif %}
+
+    <hr>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {{ form.file_submission.label_tag }}<br>
+            {{ form.file_submission }}
+        </div>
+        <div>
+            {{ form.text_submission.label_tag }}<br>
+            {{ form.text_submission }}
+        </div>
+        <br>
+        <button type="submit">Здати завдання</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <hr>
+
+
+</div>
+
+<style>
+.assignment-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.assignment-container h2 {
+    margin-bottom: 10px;
+}
+
+.assignment-container a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.assignment-container button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.assignment-container button:hover {
+    background-color: #155ab6;
+}
+</style>
+
+{% endblock %}

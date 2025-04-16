@@ -1,15 +1,140 @@
 {% extends 'profile_teacher/base_teacher.html' %}
 
 {% block content %}
+<style>
+    .neon-btn {
+        background-color: #00bfff;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 0 10px #00bfff, 0 0 40px #00bfff66;
+        transition: 0.3s ease-in-out;
+    }
+
+    .neon-btn:hover {
+        background-color: #009acd;
+        box-shadow: 0 0 20px #00bfffaa, 0 0 60px #00bfff66;
+    }
+
+    .card {
+        background-color: #f0f8ff;
+        border: 1px solid #cce7ff;
+    }
+
+    .list-group-item {
+        background-color: #ffffff;
+        border-left: 5px solid #00bfff2e;
+    }
+
+    h1, h3 {
+        color: #0077b6;
+    }
+
+    hr {
+        border-color: #00bfff;
+    }
+
+    .btn-danger {
+        background-color: #ff6b6b;
+        border-color: #ff6b6b;
+    }
+
+    .btn-danger:hover {
+        background-color: #e63946;
+    }
+</style>
+
 <div class="container mt-4">
   <div class="card p-4 shadow-sm rounded">
+
     <h1 class="mb-3">Деталі класу: {{ class.class_name }}</h1>
     <p><strong>Розділ:</strong> {{ class.section }}</p>
     <p><strong>Предмет:</strong> {{ class.subject }}</p>
     <p><strong>Аудиторія:</strong> {{ class.audience }}</p>
     <p><strong>Код курсу:</strong> {{ class.password }}</p>
 
+    {% if user.role == 'teacher' %}
+      <a href="{% url 'assignment_list' class_id=class.id %}" class="btn neon-btn my-3">Переглянути завдання</a>
+    {% endif %}
+
+    <hr>
+
+    <h3 class="mt-4">Учасники класу:</h3>
+    <form method="POST">
+      {% csrf_token %}
+      {% if students %}
+        <ul class="list-group">
+          {% for student in students %}
+            <li class="list-group-item d-flex align-items-center">
+              {% if student.profile.photo %}
+                <img src="{{ student.profile.photo.url }}" alt="Profile Picture"
+                     class="rounded-circle"
+                     style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
+              {% else %}
+                <img src="https://i.pinimg.com/736x/f5/be/33/f5be3307a40868a80821729e9e5ae7cd.jpg"
+                     alt="Default Profile Picture"
+                     class="rounded-circle"
+                     style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
+              {% endif %}
+              {{ student.username }} ({{ student.email }})
+
+              {% if user == class.author %}
+                <input type="checkbox" name="students_to_remove" value="{{ student.id }}" class="ms-auto">
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Ще ніхто не приєднався до цього класу.</p>
+      {% endif %}
+
+      {% if user == class.author %}
+        <button type="submit" class="btn btn-danger mt-3">Видалити вибраних учнів</button>
+      {% endif %}
+    </form>
+
+    {% if user == class.author %}
+      <form method="POST" action="{% url 'delete_class' class_id=class.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Видалити клас</button>
+      </form>
+    {% endif %}
+
     <a href="{% url 'my_classes' %}" class="btn btn-secondary mt-3">Повернутись до списку класів</a>
+
+    <hr>
+
+    <h3 class="mt-4">Завдання цього класу:</h3>
+
+    {% if assignments %}
+      <ul class="list-group mb-3">
+        {% for assignment in assignments %}
+          <li class="list-group-item">
+            <strong>
+              <a href="{% url 'view_assignment' assignment.id %}">
+                {{ assignment.title }}
+              </a>
+            </strong><br>
+
+            {% if assignment.instructions %}
+              <small>{{ assignment.instructions|linebreaks }}</small>
+            {% else %}
+              <small><em>Інструкції відсутні</em></small>
+            {% endif %}
+
+            {% if assignment.attachment %}
+              <div class="mt-2">
+                📎 <a href="{{ assignment.attachment.url }}" target="_blank">Завантажити файл</a>
+              </div>
+            {% endif %}
+
+            <div class="text-muted mt-1">Автор: {{ assignment.author.username }}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Ще немає завдань для цього класу.</p>
+    {% endif %}
+
   </div>
 </div>
 {% endblock %}

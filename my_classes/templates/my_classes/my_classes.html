@@ -1,63 +1,160 @@
 {% extends 'profile_teacher/base_teacher.html' %}
 
 {% block content %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мої класи</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мої класи</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        background: linear-gradient(135deg, #e6f2ff, #f0f8ff);
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-    <h1>Мої класи</h1>
+    h1 {
+        color: #004080;
+        text-shadow: 1px 1px 2px #b3d9ff;
+    }
 
-    <div class="list-group mt-4">
-        {% for class in classes %}
-            <a href="{% url 'class_detail' class.id %}" class="list-group-item list-group-item-action">
-                {{ class.class_name }} - {{ class.section }} - {{ class.subject }}
-            </a>
-        {% empty %}
-            <p>Немає жодного класу.</p>
-        {% endfor %}
+    .class-box {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(145deg, #ffffff, #f5fbff);
+        border: 2px solid #b3daff;
+        border-radius: 16px;
+        padding: 1rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        color: #004080;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .class-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(145deg, #e0f3ff, #ffffff);
+    }
+
+    .class-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .class-info {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .modal-content {
+        border-radius: 12px;
+    }
+
+    .btn-primary {
+        background-color: #3399ff;
+        border-color: #3399ff;
+    }
+
+    .btn-primary:hover {
+        background-color: #1a8cff;
+        border-color: #1a8cff;
+    }
+
+    .btn-success {
+        background-color: #33cc99;
+        border-color: #33cc99;
+    }
+
+    .btn-success:hover {
+        background-color: #28b68a;
+        border-color: #28b68a;
+    }
+
+    .btn-close {
+        filter: brightness(0.5);
+    }
+
+    .modal-header {
+        background-color: #e6f7ff;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .rounded-square-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        font-size: 30px;
+        padding: 0;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="text-end mb-3">
+        <button type="button" class="btn btn-primary rounded-square-button" data-bs-toggle="modal" data-bs-target="#addClassModal">
+            <i class="fas fa-plus"></i>
+        </button>
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClassModal">
-        Додати клас
-    </button>
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">Мої класи</h1>
+    </div>
 
-    <div class="modal fade" id="addClassModal" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addClassModalLabel">Створити клас</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{% url 'create_class' %}">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="className" class="form-label">Назва класу (обов'язково)</label>
-                            <input type="text" class="form-control" id="className" name="class_name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="section" class="form-label">Розділ</label>
-                            <input type="text" class="form-control" id="section" name="section">
-                        </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Предмет</label>
-                            <input type="text" class="form-control" id="subject" name="subject">
-                        </div>
-                        <div class="mb-3">
-                            <label for="audience" class="form-label">Аудиторія номер класу/ім'я учня</label>
-                            <input type="text" class="form-control" id="audience" name="audience">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Створити клас</button>
-                    </form>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+        {% for class in classes %}
+            <a href="{% url 'class_detail' class.id %}" class="class-box">
+                <div class="class-title">{{ class.class_name }}</div>
+                <div class="class-info">{{ class.section }}<br>{{ class.subject }}</div>
+            </a>
+        {% empty %}
+            <p class="text-muted">Немає жодного класу.</p>
+        {% endfor %}
+    </div>
+</div>
 
-                </div>
+<div class="modal fade" id="addClassModal" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addClassModalLabel">Створити клас</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'create_class' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="className" class="form-label">Назва класу <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control rounded-3" id="className" name="class_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="section" class="form-label">Розділ</label>
+                        <input type="text" class="form-control rounded-3" id="section" name="section">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Предмет</label>
+                        <input type="text" class="form-control rounded-3" id="subject" name="subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="audience" class="form-label">Аудиторія / ім'я учня</label>
+                        <input type="text" class="form-control rounded-3" id="audience" name="audience">
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success">Створити клас</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

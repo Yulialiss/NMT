@@ -15,6 +15,6 @@ urlpatterns = [
     path('calendar/', include('calendar_app.urls')),
     path('theory/', include('theory.urls')),
     path('courses/', include('courses.urls')),
-                  path('my_classes/', include('my_classes.urls')),  # Додаємо шлях до my_classes
+                  path('my_classes/', include('my_classes.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
