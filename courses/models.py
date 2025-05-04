@@ -8,10 +8,7 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     photo = models.ImageField(upload_to='course_photos/', null=True, blank=True)
     learn_outcome = models.TextField(default='Теми, які будуть розглянуті на курсі.')
-    course_format = models.TextField(
-        help_text="Список тем та план курсу",
-        default="Not provided"
-    )
+    course_format = models.TextField( help_text="Список тем та план курсу", default="Not provided")
     start_date = models.DateField(null=True, blank=True, help_text="Дата початку курсу")
     end_date = models.DateField(null=True, blank=True, help_text="Дата завершення курсу")
 

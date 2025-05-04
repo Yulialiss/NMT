@@ -14,11 +14,12 @@ class Class(models.Model):
     section = models.CharField(max_length=100, default='Default audience')
     subject = models.CharField(max_length=100, default='Default audience')
     audience = models.CharField(max_length=255, default='Default audience')
-<<<<<<< HEAD
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
     password = models.CharField(max_length=8, blank=True, null=True)
     students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)
-=======
+    teacher_first_name = models.CharField(max_length=100, blank=True, null=True)
+    teacher_last_name = models.CharField(max_length=100, blank=True, null=True)
+
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -26,7 +27,7 @@ class Class(models.Model):
     )
     password = models.CharField(max_length=8, blank=True, null=True) 
     students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='classes', blank=True)  
->>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070
+
 
     def generate_password(self):
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
@@ -38,12 +39,13 @@ class Class(models.Model):
 
 class Assignment(models.Model):
     title = models.CharField(max_length=255)
-    instructions = RichTextField(blank=True)  # Замість TextField
+    instructions = RichTextField(blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     school_class = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='assignments')
     attachment = models.FileField(upload_to='assignments_files/', blank=True, null=True)
     deadline = models.DateTimeField(null=True, blank=True)
     points = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -55,7 +57,7 @@ class StudentClass(models.Model):
 
     def __str__(self):
         return f'{self.student.username} в класі {self.class_obj.class_name}'
-<<<<<<< HEAD
+
 
 class AssignmentSubmission(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='submissions')
@@ -63,8 +65,7 @@ class AssignmentSubmission(models.Model):
     file_submission = models.FileField(upload_to='submissions/', blank=True, null=True)
     text_submission = models.TextField(blank=True, null=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
+    grade = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.student.username} submitted for {self.assignment.title}'
-=======
->>>>>>> 3b3db8d257dcd719d66ebc25d1b4ddaf6747f070

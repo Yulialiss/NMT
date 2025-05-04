@@ -1,38 +1,104 @@
-{% extends 'profile_teacher/base_teacher.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            background-color: #FFB200;
+        }
+
+        .assignment-box:hover {
+            background-color: #e6f0ff;
+            transition: 0.3s ease;
+        }
+
+        .assignment-details {
+            transition: all 0.3s ease-in-out;
+            background-color: #ffffff;
+        }
+
+        .text-blue {
+            color: #0d6efd;
+        }
+
+        .bg-soft-blue {
+            background-color: #eaf4ff;
+        }
+
+        .bg-soft-green {
+            background-color: #eaffea;
+        }
+
+        .bg-soft-yellow {
+            background-color: #fffbe6;
+        }
+    </style>
+</head>
+<body>
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Завдання</h2>
-        <a href="{% url 'add_assignment' class_id=school_class.id %}">Додати завдання</a>
+        <a href="{% url 'add_assignment' class_id=school_class.id %}" class="btn btn-outline-primary">➕ Додати завдання</a>
     </div>
 
     {% if assignments %}
         <ul class="list-group">
             {% for assignment in assignments %}
-                <li class="list-group-item bg-dark text-white mb-2 assignment-item" data-target="submissions-{{ assignment.id }}" style="cursor: pointer;">
-                    <strong>{{ assignment.title }}</strong><br>
-                    {% if assignment.instructions %}
-                        <small>{{ assignment.instructions }}</small>
-                    {% endif %}
+                <li class="list-group-item d-flex flex-column shadow-sm rounded mb-3 px-3 py-3 bg-soft-blue">
+                    <div class="d-flex justify-content-between align-items-center assignment-box" data-target="submissions-{{ assignment.id }}" style="cursor: pointer;">
+                        <div class="d-flex align-items-center gap-3">
+                          <div class="d-flex align-items-center justify-content-center"
+                             style="width: 40px; height: 40px; border-radius: 50%; background-color: #FCC6FF; color: #000;">
+                          <i class="bi bi-clipboard-check"></i>
+                        </div>
+                            <div>
+                                <div class="fw-bold text-blue">{{ assignment.title }}</div>
+                            </div>
+                        </div>
+                        <div class="text-muted small">
+                            <p>Час публікації: {{ assignment.created_at }}</p>
+                        </div>
+                    </div>
 
-                    <div class="collapse bg-light text-dark mt-3 p-3" id="submissions-{{ assignment.id }}">
-                        {% if assignment.submissions.all %}
-                            <ul class="list-group">
-                                {% for submission in assignment.submissions.all %}
-                                    <li class="list-group-item">
-                                        <strong>{{ submission.student.username }}</strong> — {{ submission.submitted_at|date:"d.m.Y H:i" }}<br>
-                                        {% if submission.text_submission %}
-                                            <p><strong>Текст:</strong> {{ submission.text_submission }}</p>
-                                        {% endif %}
-                                        {% if submission.file_submission %}
-                                            📎 <a href="{{ submission.file_submission.url }}" target="_blank">Переглянути файл</a>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <p class="text-muted">Ще ніхто не здав це завдання.</p>
-                        {% endif %}
+                    <div class="collapse assignment-details mt-3 p-4 border rounded shadow-sm" id="submissions-{{ assignment.id }}">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <div class="text-muted small">
+                                    {% if assignment.deadline %}
+                                        <p><strong>⏰ Дедлайн:</strong> {{ assignment.deadline|date:"d-m-Y H:i" }}</p>
+                                    {% else %}
+                                        <p>⏰ Без срока здачи </p>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-2">{{ assignment.instructions }}</div>
+                            </div>
+                            <div class="d-flex gap-4 text-center">
+                                <div class="bg-soft-green px-3 py-2 rounded">
+                                    <div class="h5 mb-0">{{ assignment.submissions.count }}</div>
+                                    <div class="text-muted small">Здано</div>
+                                </div>
+                                <div class="bg-soft-yellow px-3 py-2 rounded">
+                                    <div class="h5 mb-0">0</div>
+                                    <div class="text-muted small">Назначено</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                            <a href="{% url 'view_assignment' assignment.id %}" class="text-primary small">📄 Інструкція</a>
+                            <a href="{% url 'grade_submissions' assignment.id %}" class="btn btn-sm btn-primary">Оцінити роботу</a>
+                        </div>
                     </div>
                 </li>
             {% endfor %}
@@ -43,16 +109,13 @@
 </div>
 
 <script>
-    document.querySelectorAll('.assignment-item').forEach(item => {
+    document.querySelectorAll('.assignment-box').forEach(item => {
         item.addEventListener('click', function () {
             const targetId = this.getAttribute('data-target');
             const target = document.getElementById(targetId);
-            if (target.classList.contains('show')) {
-                target.classList.remove('show');
-            } else {
-                target.classList.add('show');
-            }
+            target.classList.toggle('show');
         });
     });
 </script>
-{% endblock %}
+</body>
+</html>

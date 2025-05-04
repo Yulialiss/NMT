@@ -1,22 +1,136 @@
-{% extends 'profile_teacher/base_teacher.html' %}
+    <style>
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Roboto', sans-serif;
+        }
 
-{% block content %}
-    <h2>Приєднатися до класу</h2>
+        .class-join-container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="code">Введіть код курсу</label>
-            <input type="text" name="code" id="code" class="form-control" required>
+        .class-card {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+        }
+
+        .class-title {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #343a40;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .class-form-group {
+            margin-bottom: 25px;
+        }
+
+        .class-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .class-input {
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            transition: all 0.3s ease-in-out;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        .class-input:focus {
+            border-color: #00bfff;
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
+            background-color: #f0f8ff;
+        }
+
+     .class-submit-btn {
+    background: linear-gradient(135deg, #FFB200, #EB5B00, #D91656, #640D5F);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    padding: 14px 28px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(217, 22, 86, 0.4);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+}
+
+.class-submit-btn:hover {
+    box-shadow: 0 10px 25px rgba(100, 13, 95, 0.5);
+    transform: translateY(-2px);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.class-alert {
+    background-color: #e7f7ff;
+    border-color: #b3d8e6;
+    color: #31708f;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 5px solid #00bfff;
+    margin-top: 20px;
+}
+
+.class-alert p {
+    margin: 0;
+}
+
+.class-alert p strong {
+    font-weight: 600;
+}
+    </style>
+    <div class="class-join-container mt-5">
+        <div class="class-card shadow-lg p-5 rounded">
+            <h2 class="class-title text-center mb-4">Приєднатися до класу</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="class-form-group mb-4">
+                    <label for="code" class="class-label h5 text-center d-block">
+                        Введіть унікальний код курсу, щоб приєднатися до потрібного класу та розпочати навчання
+                    </label>
+                    <input type="text" name="code" id="code" class="class-input form-control-lg py-3 px-4" placeholder="Код курсу" required>
+                </div>
+                <button type="submit" class="class-submit-btn btn btn-lg btn-block shadow-sm">Приєднатися</button>
+        </form>
+
+            {% if messages %}
+                <div class="class-alert alert alert-info mt-3">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-        <button type="submit" class="btn btn-primary">Приєднатися</button>
-    </form>
+    </div>
 
-    {% if messages %}
-        <div class="alert alert-info mt-3">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endblock %}
+

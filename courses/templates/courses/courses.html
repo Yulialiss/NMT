@@ -50,7 +50,7 @@
   margin-top: 15px;
 }
 
-  .course-card {
+.course-card {
   min-height: 350px;
   max-width: 100%;
 }
@@ -190,7 +190,6 @@
     left: 50px;
     width: 150px;
     height: 150px;
-
 }
 
 .top-right {
@@ -200,11 +199,9 @@
     height: 120px;
 
 }
-
 .bottom-left {
     bottom: -50px;
     left: 250px;
-
 }
 
 .bottom-right {
@@ -213,7 +210,6 @@
      width: 130px;
     height: 130px;
 }
-
 .center-left {
     top: 55%;
     left: 660px;
@@ -277,18 +273,16 @@
             <i class="fas fa-graduation-cap neon-icon"></i> Переглянути курси
         </a>
     {% endif %}
-
-    <img src="{% static 'images/ziro.png' %}" alt="Image 1" class="hero-image top-left">
-    <img src="{% static 'images/ziro.png' %}" alt="Image 2" class="hero-image top-right">
-    <img src="{% static 'images/ziro.png' %}" alt="Image 3" class="hero-image bottom-left">
-    <img src="{% static 'images/ziro.png' %}" alt="Image 4" class="hero-image bottom-right">
-    <img src="{% static 'images/ziro.png' %}" alt="Image 5" class="hero-image center-left">
+        <img src="{% static 'images/ziro.png' %}" alt="Image 1" class="hero-image top-left">
+        <img src="{% static 'images/ziro.png' %}" alt="Image 2" class="hero-image top-right">
+        <img src="{% static 'images/ziro.png' %}" alt="Image 3" class="hero-image bottom-left">
+        <img src="{% static 'images/ziro.png' %}" alt="Image 4" class="hero-image bottom-right">
+        <img src="{% static 'images/ziro.png' %}" alt="Image 5" class="hero-image center-left">
 
         <div class="circle circle-small"></div>
         <div class="circle circle-medium"></div>
         <div class="circle circle-large"></div>
 </div>
-
 
   {% if user.role == 'teacher' %}
     <div class="course-btn-group">
@@ -314,10 +308,9 @@
         <p class="small">Підготовка до НМТ — це не лише про навчання, а й про стратегічний підхід...</p>
       </div>
     </aside>
-
     <main class="col-md-9">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="h4 mb-0">Курси</h2>
+        <h2 class="h4 mb-0"><span style="color: #FF0B55">КУРСИ</span></h2>
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
             Сортування

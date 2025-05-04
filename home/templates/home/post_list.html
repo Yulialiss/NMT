@@ -6,7 +6,12 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style_post_list.css' %}">
 <div class="container py-5">
-   <h1 class="text-center mb-5 fw-bold title-style">Репетитори</h1>
+<h1 class="text-center mb-5 fw-bold title-style">Репетитори</h1>
+<p class="text-center px-3 fs-5 text-muted" style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+  <span class="d-block mb-2">Обирайте  <span style="color: #FF0B55"><strong>кваліфікованих репетиторів</strong></span> для ефективної підготовки до НМТ.</span>
+  Знайдіть фахівця, який допоможе досягти <em>високих результатів</em> у зручному для вас форматі.
+</p>
+
     <form method="GET" class="mb-4 row g-3 justify-content-center">
         <div class="col-md-auto col-12">
             <select name="subject" class="form-select">
@@ -102,8 +107,6 @@
                             (<span id="rating-count-{{ post.id }}">{{ post.rating_count }}</span> оцінок)
                         </p>
                     </div>
-
-
                     </div>
                     <div class="col-md-8">
                         <h4 class="mb-1 text-dark fw-bold">{{ post.first_name }} {{ post.last_name }}</h4>

@@ -114,22 +114,21 @@ form button:hover {
                 <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="50" height="50" class="d-inline-block" style="position: relative; top: -8px;">
                 <span class="ms-2" style="position: relative; top: -7px; color: #1a237e;">EdWay</span>
             </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav mx-auto d-flex justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'teacher_profile_edit' %}">Edit my profile</a>
-        </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mx-auto d-flex justify-content-center">
         <li class="nav-item">
             <a class="nav-link" href="{% url 'post_list' %}">Advertisement</a>
         </li>
         <li class="nav-item">
-    <a class="nav-link" href="{% url 'my_classes' %}">Мої класи</a>
-</li>
-
+            <a class="nav-link" href="{% url 'my_classes' %}">My classes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'courses' %}">Сourses</a>
+        </li>
     </ul>
     <a class="navbar-brand" href="{% url 'teacher_profile' %}">
         <i class="bi bi-person-heart"></i>

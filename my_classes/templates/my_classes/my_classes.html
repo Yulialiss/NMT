@@ -19,22 +19,22 @@
         text-shadow: 1px 1px 2px #b3d9ff;
     }
 
-    .class-box {
-        width: 300px;
-        height: 300px;
-        background: linear-gradient(145deg, #ffffff, #f5fbff);
-        border: 2px solid #b3daff;
-        border-radius: 16px;
-        padding: 1rem;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-        color: #004080;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+   .class-box {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(145deg, #ffffff, #f5fbff);
+    border: 2px solid #b3daff;
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #004080;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+}
 
     .class-box:hover {
         transform: translateY(-5px);
@@ -64,7 +64,6 @@
 
     .btn-primary:hover {
         background-color: #1a8cff;
-        border-color: #1a8cff;
     }
 
     .btn-success {
@@ -100,15 +99,11 @@
 
 <div class="container py-5">
     <div class="text-end mb-3">
-        <button type="button" class="btn btn-primary rounded-square-button" data-bs-toggle="modal" data-bs-target="#addClassModal">
-            <i class="fas fa-plus"></i>
-        </button>
+       <button type="button" class="btn rounded-circle-button" style="background-color: #1DCD9F; width: 50px; height: 50px; border-radius: 50%;" data-bs-toggle="modal" data-bs-target="#addClassModal"><i class="fas fa-plus"></i></button>
     </div>
-
     <div class="text-center mb-4">
         <h1 class="display-5 fw-bold">Мої класи</h1>
     </div>
-
     <div class="d-flex flex-wrap justify-content-center gap-4">
         {% for class in classes %}
             <a href="{% url 'class_detail' class.id %}" class="class-box">
@@ -129,28 +124,34 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <form method="POST" action="{% url 'create_class' %}">
                     {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="className" class="form-label">Назва класу <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control rounded-3" id="className" name="class_name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="section" class="form-label">Розділ</label>
-                        <input type="text" class="form-control rounded-3" id="section" name="section">
-                    </div>
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Предмет</label>
-                        <input type="text" class="form-control rounded-3" id="subject" name="subject">
-                    </div>
-                    <div class="mb-3">
-                        <label for="audience" class="form-label">Аудиторія / ім'я учня</label>
-                        <input type="text" class="form-control rounded-3" id="audience" name="audience">
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-success">Створити клас</button>
-                    </div>
-                </form>
+
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">Ім'я викладача</label>
+                    <input type="text" class="form-control rounded-3" id="firstName" name="first_name">
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Прізвище викладача</label>
+                    <input type="text" class="form-control rounded-3" id="lastName" name="last_name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="className" class="form-label">Назва класу <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control rounded-3" id="className" name="class_name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Предмет</label>
+                    <input type="text" class="form-control rounded-3" id="subject" name="subject">
+                </div>
+
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">Створити клас</button>
+                </div>
+            </form>
+
             </div>
         </div>
     </div>

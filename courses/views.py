@@ -1,8 +1,21 @@
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Course
 from .forms import CourseForm
+from django.shortcuts import render, get_object_or_404
+from .models import Course
+from profile_teacher.models import TeacherProfile
+
+
+def course_detail(request, id):
+    course = get_object_or_404(Course, id=id)
+    teacher_profile = get_object_or_404(TeacherProfile, user=course.teacher)
+    context = {
+        'course': course,
+        'profile': teacher_profile,
+    }
+    return render(request, 'courses/course_detail.html', context)
+
 
 def edit_course(request, id):
     course = get_object_or_404(Course, id=id)
@@ -31,9 +44,6 @@ def courses_page(request):
 
     return render(request, 'courses/courses.html', {'courses': courses})
 
-def course_detail(request, id):
-    course = get_object_or_404(Course, id=id)
-    return render(request, 'courses/course_detail.html', {'course': course})
 
 @login_required
 def add_course(request):

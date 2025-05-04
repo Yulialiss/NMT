@@ -8,11 +8,7 @@ body {
     padding: 0;
     background-color: #E8F9FF;
     overflow-x: hidden;
-
-
 }
-
-
 .hero-btn {
     padding: 12px 25px;
     border: none;
@@ -258,8 +254,6 @@ body {
         height: auto;
     }
 }
-
-
 .btn-custom {
     background-color: #004d40;
     color: #fff;
@@ -994,8 +988,6 @@ ul.list-unstyled li {
     color: #004d73;
 }
 
-
-
 .stats-container {
   display: flex;
   flex-wrap: wrap;
@@ -1008,7 +1000,7 @@ ul.list-unstyled li {
   background: white;
   border-radius: 20px;
   padding: 20px;
-  width: 280px;
+  width: 270px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -1038,8 +1030,6 @@ ul.list-unstyled li {
   font-size: 14px;
   color: #555;
 }
-
-
 
 .personal-development-container {
   padding-top: 40px;

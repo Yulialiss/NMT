@@ -2,148 +2,279 @@
 
 {% block title %}Профіль вчителя{% endblock %}
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'css/profile_teacher.css' %}">
 {% block content %}
 <style>
-    html, body {
-        height: 100%;
-    background: linear-gradient(to right, #D1E9F6, #A8D8E9, #5BC0EB);
+html, body {
+    height: 100%;
+    background: linear-gradient(135deg, #e6f2ff, #f0f8ff);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
 
-    }
-    .wrapper {
+.wrapper {
     padding: 40px;
     margin: 50px auto;
 }
 
-    .content {
-        flex: 1;
-    }
-    .profiless {
-        margin: auto;
-        padding: 25px;
-        border-radius: 15px;
-        min-height: calc(100vh - 200px);
-    }
-    .profile-photo {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 5px solid #007bff;
-        transition: transform 0.3s ease;
-    }
-    .profile-photo:hover {
-        transform: scale(1.1);
-    }
-    .list-group-item {
-    border: none;
-    padding: 12px 18px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    background-color: #FFFFFF;
-    transition: background-color 0.3s ease;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.profile-header {
+    text-align: center;
+    color: #213555;
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Roboto', sans-serif;
 }
 
-.list-group-item:hover {
-    background-color: #A8D8E9;
+.profiless {
+    padding: 25px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 200px);
 }
 
-.list-group-item i {
-    margin-right: 10px;
-    color: #211C84;
-    font-size: 20px;
+.profile-photo {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30%;
     transition: transform 0.3s ease;
 }
 
-.list-group-item i:hover {
-    transform: scale(1.2);
+.profile-photo:hover {
+    transform: scale(1.1);
 }
-
-.list-group-item strong {
-    flex: 1;
-    color: #495057;
-}
-    .profile-bio {
-        padding: 18px;
-        border-radius: 8px;
-        font-size: 16px;
-    }
-    .profile-header {
-        text-align: center;
-        color: #213555;
-        font-size: 52px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-
-    .name_name {
+.name_name {
     list-style: none;
     padding-left: 0;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    color: #0C0950;
+    color: #FF90BB;
     text-align: center;
-    margin-top: 10px;
+}
+
+.avliny-right {
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.goldport-title {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #034C53;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.goldport-sub {
+    color: #034C53;
+    font-weight: 300;
+}
+
+.blocky-section {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blocky-section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blocky-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #034C53;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4dabf7;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.blocky-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+}
+
+.blocky-text strong {
+    color: #2C3E50;
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+.blocky-text::before {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.blocky-text {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.blocky-text:hover {
+    color: #4dabf7;
+    transform: scale(1.05);
+}
+
+.blocky-title, .goldport-title {
+    background: linear-gradient(135deg, #4dabf7, #A4B465);
+    color: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.btn-edit {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    background-color: #FFB8E0;
+    color: #143D60;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background-color: #ff8ab8;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .avliny-right {
+        padding: 20px;
+    }
+
+    .goldport-title {
+        font-size: 28px;
+    }
+
+    .blocky-title {
+        font-size: 20px;
+    }
+
+    .profile-photo {
+        width: 250px;
+        height: 250px;
+    }
+}
+    .icon-age      { color: #E74C3C; }
+.icon-email    { color: #3498DB; }
+.icon-phone    { color: #2ECC71; }
+.icon-teach    { color: #F1C40F; }
+.icon-location { color: #9B59B6; }
+.icon-book     { color: #E67E22; }
+
+.blocky-text i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+/* Оновлений .logo-container */
+.logo-container {
+  position: absolute;
+  padding: 1rem;
+  animation: rotateLogo 5s infinite linear;
+}
+
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 
 </style>
-
 <div class="wrapper">
-    <h1 class="profile-header">ВІТАЄМО! ВИ НА ПЛАТФОРМІ EdWAY!</h1>
+
+  <h1 class="profile-header">ВІТАЄМО! ВИ НА ПЛАТФОРМІ EdWAY!</h1>
 
     <div class="container mt-4 profiless content">
-        <div class="row align-items-center">
+         <div class="logo-container">
+    <img src="{% static 'images/huhu.png' %}" alt="Логотип" width="50" height="50" class="rounded-circle">
+  </div>
+      <div class="row align-items-center">
 
-            <div class="col-12 col-md-4 text-center">
-                <li class="name_name">
-                        <strong> </strong> {{ request.user.username }}
-                    </li>
-                {% if profile.photo %}
-                    <img src="{{ profile.photo.url }}" alt="Фото профілю" class="profile-photo img-thumbnail mx-auto d-block">
-                {% else %}
-                    <img src="https://i.pinimg.com/474x/81/de/5e/81de5ee8bf8c1559462a7be0a3b1cbdd.jpg" alt="Фото профілю за замовчуванням" class="profile-photo img-thumbnail mx-auto d-block">
-                {% endif %}
-
-            </div>
-            <div class="col-md-8">
-                <ul class="list-group list-group-flush profile-info">
-
-                    <li class="list-group-item">
-                        <i class="fas fa-birthday-cake"></i><strong> Вік:</strong> {{ profile.age|default:"Не вказано" }}
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-envelope"></i><strong> Email:</strong> {{ profile.email|default:"Не вказано" }}
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-phone"></i><strong> Телефон:</strong> {{ profile.phone_number|default:"Не вказано" }}
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-chalkboard-teacher"></i><strong> Формат навчання:</strong> {{ profile.get_teaching_mode_display|default:"Не вказано" }}
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-map-marker-alt"></i><strong> Локація:</strong> {{ profile.location|default:"Не вказано" }}
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-book"></i><strong> Предмети викладання:</strong>
-                        {% if profile.subjects %}
-                            {{ profile.get_subjects_list|join:", " }}
-                        {% else %}
-                            Не вказано
-                        {% endif %}
-                    </li>
-                </ul>
-            </div>
+        <div class="col-12 col-md-4 text-center">
+          <li class="name_name">{{ request.user.username }}</li>
+          {% if profile.photo %}
+            <img src="{{ profile.photo.url }}"
+                 alt="Фото профілю"
+                 class="profile-photo img-thumbnail mx-auto d-block">
+          {% else %}
+            <img src="https://i.pinimg.com/474x/81/de/5e/81de5ee8bf8c1559462a7be0a3b1cbdd.jpg"
+                 alt="Фото профілю за замовчуванням"
+                 class="profile-photo img-thumbnail mx-auto d-block">
+          {% endif %}
         </div>
+
+    <div class="col-md-8 avliny-right">
+      <h1 class="goldport-title" style="color: #034C53; background: none;">
+        Information for you!
+      </h1>
+
+      <div class="blocky-section">
+        <h2 class="blocky-title" style="color: #034C53;">Profile & Contact</h2>
+        <p class="blocky-text">
+          <i class="fas fa-birthday-cake icon-age"></i>
+          <strong>Вік:</strong> {{ profile.age|default:"Не вказано" }}
+        </p>
+        <p class="blocky-text">
+          <i class="fas fa-envelope icon-email"></i>
+          <strong>Email:</strong> {{ profile.email|default:"Не вказано" }}
+        </p>
+        <p class="blocky-text">
+          <i class="fas fa-phone icon-phone"></i>
+          <strong>Телефон:</strong> {{ profile.phone_number|default:"Не вказано" }}
+        </p>
+        <p class="blocky-text">
+          <i class="fas fa-chalkboard-teacher icon-teach"></i>
+          <strong>Формат навчання:</strong> {{ profile.get_teaching_mode_display|default:"Не вказано" }}
+        </p>
+        <p class="blocky-text">
+          <i class="fas fa-map-marker-alt icon-location"></i>
+          <strong>Локація:</strong> {{ profile.location|default:"Не вказано" }}
+        </p>
+      </div>
+
+      <div class="blocky-section">
+        <h2 class="blocky-title" style="color: #034C53;">Education</h2>
+        <p class="blocky-text">
+          <i class="fas fa-book icon-book"></i>
+          <strong>Предмети викладання:</strong>
+          {% if profile.subjects %}
+            {{ profile.get_subjects_list|join:", " }}
+          {% else %}
+            Не вказано
+          {% endif %}
+        </p>
+      </div>
     </div>
+  </div>
+</div>
 
-
+    <a href="{% url 'teacher_profile_edit' %}" class="btn-edit">
+        <i class="fas fa-user-edit "></i> Редагувати профіль
+    </a>
 </div>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">

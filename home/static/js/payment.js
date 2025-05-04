@@ -52,19 +52,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     inputSignature.value = data.signature;
 
     const button = document.createElement("button");
-button.type = "submit";
-button.textContent = "Оплатити через LiqPay";
+    button.type = "submit";
+    button.textContent = "Оплатити через LiqPay";
 
-button.style.backgroundColor = "#16325B";
-button.style.color = "white";
-button.style.fontSize = "1.2rem";
-button.style.fontWeight = "bold";
-button.style.padding = "12px 20px";
-button.style.border = "none";
-button.style.borderRadius = "8px";
-button.style.cursor = "pointer";
-button.style.transition = "background 0.3s ease-in-out, transform 0.2s";
-button.style.boxShadow = "0 4px 8px rgba(0, 123, 255, 0.3)";
+    button.style.backgroundColor = "#16325B";
+    button.style.color = "white";
+    button.style.fontSize = "1.2rem";
+    button.style.fontWeight = "bold";
+    button.style.padding = "12px 20px";
+    button.style.border = "none";
+    button.style.borderRadius = "8px";
+    button.style.cursor = "pointer";
+    button.style.transition = "background 0.3s ease-in-out, transform 0.2s";
+    button.style.boxShadow = "0 4px 8px rgba(0, 123, 255, 0.3)";
 
 button.onmouseover = function () {
     button.style.backgroundColor = "#0056b3";

@@ -14,13 +14,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<!--Секція 1-->
 <section class="hero-section">
     <div class="hero-content">
-      <h1 class="nmt-hero-teyu">Готуйся до НМТ з упевненістю!</h1>
-      <p class="nmt-hero-description">Національний мультипредметний тест – це важливий крок до твого майбутнього.
-          Перевір свої знання та будь готовий до успіху!</p>
-
+      <h1 class="nmt-hero-teyu">Готуйся до  <span style="color: #FF0B55">«НМТ»</span> з упевненістю!</h1>
+      <p class="nmt-hero-description">Національний мультипредметний тест – це важливий крок до твого майбутнього. Перевір свої знання та будь готовий до успіху!</p>
         <div class="hero-buttons">
             <button class="hero-btn hero-btn-primary" onclick="window.location.href='{% url 'login' %}';">Приєднатися</button>
             <button class="hero-btn hero-btn-light" onclick="window.location.href='{% url 'about_page' %}';">Дізнатися більше</button>
@@ -33,9 +30,6 @@
     </div>
 </section>
 
-<!--Секція 1-->
-
-<!--Секція 2-->
 <div class="stats-container">
   <div class="stats-card experience">
     <img src="https://optima.school/img/home/header/icon4.svg" alt="Досвід">
@@ -63,12 +57,8 @@
     <p>усмішок щомісяця</p>
   </div>
 </div>
-<!--Секція 2-->
 
-<!--Секція 4-->
-<h2 class="fw-bold mb-5" style="font-size: 45px; color: #003366; text-align: right; padding-right: 40px;">
-  Ми допоможимо з реєстрації з <span style="color: #FFEB00">«НМТ»</span>
-</h2>
+<h2 class="fw-bold mb-5" style="font-size: 45px; color: #003366; text-align: right; padding-right: 40px;">Ми допоможимо з реєстрації з <span style="color: #FFEB00">«НМТ»</span></h2>
 
 <div class="personal-development-container py-5">
   <div class="row align-items-center">
@@ -163,10 +153,6 @@
   </div>
 </div>
 
-
-<!---->
-
-
 <div class="container" id="workflowContainer">
 <h2 class="fw-bold mb-5 text-end" style="font-size: 3rem; color: #003366;"><span style="color: #FF0B55">Роби крок</span> — рухайся до мети!</h2>
 
@@ -219,80 +205,34 @@
     </div>
 </div>
 
-<!---->
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 wedency-content">
-            <div class="wedency-image-container">
-                <img src="https://i.pinimg.com/736x/56/f5/1a/56f51a1beadb3adef0e27d7e166a801f.jpg" alt="Студент готується до НМТ">
-            </div>
-
-            <div class="wedency-strategy-section">
-                <h5 class="mb-3">Будь на крок попереду!</h5>
-                <p class="small">Підготовка до НМТ — це не лише про навчання, а й про стратегічний підхід. Ось кілька шляхів, як бути в курсі всіх важливих змін:</p>
-            </div>
-        </div>
-
-        <!-- Права колонка -->
-        <aside class="col-md-3 mb-4 wedency-sidebar-right">
-            <div class="bg-white p-4 rounded shadow-sm">
-                <h5 class="mb-3">Корисні поради</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#">Плануй свій час правильно</a></li>
-                    <li><a href="#">Зосереджуйся на важливому</a></li>
-                    <li><a href="#">Регулярно повторюй матеріал</a></li>
-                    <li><a href="#">Тестуй себе на знання</a></li>
-                    <li><a href="#">Слідкуй за новинами та змінами в тесті</a></li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-4 rounded shadow-sm mt-4">
-                <h5 class="mb-3">Останні новини</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#">НМТ 2025: нові зміни</a></li>
-                    <li><a href="#">Як ефективно готуватися до тесту</a></li>
-                    <li><a href="#">Поради з психологічної підготовки</a></li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-</div>
-
-<!--Секція 5-->
 <div class="wedency-container py-5">
-        <h2 class="fw-bold mb-5" style="font-size: 3rem; color: #003366;">Залиште свій відгук&hearts;</h2>
-
-
-<div class="row justify-content-center">
-  <div class="col-md-6 d-flex justify-content-center">
-    <div class="wedency-review-text text-center">
-         <p>Ми завжди раді почути вашу думку! Напишіть, як вам наш сервіс, що було чудово, а що можна поліпшити. Ваш відгук допомагає нам ставати краще для вас!</p>
-    </div>
-  </div>
-</div>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="wedency-review-form">
-       <form id="review-form" method="POST" class="wedency-comment-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="wedency-btn-custom">Надіслати відгук</button>
-        </form>
+     <h2 class="fw-bold mb-5" style="font-size: 3rem; color: #003366; margin-left: 60px;">
+    <span style="color: #FFF100">Ваш відгук —</span> наш крок до кращого сервісу!</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="wedency-review-text text-center">
+             <p>Ми завжди раді почути вашу думку! Напишіть, як вам наш сервіс, що було чудово, а що можна поліпшити. Ваш відгук допомагає нам ставати краще для вас!</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="wedency-review-form">
+           <form id="review-form" method="POST" class="wedency-comment-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="wedency-btn-custom">Надіслати відгук</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <div class="user-feedback-container my-4">
     <h2 class="fw-bold mb-5 text-end" style="font-size: 3rem; color: #003366;">Дивіться, що кажуть наші <span style="color: #A5158C">"Users"</span></h2>
 
   <p class="user-feedback-description">Наш сервіс уже допоміг сотням людей. Читайте їхні відгуки та діліться своїм досвідом!</p>
 </div>
-
-
-
-<!--Секція 5-->
 
 <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
     <div id="reviewsContainer" class="carousel-inner">
@@ -341,8 +281,6 @@
     </button>
 </div>
 
-<!--Секція 6-->
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("review-form").addEventListener("submit", function (event) {
@@ -373,7 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

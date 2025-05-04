@@ -5,10 +5,28 @@ from .models import Test, Answer, TestResult, IncorrectAnswer
 from django.utils.timezone import now, timedelta
 from django.http import HttpResponse
 from django.utils.dateparse import parse_datetime
+from .models import TestResult
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import TestResult, Subject
+from .models import Subject
+from datetime import date
+
+@login_required
+def subject_list(request):
+    current_date = date.today()
+
+    last_visit_date = request.session.get('last_visit_date', None)
+
+    if last_visit_date != str(current_date):
+        fire_count = 1
+        request.session['last_visit_date'] = str(current_date)
+    else:
+        fire_count = request.session.get('fire_count', 0)
+
+    request.session['fire_count'] = fire_count
+    subjects = Subject.objects.all()
+    return render(request, 'testing/subject_list.html', {'subjects': subjects, 'fire_count': fire_count})
 
 @login_required
 def user_progress(request):
@@ -71,10 +89,6 @@ def test_detail(request, test_id):
     })
 
 
-@login_required
-def subject_list(request):
-    subjects = Subject.objects.all()
-    return render(request, 'testing/subject_list.html', {'subjects': subjects})
 
 @login_required
 def test_list(request, subject_id):
